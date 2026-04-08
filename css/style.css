@@ -6,8 +6,10 @@
 :root {
   --color-bg:         #F7F5F0;
   --color-bg-card:    #FFFFFF;
+  --color-bg-dark:    #1A1A2E;
   --color-text:       #1A1A1A;
   --color-text-muted: #6B7280;
+  --color-text-light: #D1D5DB;
   --color-accent:     #2A6FDB;
   --color-accent-hover:#1E56B0;
   --color-highlight:  #DCEBFF;
@@ -41,6 +43,9 @@ a:hover { color: var(--color-accent-hover); }
   padding: 0 24px;
 }
 
+/* ============================================================
+   HEADER
+============================================================ */
 .site-header {
   position: sticky;
   top: 0;
@@ -77,6 +82,9 @@ a:hover { color: var(--color-accent-hover); }
 }
 .main-nav a:hover { color: var(--color-accent); }
 
+/* ============================================================
+   HERO
+============================================================ */
 .hero {
   padding: 100px 0 80px;
   text-align: center;
@@ -103,6 +111,9 @@ a:hover { color: var(--color-accent-hover); }
   flex-wrap: wrap;
 }
 
+/* ============================================================
+   BUTTONS
+============================================================ */
 .btn {
   display: inline-block;
   padding: 14px 32px;
@@ -133,6 +144,57 @@ a:hover { color: var(--color-accent-hover); }
   color: var(--color-accent-hover);
 }
 
+/* ============================================================
+   PAIN SECTION — dark background, emotional hook
+============================================================ */
+.pain {
+  padding: 80px 0;
+  background: var(--color-bg-dark);
+  color: #fff;
+  text-align: center;
+}
+
+.pain h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 48px;
+  color: #fff;
+}
+
+.pain-list {
+  list-style: none;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pain-list li {
+  border-left: 3px solid var(--color-accent);
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  text-align: left;
+}
+
+.pain-quote {
+  font-size: 1.05rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.pain-close {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-highlight);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   FEATURES
+============================================================ */
 .features {
   padding: 80px 0;
   background: var(--color-bg-card);
@@ -147,7 +209,7 @@ a:hover { color: var(--color-accent-hover); }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 28px;
 }
 
@@ -177,6 +239,9 @@ a:hover { color: var(--color-accent-hover); }
   line-height: 1.6;
 }
 
+/* ============================================================
+   ABOUT
+============================================================ */
 .about { padding: 80px 0; }
 
 .about-content {
@@ -188,15 +253,33 @@ a:hover { color: var(--color-accent-hover); }
 .about h2 {
   font-family: var(--font-display);
   font-size: 2rem;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
-.about p {
-  font-size: 1.05rem;
+.founder-quote {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
   color: var(--color-text-muted);
+  line-height: 1.8;
+  border-left: 4px solid var(--color-accent);
+  padding: 20px 28px;
+  background: var(--color-highlight);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  text-align: left;
   margin-bottom: 16px;
 }
 
+.founder-attribution {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  text-align: right;
+}
+
+/* ============================================================
+   CONTACT
+============================================================ */
 .contact {
   padding: 80px 0;
   background: var(--color-bg-card);
@@ -223,8 +306,19 @@ a:hover { color: var(--color-accent-hover); }
   padding: 20px 28px;
   display: inline-block;
   font-size: 1.05rem;
+  margin-bottom: 16px;
 }
 
+.contact-fine {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
 .site-footer {
   padding: 32px 0;
   border-top: 1px solid var(--color-border);
@@ -240,9 +334,14 @@ a:hover { color: var(--color-accent-hover); }
 .copyright { font-size: 0.9rem; color: var(--color-text-muted); }
 .tagline { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
 
+/* ============================================================
+   RESPONSIVE
+============================================================ */
 @media (max-width: 640px) {
   .main-nav { gap: 16px; }
+  .main-nav a { font-size: 0.85rem; }
   .hero { padding: 60px 0 48px; }
-  .features, .about, .contact { padding: 56px 0; }
+  .pain, .features, .about, .contact { padding: 56px 0; }
   .hero-actions { flex-direction: column; align-items: center; }
+  .founder-quote { padding: 16px 20px; }
 }
