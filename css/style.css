@@ -86,7 +86,7 @@ a:hover { color: var(--color-accent-hover); }
    HERO
 ============================================================ */
 .hero {
-  padding: 100px 0 80px;
+  padding: 80px 0 60px;
   text-align: center;
 }
 
@@ -101,19 +101,67 @@ a:hover { color: var(--color-accent-hover); }
   font-size: 1.15rem;
   color: var(--color-text-muted);
   max-width: 620px;
-  margin: 0 auto 40px;
+  margin: 0 auto 48px;
 }
 
-.hero-actions {
+/* ============================================================
+   PAIN BLOCK — inside hero, above buttons
+============================================================ */
+.pain-block {
+  background: var(--color-bg-dark);
+  border-radius: var(--radius);
+  padding: 48px 40px;
+  margin: 0 auto 48px;
+  max-width: 720px;
+}
+
+.pain-heading {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+.pain-list {
+  list-style: none;
   display: flex;
+  flex-direction: column;
   gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.pain-list li {
+  border-left: 3px solid var(--color-accent);
+  padding: 12px 18px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.pain-quote {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.pain-close {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-highlight);
 }
 
 /* ============================================================
    BUTTONS
 ============================================================ */
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
 .btn {
   display: inline-block;
   padding: 14px 32px;
@@ -145,51 +193,96 @@ a:hover { color: var(--color-accent-hover); }
 }
 
 /* ============================================================
-   PAIN SECTION — dark background, emotional hook
+   SKEPTIC SURVEY — below buttons, inside hero
 ============================================================ */
-.pain {
-  padding: 80px 0;
-  background: var(--color-bg-dark);
-  color: #fff;
-  text-align: center;
+.survey-block {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+  text-align: left;
+  box-shadow: var(--shadow-card);
 }
 
-.pain h2 {
+.survey-heading {
   font-family: var(--font-display);
-  font-size: 2rem;
-  margin-bottom: 48px;
-  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--color-text);
 }
 
-.pain-list {
-  list-style: none;
-  max-width: 700px;
-  margin: 0 auto 40px;
+.survey-sub {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+}
+
+.survey-options {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
-.pain-list li {
-  border-left: 3px solid var(--color-accent);
-  padding: 16px 20px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  text-align: left;
+.survey-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
 }
 
-.pain-quote {
-  font-size: 1.05rem;
-  color: var(--color-text-light);
+.survey-item input[type="checkbox"] {
+  display: none;
+}
+
+.survey-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.98rem;
+  color: var(--color-text);
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.survey-label::before {
+  content: '☐';
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: all 0.2s;
+}
+
+.survey-item input:checked + .survey-label {
+  background: var(--color-highlight);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.survey-item input:checked + .survey-label::before {
+  content: '☑';
+  color: var(--color-accent);
+}
+
+.survey-response {
+  font-size: 0.88rem;
   font-style: italic;
-  line-height: 1.6;
+  color: var(--color-accent);
+  padding-left: 14px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
-.pain-close {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--color-highlight);
-  margin-top: 8px;
+.survey-response.visible {
+  max-height: 40px;
+  opacity: 1;
 }
 
 /* ============================================================
@@ -332,7 +425,7 @@ a:hover { color: var(--color-accent-hover); }
 }
 
 .copyright { font-size: 0.9rem; color: var(--color-text-muted); }
-.tagline { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
+.tagline   { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
 
 /* ============================================================
    RESPONSIVE
@@ -340,8 +433,10 @@ a:hover { color: var(--color-accent-hover); }
 @media (max-width: 640px) {
   .main-nav { gap: 16px; }
   .main-nav a { font-size: 0.85rem; }
-  .hero { padding: 60px 0 48px; }
-  .pain, .features, .about, .contact { padding: 56px 0; }
+  .hero { padding: 60px 0 40px; }
+  .pain-block { padding: 32px 24px; }
+  .survey-block { padding: 24px 20px; }
+  .features, .about, .contact { padding: 56px 0; }
   .hero-actions { flex-direction: column; align-items: center; }
   .founder-quote { padding: 16px 20px; }
 }
