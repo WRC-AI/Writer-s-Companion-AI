@@ -37,6 +37,7 @@
       <h1>Your AI finally knows<br>your whole story.</h1>
       <p class="hero-subtitle">
         Stop explaining your characters, your plot, your world — every single session.
+        <br><br>
         Writer's Companion remembers everything, so you can focus on writing.
       </p>
 
@@ -57,45 +58,6 @@
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">Keep Me Posted</a>
         <a href="#features" class="btn btn-secondary">See How It Works</a>
-      </div>
-
-      <!-- SKEPTIC SURVEY — below buttons -->
-      <div class="survey-block">
-        <p class="survey-heading">Be honest. What's your first reaction?</p>
-        <p class="survey-sub">Check all that apply.</p>
-        <div class="survey-options">
-
-          <label class="survey-item">
-            <input type="checkbox" class="survey-check" data-response="We heard that a lot. Then people tried it.">
-            <span class="survey-label">Sounds too good to be true</span>
-            <span class="survey-response"></span>
-          </label>
-
-          <label class="survey-item">
-            <input type="checkbox" class="survey-check" data-response="That was true. Until now.">
-            <span class="survey-label">AI tools can't really remember a whole manuscript</span>
-            <span class="survey-response"></span>
-          </label>
-
-          <label class="survey-item">
-            <input type="checkbox" class="survey-check" data-response="Fair. We'd rather show you than tell you.">
-            <span class="survey-label">I've heard promises like this before</span>
-            <span class="survey-response"></span>
-          </label>
-
-          <label class="survey-item">
-            <input type="checkbox" class="survey-check" data-response="That's all we ask.">
-            <span class="survey-label">Okay, I'm a little curious</span>
-            <span class="survey-response"></span>
-          </label>
-
-          <label class="survey-item">
-            <input type="checkbox" class="survey-check" data-response="We like you already. Stay posted.">
-            <span class="survey-label">Just take my money already</span>
-            <span class="survey-response"></span>
-          </label>
-
-        </div>
       </div>
 
     </div>
@@ -150,6 +112,51 @@
   </section>
 
   <!-- ============================================================
+       SKEPTIC SURVEY — after features, before about
+  ============================================================ -->
+  <section class="survey-section">
+    <div class="container">
+      <div class="survey-block">
+        <p class="survey-heading">Be honest. What's your first reaction?</p>
+        <p class="survey-sub">Check all that apply.</p>
+        <div class="survey-options">
+
+          <label class="survey-item">
+            <input type="checkbox" class="survey-check" id="s1">
+            <span class="survey-label">Sounds too good to be true</span>
+            <span class="survey-response" data-for="s1">We heard that a lot. Then people tried it.</span>
+          </label>
+
+          <label class="survey-item">
+            <input type="checkbox" class="survey-check" id="s2">
+            <span class="survey-label">AI tools can't really remember a whole manuscript</span>
+            <span class="survey-response" data-for="s2">That was true. Until now.</span>
+          </label>
+
+          <label class="survey-item">
+            <input type="checkbox" class="survey-check" id="s3">
+            <span class="survey-label">I've heard promises like this before</span>
+            <span class="survey-response" data-for="s3">Fair. We'd rather show you than tell you.</span>
+          </label>
+
+          <label class="survey-item">
+            <input type="checkbox" class="survey-check" id="s4">
+            <span class="survey-label">Okay, I'm a little curious</span>
+            <span class="survey-response" data-for="s4">That's all we ask.</span>
+          </label>
+
+          <label class="survey-item">
+            <input type="checkbox" class="survey-check" id="s5">
+            <span class="survey-label">Just take my money already</span>
+            <span class="survey-response" data-for="s5">We like you already. Stay posted.</span>
+          </label>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        ABOUT
   ============================================================ -->
   <section id="about" class="about">
@@ -157,13 +164,13 @@
       <div class="about-content">
         <h2>Built by a writer, for writers.</h2>
         <blockquote class="founder-quote">
-          "I got frustrated watching AI tools forget everything the moment I started a new chapter.
+          "I got frustrated watching AI tools forget everything the moment I started a new session.
           I was re-explaining my characters, my world, my tone — every single session.
           <br><br>
           It's like Groundhog Day. You spend the entire day developing a brilliant editor,
           only to restart the next day with a Brain-Dead-Idiot!
           <br><br>
-          So we built something that remembers."
+          So I built something that remembers."
         </blockquote>
         <p class="founder-attribution">— Joseph, Creator of Writer's Companion</p>
       </div>
@@ -195,12 +202,24 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 
   <script>
     // Survey interactivity — no counters, just responses
     document.querySelectorAll('.survey-check').forEach(function(checkbox) {
       checkbox.addEventListener('change', function() {
-        var responseEl = this.parentElement.querySelector('.survey-response');
-        if (this.checked) {
-          responseEl.textContent
+        var id = this.id;
+        var responseEl = document.querySelector('.survey-response[data-for="' + id + '"]');
+        if (responseEl) {
+          if (this.checked) {
+            responseEl.classList.add('visible');
+          } else {
+            responseEl.classList.remove('visible');
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
