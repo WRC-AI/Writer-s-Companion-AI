@@ -50,7 +50,7 @@
           <li><span class="pain-quote">"I'm at a different stage of revision than when I started — but my AI doesn't know that."</span></li>
           <li><span class="pain-quote">"I wanted a parallel storyline idea and got something that had nothing to do with my story."</span></li>
         </ul>
-        <p class="pain-close">Writer's Companion was built because every one of these was real.</p>
+        <p class="pain-close">Sound familiar? That's exactly why we built Writer's Companion.</p>
       </div>
 
       <!-- BUTTONS -->
@@ -159,7 +159,9 @@
         <blockquote class="founder-quote">
           "I got frustrated watching AI tools forget everything the moment I started a new chapter.
           I was re-explaining my characters, my world, my tone — every single session.
-          It felt like hiring a brilliant editor who showed up with amnesia every morning.
+          <br><br>
+          It's like Groundhog Day. You spend the entire day developing a brilliant editor,
+          only to restart the next day with a Brain-Dead-Idiot!
           <br><br>
           So I built something that remembers."
         </blockquote>
@@ -180,7 +182,7 @@
         and the first to try it — drop us a note.
       </p>
       <div class="contact-note">
-        <p>📬 Reach us at <strong>hello@writerscompanion.ai</strong></p>
+        <p>📬 Reach us at <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="741c1118181b3403061d00110607171b1904151a1d1b1a5a151d">[email&#160;protected]</a></strong></p>
       </div>
       <p class="contact-fine">No spam. No pressure. Just a note when the doors open.</p>
     </div>
@@ -193,7 +195,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
 
   <script>
     // Survey interactivity — no counters, just responses
@@ -201,15 +203,4 @@
       checkbox.addEventListener('change', function() {
         var responseEl = this.parentElement.querySelector('.survey-response');
         if (this.checked) {
-          responseEl.textContent = this.dataset.response;
-          responseEl.classList.add('visible');
-        } else {
-          responseEl.textContent = '';
-          responseEl.classList.remove('visible');
-        }
-      });
-    });
-  </script>
-
-</body>
-</html>
+          responseEl.textContent
