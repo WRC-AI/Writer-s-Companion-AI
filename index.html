@@ -189,24 +189,35 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       CONTACT
-  ============================================================ -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>Writer's Companion is coming.</h2>
-      <p>
-        We are putting the finishing touches on something we think serious writers
-        have been waiting for. If you want to be among the first to know —
-        and the first to try it — drop us a note.
-      </p>
-      <div class="contact-note">
-        <p>📬 Reach us at <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="741c1118181b3403061d00110607171b1904151a1d1b1a5a151d">[email&#160;protected]</a></strong></p>
-      </div>
-      <p class="contact-fine">No spam. No pressure. Just a note when the doors open.</p>
-    </div>
-  </section>
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2>Writer's Companion is coming.</h2>
+    <p>
+      We are putting the finishing touches on something we think serious writers
+      have been waiting for. If you want to be among the first to know —
+      and the first to try it — leave your email below.
+    </p>
 
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <input
+          type="email"
+          name="email"
+          placeholder="Joe_Summerville@msn.com"
+          required
+        >
+        <button type="submit" class="btn btn-primary">Keep Me Posted</button>
+      </div>
+      <input type="hidden" name="_subject" value="New WRC Interest Signup">
+    </form>
+
+    <p class="contact-fine">No spam. No pressure. Just a note when the doors open.</p>
+  </div>
+</section>
+  
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="copyright">&copy; 2026 Writer's Companion. All rights reserved.</p>
