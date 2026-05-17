@@ -64,6 +64,25 @@
       </div>
 
       <div id="tokenMessage" class="token-message"></div>
+      <div id="downloadSection" style="display:none; margin-top:24px; text-align:center;">
+        <a
+          href="/downloads/wrc-installer.exe"
+          target="_blank"
+          class="token-submit"
+          style="display:inline-block; text-decoration:none; margin-bottom:16px;"
+        >
+          Download Writer’s Companion
+        </a>
+      
+        <div style="text-align:left; font-size:0.9rem; color:var(--color-text-muted); line-height:1.5;">
+          <strong>How activation works</strong><br>
+          1. Download and install Writer’s Companion.<br>
+          2. Launch the app — you’ll be asked for your token.<br>
+          3. Enter the same code you used here.<br>
+          4. WRC activates and binds the token to your machine.<br>
+          5. You’re in — no further online checks until renewal.
+        </div>
+      </div>
 
       <p class="beta-footer-note">
         Don't have a code? <a href="/#contact">Join the waitlist</a>
@@ -118,13 +137,18 @@
           return;
         }
 
+        // SUCCESS — but do NOT redeem here
         showMessage(
           'success',
-          '✓ Your token is valid! Download Writer’s Companion and enter this code during activation.'
+          '✓ Your token is valid. Download Writer’s Companion and enter this code during activation.'
         );
+        
+        // Show download button + activation steps
+        document.getElementById('downloadSection').style.display = 'block';
         
         input.disabled = true;
         btn.disabled = true;
+
 
 
         showMessage('success', '✓ Access confirmed! Welcome to the Writer\'s Companion beta. Check your email for next steps.');
