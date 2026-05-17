@@ -118,23 +118,14 @@
           return;
         }
 
-        // Mark as redeemed
-        await fetch(
-          `${SUPABASE_URL}/rest/v1/beta_tokens?id=eq.${record.id}`,
-          {
-            method: 'PATCH',
-            headers: {
-              'apikey': SUPABASE_KEY,
-              'Authorization': `Bearer ${SUPABASE_KEY}`,
-              'Content-Type': 'application/json',
-              'Prefer': 'return=minimal'
-            },
-            body: JSON.stringify({
-              is_redeemed: true,
-              redeemed_at: new Date().toISOString()
-            })
-          }
+        showMessage(
+          'success',
+          '✓ Your token is valid! Download Writer’s Companion and enter this code during activation.'
         );
+        
+        input.disabled = true;
+        btn.disabled = true;
+
 
         showMessage('success', '✓ Access confirmed! Welcome to the Writer\'s Companion beta. Check your email for next steps.');
         input.disabled = true;
