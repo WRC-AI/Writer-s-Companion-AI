@@ -22,15 +22,9 @@
     .token-submit:active { transform: scale(0.98); }
     .token-submit:disabled { opacity: 0.6; cursor: not-allowed; }
     .token-message { margin-top: 16px; padding: 14px 18px; border-radius: var(--radius); font-size: 0.95rem; display: none; }
+    .token-message.success { display: block; background: #ecfdf5; border: 1px solid #6ee7b7; color: #065f46; }
     .token-message.error { display: block; background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
     .token-message.loading { display: block; background: var(--color-highlight); border: 1px solid var(--color-border); color: var(--color-text-muted); }
-    .download-section { display: none; margin-top: 24px; }
-    .download-section.visible { display: block; }
-    .download-confirm { background: #ecfdf5; border: 1px solid #6ee7b7; color: #065f46; padding: 14px 18px; border-radius: var(--radius); margin-bottom: 20px; font-size: 0.95rem; }
-    .download-btn { display: inline-block; width: 100%; padding: 16px; font-size: 1.05rem; font-family: var(--font-body); font-weight: 700; background: #16a34a; color: #fff; border: none; border-radius: var(--radius); cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.1s; box-sizing: border-box; }
-    .download-btn:hover { background: #15803d; }
-    .download-btn:active { transform: scale(0.98); }
-    .download-note { margin-top: 12px; font-size: 0.82rem; color: var(--color-text-muted); }
     .beta-footer-note { margin-top: 24px; font-size: 0.85rem; color: var(--color-text-muted); }
     .beta-footer-note a { color: var(--color-accent); text-decoration: none; }
     @media (max-width: 640px) { .beta-card { padding: 32px 24px; } }
@@ -71,17 +65,24 @@
 
       <div id="tokenMessage" class="token-message"></div>
 
-      <div id="downloadSection" class="download-section">
-        <div class="download-confirm">
-          ✓ Access confirmed! Welcome to the Writer's Companion beta.
-        </div>
-        <a id="downloadBtn"
-           class="download-btn"
-           href="https://github.com/WRC-AI/Writer-s-Companion-AI/releases/download/v1.0.0-beta/WRC_Setup_1.0.0.exe"
-           download>
+      <div id="downloadSection" style="display:none; margin-top:24px; text-align:center;">
+        <a
+          href="https://github.com/WRC-AI/Writer-s-Companion-AI/releases/download/v1.0.0-beta/WRC_Setup_1.0.0.exe"
+          target="_blank"
+          class="token-submit"
+          style="display:inline-block; text-decoration:none; margin-bottom:16px; background:#16a34a;"
+        >
           ⬇ Download Writer's Companion
         </a>
-        <p class="download-note">Windows 10 or later · Version 1.0.0 Beta · 7.7 MB</p>
+
+        <div style="text-align:left; font-size:0.9rem; color:var(--color-text-muted); line-height:1.5;">
+          <strong>How activation works</strong><br>
+          1. Download and install Writer's Companion.<br>
+          2. Launch the app — you'll be asked for your token.<br>
+          3. Enter the same code you used here.<br>
+          4. WRC activates and binds the token to your machine.<br>
+          5. You're in — no further online checks until renewal.
+        </div>
       </div>
 
       <p class="beta-footer-note">
@@ -134,28 +135,16 @@
           return;
         }
 
-        await fetch(
-          `${SUPABASE_URL}/rest/v1/beta_tokens?id=eq.${record.id}`,
-          {
-            method: 'PATCH',
-            headers: {
-              'apikey': SUPABASE_KEY,
-              'Authorization': `Bearer ${SUPABASE_KEY}`,
-              'Content-Type': 'application/json',
-              'Prefer': 'return=minimal'
-            },
-            body: JSON.stringify({
-              is_redeemed: true,
-              redeemed_at: new Date().toISOString()
-            })
-          }
+        // SUCCESS — validate only, do NOT redeem here
+        // The app performs the actual redemption on first launch
+        showMessage(
+          'success',
+          '\u2713 Your token is valid. Download Writer\u2019s Companion and enter this code during activation.'
         );
 
-        // Hide form and message, show download
-        document.getElementById('tokenMessage').style.display = 'none';
-        document.querySelector('.token-form').style.display = 'none';
-        document.getElementById('downloadSection').classList.add('visible');
+        document.getElementById('downloadSection').style.display = 'block';
         input.disabled = true;
+        btn.disabled = true;
 
       } catch (err) {
         console.error('Error:', err);
