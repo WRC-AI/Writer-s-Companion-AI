@@ -199,32 +199,140 @@
     <div class="container">
       <h2>Creative Catalyst</h2>
 
-      <div class="features-grid">
+            <div class="features-grid">
 
         <div class="feature-card">
           <div class="feature-icon" style="color: var(--color-burgundy);">🪶</div>
           <h3>Expand</h3>
           <p>Deepens what already exists.</p>
+          <p><button type="button" class="link-button" onclick="document.getElementById('modal-expand').showModal()">Learn More →</button></p>
         </div>
 
         <div class="feature-card">
           <div class="feature-icon" style="color: var(--color-burgundy);">🌀</div>
           <h3>Parallel</h3>
           <p>Branches without breaking your canon.</p>
+          <p><button type="button" class="link-button" onclick="document.getElementById('modal-parallel').showModal()">Learn More →</button></p>
         </div>
 
         <div class="feature-card">
           <div class="feature-icon" style="color: var(--color-burgundy);">🧭</div>
           <h3>Trace</h3>
           <p>Follows emotional causality across chapters.</p>
+          <p><button type="button" class="link-button" onclick="document.getElementById('modal-trace').showModal()">Learn More →</button></p>
         </div>
 
         <div class="feature-card">
           <div class="feature-icon" style="color: var(--color-burgundy);">📘</div>
           <h3>Analysis</h3>
           <p>Evaluates your manuscript as a connected whole.</p>
+          <p><button type="button" class="link-button" onclick="document.getElementById('modal-analysis').showModal()">Learn More →</button></p>
         </div>
 
+      </div>
+
+      <!-- Creative Catalyst mode modals — same native <dialog> pattern
+           as the Three Pillars modals. -->
+
+      <dialog id="modal-expand" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">🪶</span>
+              <div class="pillar-modal-title">
+                <h3>Creative Catalyst</h3>
+                <span>Expand</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>Expand deepens what already exists.</p>
+              <p>It takes the material you've already written — a scene, a beat, a moment of emotional tension — and grows it with precision. Not by inventing new plotlines, but by enriching the ones you already have.</p>
+              <p>Expand strengthens emotional depth, sensory detail, character motivation, and thematic resonance.</p>
+              <p>It helps you see what's already there, but more vividly — the way a cinematographer reveals the richness of a shot by adjusting the light rather than changing the subject.</p>
+              <p>Expand doesn't drift. It doesn't add noise. It amplifies the truth of the moment.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="modal-parallel" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">🌀</span>
+              <div class="pillar-modal-title">
+                <h3>Creative Catalyst</h3>
+                <span>Parallel</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>Parallel branches without breaking your canon.</p>
+              <p>It explores alternate possibilities — different choices a character might make, different outcomes a scene might produce — while preserving the integrity of your established story.</p>
+              <p>Parallel is how you test: "What if she said yes instead of no?" "What if the confrontation happened earlier?" "What if this chapter took place somewhere else?"</p>
+              <p>It gives you creative freedom without destabilizing your manuscript. Every branch is clean, isolated, and reversible.</p>
+              <p>Parallel is not chaos. It is controlled divergence.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="modal-trace" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">🧭</span>
+              <div class="pillar-modal-title">
+                <h3>Creative Catalyst</h3>
+                <span>Trace</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>Trace follows emotional causality across chapters.</p>
+              <p>It reveals the chain reaction your story creates — how one moment affects the next, how a character's internal state evolves, how tension builds or dissipates over time.</p>
+              <p>Trace helps you understand the emotional arc, the psychological continuity, the ripple effects of key decisions, and the long-term consequences of early scenes.</p>
+              <p>It's the closest thing to seeing your story from above — a map of emotional motion.</p>
+              <p>Trace doesn't rewrite your story. It illuminates it.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="modal-analysis" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">📘</span>
+              <div class="pillar-modal-title">
+                <h3>Creative Catalyst</h3>
+                <span>Analysis</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>Analysis evaluates your manuscript as a connected whole.</p>
+              <p>It examines structure, pacing, thematic alignment, character consistency, and narrative cohesion. It identifies strengths, weaknesses, and opportunities — not as isolated notes, but as part of a unified system.</p>
+              <p>Analysis helps you see where the story accelerates, where it stalls, where tension peaks, where clarity fades, and where themes converge or drift.</p>
+              <p>It is your developmental editor — tireless, objective, and deeply contextual.</p>
+              <p>Analysis doesn't judge. It reveals.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
       </div>
     </div>
   </section>
