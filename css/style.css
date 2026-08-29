@@ -687,7 +687,7 @@ section[id] {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  align-items: start;
+  align-items: center;
   max-width: 960px;
   margin: 0 auto 48px;
   text-align: left;
