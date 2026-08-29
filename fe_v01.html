@@ -14,6 +14,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
 </head>
 
+  <script src="js/main.js"></script>
+  <script src="js/modals.js"></script>
 <body>
 
   <!-- ============================================================
@@ -41,14 +43,9 @@
     <div class="container">
       <h1>Your AI finally knows<br>your whole story.</h1>
 
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" style="max-width: 760px;">
         A manuscript intelligence system built for authors who architect entire worlds.
       </p>
-
-      <div class="hero-actions">
-        <a href="beta.html" class="btn btn-primary">Start Your Manuscript</a>
-        <a href="#pillars" class="btn btn-secondary">Explore the Three Pillars</a>
-      </div>
     </div>
   </section>
 
@@ -83,30 +80,115 @@
         <strong>Deepen what exists. Branch into what might. See it all at once.</strong>
       </p>
 
-      <div class="features-grid">
+            <div class="features-grid">
 
         <div class="feature-card">
           <div class="feature-icon" style="color: var(--color-burgundy);">🧠</div>
           <h3>Story Memory</h3>
           <p>Your manuscript remembers itself — characters, arcs, and every chapter that matters.</p>
-          <p><a href="#relevance-engine">Learn More →</a></p>
+          <p><button type="button" class="link-button" onclick="document.getElementById('modal-relevance').showModal()">Learn More →</button></p>
         </div>
 
         <div class="feature-card">
           <div class="feature-icon" style="color: var(--color-burgundy);">✦</div>
           <h3>Creative Momentum</h3>
           <p>Four creative intelligences that deepen, expand, analyze, and trace your story.</p>
-          <p><a href="#creative-catalyst">Learn More →</a></p>
+          <p><button type="button" class="link-button" onclick="document.getElementById('modal-catalyst').showModal()">Learn More →</button></p>
         </div>
 
         <div class="feature-card">
           <div class="feature-icon" style="color: var(--color-burgundy);">⚙️</div>
           <h3>Author Control</h3>
           <p>A deterministic workflow that keeps your voice and intent at the center.</p>
-          <p><a href="#foundation">Learn More →</a></p>
+          <p><button type="button" class="link-button" onclick="document.getElementById('modal-foundation').showModal()">Learn More →</button></p>
         </div>
 
       </div>
+
+      <!-- Pillar detail modals — native <dialog>, no custom JS needed
+           for Escape (built in) or the Close button (form method="dialog").
+           A tiny script (js/modals.js) only handles closing on
+           backdrop click. -->
+
+      <dialog id="modal-relevance" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">🧠</span>
+              <div class="pillar-modal-title">
+                <h3>Relevance Engine</h3>
+                <span>Story Memory</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>Your manuscript remembers itself.</p>
+              <p>Every character, every promise, every emotional beat — preserved with absolute fidelity. The Relevance Engine tracks your story's internal logic the way a seasoned developmental editor would: relentlessly, consistently, and without fatigue.</p>
+              <p>It knows when a character's motivation drifts. It knows when a subplot goes silent for too long. It knows when a chapter contradicts something you wrote 40 pages earlier.</p>
+              <p>And it doesn't "suggest" changes. It protects your canon.</p>
+              <p>The Relevance Engine is the part of WRC that ensures your story never fractures under the weight of its own complexity. It keeps your arcs alive, your themes coherent, and your emotional through-lines intact.</p>
+              <p>This is not spell-checking. This is story integrity.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="modal-catalyst" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">✦</span>
+              <div class="pillar-modal-title">
+                <h3>Creative Catalyst</h3>
+                <span>Creative Momentum</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>This is where your story expands.</p>
+              <p>The Creative Catalyst is four creative intelligences working in harmony — each with a different purpose, each designed to deepen your manuscript without hijacking your voice.</p>
+              <p>One expands your ideas. One sharpens your logic. One strengthens emotional resonance. One traces the consequences of every narrative choice.</p>
+              <p>Together, they create momentum: a forward-moving creative force that helps you explore possibilities without losing control of your story's identity.</p>
+              <p>The Catalyst doesn't overwrite you. It amplifies you.</p>
+              <p>It gives you new angles, new insights, new ways to see your own work — all while preserving the tone, cadence, and intent that make your writing yours.</p>
+              <p>This is not generative chaos. This is guided creativity.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="modal-foundation" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">⚙️</span>
+              <div class="pillar-modal-title">
+                <h3>Foundation</h3>
+                <span>Author Control</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>This is the pillar that makes WRC different from every other writing tool.</p>
+              <p>The Foundation is a deterministic workflow — a system that ensures you remain the architect of your manuscript at every step. No AI drift. No tonal contamination. No accidental rewrites of your voice.</p>
+              <p>Every interaction is structured. Every suggestion is contextual. Every transformation is reversible.</p>
+              <p>The Foundation keeps your intent at the center of the creative process. It ensures that the manuscript evolves according to your rules, your canon, your emotional arc, and your long-term vision.</p>
+              <p>You are not handing your story to an AI. You are directing it.</p>
+              <p>This is the pillar that makes WRC feel like a professional tool rather than a toy. It is the backbone of the entire system — the part that ensures your manuscript grows without ever losing its identity.</p>
+              <p>You ARE the architect.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
     </div>
   </section>
 
