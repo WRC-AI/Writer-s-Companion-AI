@@ -869,3 +869,7 @@ section[id] {
     padding: 28px 22px 24px;
   }
 }
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
