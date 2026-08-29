@@ -639,6 +639,9 @@ section[id] {
 ============================================================ */
 
 .reveal {
+  opacity: 1;
+}
+.reveal.js-ready {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.8s ease, transform 0.8s ease;
@@ -647,7 +650,6 @@ section[id] {
   opacity: 1;
   transform: translateY(0);
 }
-
 @keyframes cinematicFadeIn {
   from { opacity: 0; transform: translateY(-12px); }
   to   { opacity: 1; transform: translateY(0); }
