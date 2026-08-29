@@ -806,6 +806,8 @@ section[id] {
   transform: translate(-50%, -50%);
   max-width: 640px;
   width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
   border: none;
   border-radius: var(--radius);
   padding: 0;
