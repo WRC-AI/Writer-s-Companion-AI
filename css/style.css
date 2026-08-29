@@ -536,6 +536,20 @@ section[id] {
   margin: 0 auto 32px;
 }
 
+.relevance-list {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  text-align: left;
+  padding-left: 20px;
+}
+.relevance-list li {
+  margin-bottom: 10px;
+}
+.relevance-list li:last-child {
+  margin-bottom: 0;
+}
 .form-row {
   display: flex;
   gap: 12px;
