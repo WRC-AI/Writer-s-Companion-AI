@@ -1,1 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writer's Companion — Your AI Finally Knows Your Whole Story</title>
+  <meta name="description" content="Writer's Companion: a manuscript intelligence system built for authors who architect entire worlds. Story memory, creative momentum, and author control — working together.">
+  <meta property="og:title" content="Writer's Companion">
+  <meta property="og:description" content="Your AI finally knows your whole story.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://writerscompanion.ai/wrc.html">
+  <link rel="canonical" href="https://writerscompanion.ai/wrc.html">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
+</head>
 
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="Writer's Companion home">
+        <span class="logo-icon">✒️</span>
+        <span class="logo-text">Writer's Companion</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="wrc.html">Writer's Companion</a>
+        <a href="bluesky.html">Blue Sky</a>
+        <a href="beta.html">Beta Access</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero">
+    <div class="container">
+      <h1>Your AI finally knows<br>your whole story.</h1>
+
+      <p class="hero-subtitle">
+        A manuscript intelligence system built for authors who architect entire worlds.
+      </p>
+
+      <div class="hero-actions">
+        <a href="beta.html" class="btn btn-primary">Start Your Manuscript</a>
+        <a href="#pillars" class="btn btn-secondary">Explore the Three Pillars</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAIN BLOCK
+  ============================================================ -->
+  <section class="hero" style="padding-top: 0;">
+    <div class="container">
+      <div class="pain-block">
+        <h2 class="pain-heading">Sound familiar?</h2>
+        <ul class="pain-list">
+          <li><span class="pain-quote">"I paste the same character notes into every AI session just to get a useful response."</span></li>
+          <li><span class="pain-quote">"My AI gives brilliant advice for chapter 12 that contradicts chapter 3."</span></li>
+          <li><span class="pain-quote">"I spend more time managing my AI tool than actually writing."</span></li>
+          <li><span class="pain-quote">"I'm revising, but my AI still thinks I'm drafting."</span></li>
+          <li><span class="pain-quote">"I asked for a parallel storyline and got something from another universe."</span></li>
+        </ul>
+        <p class="pain-close">It's not you. It's your AI. That's exactly why we built Writer's Companion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THREE PILLARS
+  ============================================================ -->
+  <section id="pillars" class="features">
+    <div class="container">
+      <h2>The Three Pillars</h2>
+
+      <p class="features-philosophy">
+        Three modes. Three different kinds of momentum.
+        <strong>Deepen what exists. Branch into what might. See it all at once.</strong>
+      </p>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--color-burgundy);">🧠</div>
+          <h3>Story Memory</h3>
+          <p>Your manuscript remembers itself — characters, arcs, and every chapter that matters.</p>
+          <p><a href="#relevance-engine">Learn More →</a></p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--color-burgundy);">✦</div>
+          <h3>Creative Momentum</h3>
+          <p>Four creative intelligences that deepen, expand, analyze, and trace your story.</p>
+          <p><a href="#creative-catalyst">Learn More →</a></p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--color-burgundy);">⚙️</div>
+          <h3>Author Control</h3>
+          <p>A deterministic workflow that keeps your voice and intent at the center.</p>
+          <p><a href="#foundation">Learn More →</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CREATIVE CATALYST
+  ============================================================ -->
+  <section id="creative-catalyst" class="features" style="background: var(--color-bg);">
+    <div class="container">
+      <h2>Creative Catalyst</h2>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--color-burgundy);">🪶</div>
+          <h3>Expand</h3>
+          <p>Deepens what already exists.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--color-burgundy);">🌀</div>
+          <h3>Parallel</h3>
+          <p>Branches without breaking your canon.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--color-burgundy);">🧭</div>
+          <h3>Trace</h3>
+          <p>Follows emotional causality across chapters.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--color-burgundy);">📘</div>
+          <h3>Analysis</h3>
+          <p>Evaluates your manuscript as a connected whole.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BLUEPRINT ARCHITECTURE
+  ============================================================ -->
+  <section id="foundation" class="about">
+    <div class="container">
+      <h2>Blueprint Architecture</h2>
+
+      <div class="about-content" style="max-width: 900px; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+
+        <div style="border-left: 4px solid var(--color-burgundy); background: var(--color-highlight); border-radius: 0 var(--radius) var(--radius) 0; padding: 28px 32px;">
+          <h3 style="font-family: var(--font-display); margin-bottom: 16px;">Structured Analysis Format</h3>
+          <p style="color: var(--color-text-muted); line-height: 1.7;">
+            Every chapter carries its own blueprint — a structured, explicit record of what the story
+            has established, what it's building toward, and what still needs to be resolved. Nothing
+            is inferred. Nothing is assumed.
+          </p>
+        </div>
+
+        <div style="border-left: 4px solid var(--color-burgundy); padding: 28px 32px;">
+          <p style="font-family: var(--font-display); font-style: italic; color: var(--color-text-muted); line-height: 1.8; font-size: 1.1rem;">
+            The blueprint is your chapter's map — not a summary written after the fact, but a living
+            record your AI partner consults before it ever writes a word. Every addition is stored
+            separately. Every revision is labeled. Your original text is always preserved.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ARCHITECTURE DEEP DIVE
+  ============================================================ -->
+  <section id="relevance-engine" class="contact">
+    <div class="container">
+      <h2>Why WRC Works</h2>
+      <p>
+        At the center of it all is the WRC Relevance Engine™ — the system that reads every chapter
+        you've written and determines which ones genuinely matter to the one you're working on now.
+        Not by matching keywords, but by recognizing your recurring characters and storylines the way
+        an attentive reader would. Every AI response you receive is grounded in the right parts of
+        your story, automatically.
+      </p>
+      <div class="hero-actions">
+        <a href="beta.html" class="btn btn-primary">See the Deep Dive</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CLOSING LINE
+  ============================================================ -->
+  <section class="about" style="padding: 60px 0;">
+    <div class="container">
+      <p style="font-family: var(--font-display); font-size: 1.3rem; text-align: center; max-width: 700px; margin: 0 auto; line-height: 1.7;">
+        Your manuscript is not a document.<br>
+        It's a <span style="color: var(--color-burgundy);">world</span> — and WRC remembers every part of it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="copyright">&copy; 2026 Writer's Companion. All rights reserved.</p>
+      <p class="tagline">Story intelligence built for authors.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPT
+  ============================================================ -->
+  <script src="js/main.js"></script>
+</body>
+</html>
