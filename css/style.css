@@ -609,3 +609,155 @@ a:hover { color: var(--color-accent-hover); }
   .form-row input[type="email"] { min-width: unset; }
   .beta-perk { flex-direction: column; gap: 10px; }
 }
+
+
+
+
+
+/* ============================================================
+   CINEMATIC VERSION — ADDITIONAL STYLES
+   New classes only — nothing above this line is modified.
+   Used exclusively by wrc-cinematic.html; the Classic page
+   (wrc.html) does not reference any class below.
+============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes cinematicFadeIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.cinematic-header {
+  animation: cinematicFadeIn 1s ease;
+}
+
+.cinematic-hero {
+  padding: 130px 0 100px;
+}
+.cinematic-hero h1 {
+  position: relative;
+  display: inline-block;
+}
+.cinematic-underline {
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--color-burgundy);
+  margin: 24px auto 0;
+}
+
+.btn-secondary-burgundy {
+  background: transparent;
+  color: var(--color-burgundy);
+  border: 2px solid var(--color-burgundy);
+}
+.btn-secondary-burgundy:hover {
+  background: rgba(122, 30, 44, 0.08);
+  color: var(--color-burgundy);
+}
+
+.cinematic-pain {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  max-width: 960px;
+  margin: 0 auto 48px;
+  text-align: left;
+}
+.cinematic-pain-list li {
+  list-style: none;
+  border-left: 3px solid var(--color-burgundy);
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s;
+}
+.cinematic-pain-list li:hover {
+  box-shadow: var(--shadow-card);
+}
+
+.cinematic-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.cinematic-pillar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.cinematic-pillar:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+.cinematic-pillar-icon {
+  font-size: 3rem;
+  color: var(--color-burgundy);
+  flex-shrink: 0;
+}
+.cinematic-pillar-accent {
+  width: 48px;
+  height: 3px;
+  background: var(--color-burgundy);
+  margin: 12px 0;
+}
+.cinematic-pillar:nth-child(even) .cinematic-pillar-accent {
+  margin-left: auto;
+}
+
+.cinematic-catalyst-row {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+}
+.cinematic-catalyst-row .feature-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cinematic-catalyst-row .feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+@media (min-width: 720px) {
+  .cinematic-catalyst-row {
+    overflow-x: visible;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cinematic-catalyst-row .feature-card {
+    flex: 0 1 260px;
+  }
+}
+
+.cinematic-closing {
+  padding: 100px 0;
+}
+
+@media (max-width: 640px) {
+  .cinematic-pillar,
+  .cinematic-pillar:nth-child(even) {
+    flex-direction: column;
+    text-align: center;
+  }
+  .cinematic-pillar:nth-child(even) .cinematic-pillar-accent {
+    margin: 12px auto;
+  }
+  .cinematic-pain {
+    grid-template-columns: 1fr;
+  }
+}
