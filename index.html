@@ -27,12 +27,16 @@
         <span class="logo-icon">✒️</span>
         <span class="logo-text">Writer's Companion</span>
       </a>
+      <!-- Nav temporarily disabled — top menu actions need to be
+           rebuilt before any of these are ready to link publicly.
       <nav class="main-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="wrc.html">Writer's Companion</a>
         <a href="bluesky.html">Blue Sky</a>
         <a href="beta.html">Beta Access</a>
       </nav>
+      -->
+    </div>
     </div>
   </header>
 
@@ -441,9 +445,20 @@
         an attentive reader would. Every AI response you receive is grounded in the right parts of
         your story, automatically.
       </p>
+      <!-- Beta registration button disabled — not yet open to beta testers.
       <div class="hero-actions">
         <a href="beta.html" class="btn btn-primary">Register to be a Beta Tester</a>
       </div>
+      -->
+
+      <form action="https://formspree.io/f/mykblbrn" method="POST">
+        <div class="form-row">
+          <input type="email" name="email" placeholder="Your email address" required>
+          <input type="hidden" name="_subject" value="WRC Page — Keep Me Posted">
+          <input type="hidden" name="signup_type" value="wrc_page_keep_me_posted">
+          <button type="submit" class="btn btn-primary">Keep Me Posted</button>
+        </div>
+      </form>
     </div>
   </section>
 
