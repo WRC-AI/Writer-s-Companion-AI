@@ -586,13 +586,12 @@ section[id] {
   white-space: nowrap;
 }
 
-.contact-fine {
+.contact > .container > p.contact-fine {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   font-style: italic;
   margin-top: 8px;
 }
-
 /* ============================================================
    FOOTER
 ============================================================ */
