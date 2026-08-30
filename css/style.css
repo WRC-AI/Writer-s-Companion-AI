@@ -680,10 +680,10 @@ a:hover { color: var(--color-accent-hover); }
 
 .cinematic-pain {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 180px 1fr;
   gap: 40px;
   align-items: center;
-  max-width: 960px;
+  max-width: 1000px;
   margin: 0 auto 48px;
   text-align: left;
 }
