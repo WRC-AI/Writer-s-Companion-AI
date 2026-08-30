@@ -86,10 +86,6 @@ a:hover { color: var(--color-accent-hover); }
 /* ============================================================
    HERO
 ============================================================ */
-section[id] {
-  scroll-margin-top: 80px;
-}
-
 .hero {
   padding: 80px 0 60px;
   text-align: center;
@@ -550,6 +546,7 @@ section[id] {
 .relevance-list li:last-child {
   margin-bottom: 0;
 }
+
 .form-row {
   display: flex;
   gap: 12px;
@@ -586,12 +583,13 @@ section[id] {
   white-space: nowrap;
 }
 
-.contact > .container > p.contact-fine {
+.contact-fine {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   font-style: italic;
   margin-top: 8px;
 }
+
 /* ============================================================
    FOOTER
 ============================================================ */
@@ -627,10 +625,6 @@ section[id] {
   .beta-perk { flex-direction: column; gap: 10px; }
 }
 
-
-
-
-
 /* ============================================================
    CINEMATIC VERSION — ADDITIONAL STYLES
    New classes only — nothing above this line is modified.
@@ -650,6 +644,7 @@ section[id] {
   opacity: 1;
   transform: translateY(0);
 }
+
 @keyframes cinematicFadeIn {
   from { opacity: 0; transform: translateY(-12px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -776,7 +771,7 @@ section[id] {
   .cinematic-pillar:nth-child(even) .cinematic-pillar-accent {
     margin: 12px auto;
   }
-    .cinematic-pain {
+  .cinematic-pain {
     grid-template-columns: 1fr;
   }
 }
@@ -889,4 +884,14 @@ section[id] {
 
 body:has(dialog[open]) {
   overflow: hidden;
+}
+
+/* ============================================================
+   REVIEW FLAGS — internal review markers only, not for public
+   launch. Bright, unmissable styling so an open question can't
+   be mistaken for finished copy while scanning the page.
+============================================================ */
+.review-flag {
+  color: #D93025;
+  font-weight: 700;
 }
