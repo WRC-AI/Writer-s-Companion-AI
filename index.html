@@ -199,7 +199,8 @@
               <p>Every interaction is structured. Every suggestion is contextual. Every transformation is reversible.</p>
               <p>The Foundation keeps your intent at the center of the creative process. It ensures that the manuscript evolves according to your rules, your canon, your emotional arc, and your long-term vision.</p>
               <p>You are not handing your story to an AI. You are directing it.</p>
-              <p>WRC behaves like an instrument, not a toy — precise, predictable, and built for authors who architect entire worlds. And like a good instrument, it adapts to what you're playing: a discovery draft needs a different touch than a continuity pass.</p>
+              <p>WRC is built like an instrument — precise, deterministic, and built for authors who architect entire worlds.</p>
+              <p>Every AI change is tracked with full redline comparison against what you originally sent — see exactly what changed, line by line, and accept or reject each one. Nothing is applied to your manuscript without your review.</p>
               <p style="text-align:center; font-weight:bold;">You ARE the architect.</p>
             </div>
             <div class="pillar-modal-close-row">
@@ -268,10 +269,8 @@
 
       </div>
       
-      <p class="features-philosophy">
       <p class="features-philosophy" style="text-align: left; margin-bottom: 4px;"><strong style="display: inline;">Unparalleled flexibility.</strong> Each Blue Sky entry offers unique and powerful selection capabilities.</p>
       <p class="features-philosophy" style="text-align: left;">For example, <strong style="display: inline;">Analysis:</strong> focus on any handful of characters or storylines that matter most — a protagonist and antagonist, a love triangle, a subplot and the characters tangled in it — and go deep on exactly how they intersect across every chapter.</p>
-      </p>
       
       <!-- Blue Sky mode modals — same native <dialog> pattern
            as the Three Pillars modals. -->
@@ -344,9 +343,12 @@
             </div>
             <div class="pillar-modal-body">
               <p>See every thread, from the first page to the last.</p>
-              <p>Right-click any blueprint entry — a character trait, a storyline, a continuity flag, any element you've tagged anywhere in your manuscript — and this instantly maps every chapter where it appears, across your entire book.</p>
-              <p>Your current chapter's storylines and characters set the benchmark — the same 100% baseline used everywhere else WRC assembles backstory. Every other chapter is then scored against that benchmark by how many of those same storylines and characters it shares, giving you a clear relevance percentage for every chapter in your manuscript, not just a yes-or-no match.</p>
-              <p>Filter the list down to only the strongest connections, or drop the threshold to see the full history of that element from beginning to end. Jump straight into any chapter it surfaces, or export the whole list for offline review.</p>
+              <ul style="color: var(--color-text-muted); line-height: 1.8; padding-left: 20px; margin-bottom: 16px;">
+                <li><strong>Instant Mapping</strong> — right-click any blueprint entry — a character trait, a storyline, a continuity flag — and see every chapter where it appears, across your entire book.</li>
+                <li><strong>Relevance Scoring</strong> — your current chapter sets the 100% baseline; every other chapter is scored by how many of the same storylines and characters it shares, giving you a clear percentage, not just a yes-or-no match.</li>
+                <li><strong>Adjustable Threshold</strong> — filter down to only the strongest connections, or drop the threshold to see that element's complete history from beginning to end.</li>
+                <li><strong>Direct Access</strong> — jump straight into any chapter it surfaces, or export the full list for offline review.</li>
+              </ul>
               <p>This doesn't tell you what your story means. It shows you where a single thread actually lives — and gives you the real information to judge that for yourself.</p>
             </div>
             <div class="pillar-modal-close-row">
@@ -394,6 +396,11 @@
     <div class="container">
       <h2>Blueprint Architecture</h2>
 
+      <p class="features-philosophy">
+        Every chapter carries its own factual ledger.
+        <strong>Nothing is inferred. Nothing is assumed.</strong>
+      </p>
+
       <div class="about-content reveal" style="max-width: 900px; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
 
         <div style="border-left: 4px solid var(--color-burgundy); background: var(--color-highlight); border-radius: 0 var(--radius) var(--radius) 0; padding: 28px 32px; cursor: pointer;" onclick="document.getElementById('modal-blueprint-format').showModal()">
@@ -413,6 +420,10 @@
         </div>
 
       </div>
+
+      <p class="features-philosophy" style="text-align: left;">
+        The blueprint is what every Blue Sky mode reads before it touches your story — the record that makes precise, targeted analysis possible in the first place.
+      </p>
 
       <!-- Blueprint Architecture modals — same native <dialog> pattern
            as the Three Pillars and Blue Sky modals. -->
@@ -500,6 +511,40 @@
         </div>
       </form>
     </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about-wrc" class="about">
+    <div class="container" style="text-align: center;">
+      <p><button type="button" class="link-button" onclick="document.getElementById('modal-about').showModal()">About Your Data, Your Trial, and Your Subscription →</button></p>
+    </div>
+
+    <dialog id="modal-about" class="pillar-modal">
+      <form method="dialog">
+        <div class="pillar-modal-inner">
+          <div class="pillar-modal-header">
+            <div class="pillar-modal-title">
+              <h3>About WRC</h3>
+              <span>Your Data, Your Trial, Your Subscription</span>
+            </div>
+          </div>
+          <div class="pillar-modal-body">
+            <p><strong>Your Story. Your Data. Always.</strong></p>
+            <p>Writer's Companion is entirely self-contained — your manuscript lives in a standard SQL database, not on someone else's servers, not inside a cloud AI service. Your data belongs to you. WRC makes no claim to it.</p>
+            <p>Every request WRC sends to an AI application is independent — a fresh conversation, every time, with no memory carried between interactions. No AI application trains on your manuscript, and none retains anything after the request completes. WRC is the memory the AI itself is incapable of keeping.</p>
+            <p><strong>Two weeks, every feature, no card required to explore.</strong></p>
+            <p>Your free trial includes full access to Story Memory, Blue Sky, and Author Control. After the trial, a tiered subscription applies — not every feature is available below our Professional tier (pricing and tier structure still being finalized).</p>
+            <p>If your subscription lapses, nothing is lost. You can still open WRC, view everything you've already written, and export your full manuscript at any time — the AI tools simply pause until your subscription resumes.</p>
+          </div>
+          <div class="pillar-modal-close-row">
+            <span class="pillar-modal-hint">Press Escape to exit</span>
+            <button type="submit" class="pillar-modal-close-btn">Close</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
   </section>
 
   <!-- ============================================================
