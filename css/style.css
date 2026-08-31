@@ -848,6 +848,28 @@ a:hover { color: var(--color-accent-hover); }
   margin-bottom: 0;
 }
 
+.pillar-modal-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+.pillar-modal-body ul li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 8px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+.pillar-modal-body ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-burgundy);
+}
+.pillar-modal-body ul li:last-child {
+  margin-bottom: 0;
+}
+
 .pillar-modal-close-row {
   margin-top: 28px;
   padding-top: 20px;
