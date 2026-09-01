@@ -515,37 +515,152 @@
   </section>
 
   <!-- ============================================================
-       ABOUT
+       ABOUT / CONNECT
   ============================================================ -->
-    <section id="about-wrc" class="about" style="padding-bottom: 0;">
-    <div class="container" style="text-align: center;">
-      <p><button type="button" class="link-button" onclick="document.getElementById('modal-about').showModal()">About Your Data, Your Trial, and Your Subscription →</button></p>
-    </div>
+  <section id="about-connect" class="features">
+    <div class="container">
+      <h2>Get to Know WRC</h2>
 
-    <dialog id="modal-about" class="pillar-modal">
-      <form method="dialog">
-        <div class="pillar-modal-inner">
-          <div class="pillar-modal-header">
-            <div class="pillar-modal-title">
-              <h3>About WRC</h3>
-              <span>Your Data, Your Trial, Your Subscription</span>
-            </div>
-          </div>
-          <div class="pillar-modal-body">
-            <p><strong>Your Story. Your Data. Always.</strong></p>
-            <p>Writer's Companion is entirely self-contained — your manuscript lives in a standard SQL database, not on someone else's servers, not inside a cloud AI service. Your data belongs to you. WRC makes no claim to it.</p>
-            <p>Every request WRC sends to an AI application is independent — a fresh conversation, every time, with no memory carried between interactions. No AI application trains on your manuscript, and none retains anything after the request completes. WRC is the memory the AI itself is incapable of keeping.</p>
-            <p><strong>Two weeks, every feature, no cost to explore.</strong></p>
-            <p>Your free trial includes full access to Story Memory, Blue Sky, and Author Control. After the trial, a tiered subscription applies — not every feature is available below our Professional tier (pricing and tier structure still being finalized).</p>
-            <p>If your subscription lapses, nothing is lost. You can still open WRC, view everything you've already written, and export your full manuscript at any time — the AI tools simply pause until your subscription resumes.</p>
-          </div>
-          <div class="pillar-modal-close-row">
-            <span class="pillar-modal-hint">Press Escape to exit</span>
-            <button type="submit" class="pillar-modal-close-btn">Close</button>
+      <p class="features-philosophy">
+        Before you commit, know exactly what you're signing up for.
+        <strong>Your data. Your terms. Your choice of what happens next.</strong>
+      </p>
+
+      <div class="cinematic-pillars">
+
+        <div class="cinematic-pillar reveal">
+          <div class="cinematic-pillar-icon">🔒</div>
+          <div>
+            <h3>About Your Data</h3>
+            <span class="cinematic-pillar-accent"></span>
+            <p>Your manuscript, your database, your rules — WRC makes no claim to what you write.</p>
+            <p><button type="button" class="link-button" onclick="document.getElementById('modal-data').showModal()">Learn More →</button></p>
           </div>
         </div>
-      </form>
-    </dialog>
+
+        <div class="cinematic-pillar reveal">
+          <div class="cinematic-pillar-icon">📅</div>
+          <div>
+            <h3>Your Subscription & Trial</h3>
+            <span class="cinematic-pillar-accent"></span>
+            <p>Two weeks, every feature, no cost to explore — then a plan that fits how you work.</p>
+            <p><button type="button" class="link-button" onclick="document.getElementById('modal-subscription').showModal()">Learn More →</button></p>
+          </div>
+        </div>
+
+        <div class="cinematic-pillar reveal">
+          <div class="cinematic-pillar-icon">✉️</div>
+          <div>
+            <h3>Keep Me Posted</h3>
+            <span class="cinematic-pillar-accent"></span>
+            <p>Want to hear when we launch, or interested in early beta access? Let us know.</p>
+            <p><button type="button" class="link-button" onclick="document.getElementById('modal-connect').showModal()">Learn More →</button></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- About / Connect modals -->
+
+      <dialog id="modal-data" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">🔒</span>
+              <div class="pillar-modal-title">
+                <h3>About Your Data</h3>
+                <span>Your Story. Your Data. Always.</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>Writer's Companion is entirely self-contained — your manuscript lives in a standard SQL database, not on someone else's servers, not inside a cloud AI service. Your data belongs to you. WRC makes no claim to it.</p>
+              <p>Every request WRC sends to an AI application is independent — a fresh conversation, every time, with no memory carried between interactions. No AI application trains on your manuscript, and none retains anything after the request completes. WRC is the memory the AI itself is incapable of keeping.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="modal-subscription" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">📅</span>
+              <div class="pillar-modal-title">
+                <h3>Your Subscription & Trial</h3>
+                <span>Two Weeks, Every Feature, No Cost</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>Your free trial includes full access to Story Memory, Blue Sky, and Author Control for two weeks — no cost to explore.</p>
+              <p>After the trial, a tiered subscription applies — not every feature is available below our Professional tier (pricing and tier structure still being finalized).</p>
+              <p>If your subscription lapses, nothing is lost. You can still open WRC, view everything you've already written, and export your full manuscript at any time — the AI tools simply pause until your subscription resumes.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="modal-connect" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">✉️</span>
+              <div class="pillar-modal-title">
+                <h3>Keep Me Posted</h3>
+                <span>What are you interested in?</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+
+              <div id="connect-choice">
+                <p style="text-align:center; margin-bottom: 20px;">Let us know how you'd like to stay in touch:</p>
+                <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                  <button type="button" class="btn btn-primary" onclick="document.getElementById('connect-choice').style.display='none'; document.getElementById('connect-general').style.display='block';">Just Keep Me Posted</button>
+                  <button type="button" class="btn btn-primary" onclick="document.getElementById('connect-choice').style.display='none'; document.getElementById('connect-beta').style.display='block';">Apply for Beta Testing</button>
+                </div>
+              </div>
+
+              <div id="connect-general" style="display:none;">
+                <p>Great — we'll let you know as soon as WRC is ready.</p>
+                <form action="https://formspree.io/f/mykblbrn" method="POST">
+                  <div class="form-row">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <input type="hidden" name="_subject" value="WRC Page — Keep Me Posted">
+                    <input type="hidden" name="signup_type" value="wrc_page_keep_me_posted">
+                    <button type="submit" class="btn btn-primary">Keep Me Posted</button>
+                  </div>
+                </form>
+              </div>
+
+              <div id="connect-beta" style="display:none;">
+                <p>Great — leave your email and we'll follow up about beta access.</p>
+                <form action="https://formspree.io/f/mykblbrn" method="POST">
+                  <div class="form-row">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <input type="hidden" name="_subject" value="WRC Page — Beta Testing Application">
+                    <input type="hidden" name="signup_type" value="wrc_page_beta_application">
+                    <button type="submit" class="btn btn-primary">Apply for Beta Testing</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+
+    </div>
   </section>
 
   <!-- ============================================================
