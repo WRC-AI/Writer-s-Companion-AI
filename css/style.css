@@ -305,6 +305,7 @@ a:hover { color: var(--color-accent-hover); }
 .features h2 {
   font-family: var(--font-display);
   font-size: 2rem;
+  color: var(--color-burgundy);
   text-align: center;
   margin-bottom: 48px;
 }
