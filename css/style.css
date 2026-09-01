@@ -94,6 +94,7 @@ a:hover { color: var(--color-accent-hover); }
 .hero h1 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--color-burgundy); 
   line-height: 1.2;
   margin-bottom: 24px;
 }
@@ -487,6 +488,7 @@ a:hover { color: var(--color-accent-hover); }
 .about h2 {
   font-family: var(--font-display);
   font-size: 2rem;
+  color: var(--color-burgundy);
   margin-bottom: 32px;
 }
 
@@ -523,6 +525,7 @@ a:hover { color: var(--color-accent-hover); }
 .contact h2 {
   font-family: var(--font-display);
   font-size: 2rem;
+  color: var(--color-burgundy);  
   margin-bottom: 16px;
 }
 
