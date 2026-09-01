@@ -4,7 +4,7 @@
    ============================================================ */
 
 :root {
-  --color-bg:          #F7F5F0;
+  --color-bg:          #F5F0E8;
   --color-bg-card:     #FFFFFF;
   --color-bg-dark:     #1A1A2E;
   --color-text:        #1A1A1A;
@@ -14,8 +14,8 @@
   --color-accent-hover:#1E56B0;
   --color-highlight:   #DCEBFF;
   --color-border:      #E5E7EB;
-  --color-burgundy:    #7A1E2C;
-  --font-display:      'Georgia', 'Times New Roman', serif;
+  --color-burgundy:    #6B0F2A;
+  --font-display:      'Arial', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-body:         'Segoe UI', system-ui, -apple-system, sans-serif;
   --max-width:         1080px;
   --radius:            8px;
@@ -51,7 +51,7 @@ a:hover { color: var(--color-accent-hover); }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(247,245,240,0.95);
+  background: rgba(245,240,232,0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border);
   padding: 16px 0;
@@ -674,7 +674,7 @@ a:hover { color: var(--color-accent-hover); }
   border: 2px solid var(--color-burgundy);
 }
 .btn-secondary-burgundy:hover {
-  background: rgba(122, 30, 44, 0.08);
+  background: rgba(107, 15, 42, 0.08);
   color: var(--color-burgundy);
 }
 
