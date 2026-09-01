@@ -3,34 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beta Access — Writer's Companion</title>
+  <title>Apply for Beta Testing — Writer's Companion</title>
+  <meta name="description" content="Apply to beta test Writer's Companion (WRC).">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
-  <style>
-    .beta-access-page { min-height: 100vh; display: flex; flex-direction: column; }
-    .beta-hero { flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 24px; background: var(--color-bg); }
-    .beta-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 16px; padding: 48px; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
-    .beta-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
-    .beta-card h1 { font-family: var(--font-display); font-size: 1.75rem; color: var(--color-text); margin-bottom: 8px; }
-    .beta-card p { color: var(--color-text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 32px; }
-    .token-form { display: flex; flex-direction: column; gap: 16px; }
-    .token-input { width: 100%; padding: 14px 18px; font-size: 1rem; font-family: var(--font-body); border: 2px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); color: var(--color-text); outline: none; transition: border-color 0.2s, box-shadow 0.2s; text-align: center; letter-spacing: 0.05em; box-sizing: border-box; }
-    .token-input:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(42,111,219,0.15); }
-    .token-input::placeholder { color: var(--color-text-muted); letter-spacing: 0; }
-    .token-submit { width: 100%; padding: 14px; font-size: 1rem; font-family: var(--font-body); font-weight: 600; background: var(--color-accent); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.2s, transform 0.1s; }
-    .token-submit:hover { filter: brightness(1.1); }
-    .token-submit:active { transform: scale(0.98); }
-    .token-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-    .token-message { margin-top: 16px; padding: 14px 18px; border-radius: var(--radius); font-size: 0.95rem; display: none; }
-    .token-message.success { display: block; background: #ecfdf5; border: 1px solid #6ee7b7; color: #065f46; }
-    .token-message.error { display: block; background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
-    .token-message.loading { display: block; background: var(--color-highlight); border: 1px solid var(--color-border); color: var(--color-text-muted); }
-    .beta-footer-note { margin-top: 24px; font-size: 0.85rem; color: var(--color-text-muted); }
-    .beta-footer-note a { color: var(--color-accent); text-decoration: none; }
-    @media (max-width: 640px) { .beta-card { padding: 32px 24px; } }
-  </style>
 </head>
-<body class="beta-access-page">
+
+<body>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -38,131 +17,172 @@
         <span class="logo-icon">✒️</span>
         <span class="logo-text">Writer's Companion</span>
       </a>
+      <a href="index.html" style="font-size: 0.95rem; color: var(--color-text-muted);">← Back to Home</a>
     </div>
   </header>
 
-  <main class="beta-hero">
-    <div class="beta-card">
-      <span class="beta-icon">🔑</span>
-      <h1>Enter your beta access code</h1>
-      <p>You've been invited to try Writer's Companion before public launch. Enter your token below to confirm your access.</p>
-
-      <div class="token-form">
-        <input
-          type="text"
-          id="tokenInput"
-          class="token-input"
-          placeholder="WRC-BETA-XXX"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="characters"
-          spellcheck="false"
-        />
-        <button id="submitBtn" class="token-submit" onclick="validateToken()">
-          Confirm Access
-        </button>
-      </div>
-
-      <div id="tokenMessage" class="token-message"></div>
-
-      <div id="downloadSection" style="display:none; margin-top:24px; text-align:center;">
-        <a
-          href="https://github.com/WRC-AI/Writer-s-Companion-AI/releases/download/v1.0.0-beta/WRC_Setup_1.0.0.exe"
-          target="_blank"
-          class="token-submit"
-          style="display:inline-block; text-decoration:none; margin-bottom:16px; background:#16a34a;"
-        >
-          ⬇ Download Writer's Companion
-        </a>
-
-        <div style="text-align:left; font-size:0.9rem; color:var(--color-text-muted); line-height:1.5;">
-          <strong>How activation works</strong><br>
-          1. Download and install Writer's Companion.<br>
-          2. Launch the app — you'll be asked for your token.<br>
-          3. Enter the same code you used here.<br>
-          4. WRC activates and binds the token to your machine.<br>
-          5. You're in — no further online checks until renewal.
-        </div>
-      </div>
-
-      <p class="beta-footer-note">
-        Don't have a code? <a href="/#contact">Join the waitlist</a>
+  <section class="hero" style="padding: 60px 0 40px;">
+    <div class="container">
+      <h1 style="font-size: clamp(1.6rem, 4vw, 2.4rem);">Apply for Beta Testing</h1>
+      <p class="hero-subtitle" style="max-width: 640px;">
+        A few questions to help us put WRC in front of the right early testers. Takes about five minutes.
       </p>
     </div>
-  </main>
+  </section>
 
-  <script>
-    const SUPABASE_URL = 'https://iwuiydiheuupcdqbgafi.supabase.co';
-    const SUPABASE_KEY = 'sb_publishable_tErJawBdCy3cjL0uFwrPzA_3pgwGOad';
+  <section class="features" style="padding: 20px 0 80px;">
+    <div class="container" style="max-width: 680px;">
 
-    async function validateToken() {
-      const input = document.getElementById('tokenInput');
-      const btn = document.getElementById('submitBtn');
-      const token = input.value.trim().toUpperCase();
+      <form action="https://formspree.io/f/YOUR_BETA_FORM_ID" method="POST">
 
-      if (!token) {
-        showMessage('error', 'Please enter your access code.');
-        return;
-      }
+        <input type="hidden" name="_subject" value="WRC Beta Application">
 
-      btn.disabled = true;
-      showMessage('loading', 'Checking your code...');
+        <div style="margin-bottom: 12px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Your email address</label>
+          <input type="email" name="email" required style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
 
-      try {
-        const res = await fetch(
-          `${SUPABASE_URL}/rest/v1/beta_tokens?token=eq.${encodeURIComponent(token)}&select=*`,
-          {
-            headers: {
-              'apikey': SUPABASE_KEY,
-              'Authorization': `Bearer ${SUPABASE_KEY}`
-            }
-          }
-        );
+        <!-- ============================================================
+             TECHNICAL READINESS
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Technical Readiness</h3>
 
-        const rows = await res.json();
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">On a scale of 1–10, how comfortable are you working across multiple windows at once — copying and pasting between them?</label>
+          <input type="number" name="multiwindow_comfort" min="1" max="10" required style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
 
-        if (!rows || rows.length === 0) {
-          showMessage('error', "That code wasn't recognised. Check your invite email and try again.");
-          btn.disabled = false;
-          return;
-        }
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">What is your monitor resolution and setup — single screen, or dual monitor?</label>
+          <input type="text" name="monitor_setup" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
 
-        const record = rows[0];
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How often do you typically work with two windows open side by side, actively switching between them?</label>
+          <input type="text" name="multiwindow_frequency" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
 
-        if (record.is_redeemed) {
-          showMessage('error', 'That code has already been used.');
-          btn.disabled = false;
-          return;
-        }
+        <!-- ============================================================
+             WRITING PRACTICE
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Writing Practice</h3>
 
-        // SUCCESS — validate only, do NOT redeem here
-        // The app performs the actual redemption on first launch
-        showMessage(
-          'success',
-          '\u2713 Your token is valid. Download Writer\u2019s Companion and enter this code during activation.'
-        );
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">What are you currently working on (genre/format)?</label>
+          <input type="text" name="project_genre" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
 
-        document.getElementById('downloadSection').style.display = 'block';
-        input.disabled = true;
-        btn.disabled = true;
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How much time do you typically devote to writing per week?</label>
+          <input type="text" name="writing_time_weekly" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
 
-      } catch (err) {
-        console.error('Error:', err);
-        showMessage('error', 'Something went wrong: ' + err.message);
-        btn.disabled = false;
-      }
-    }
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Approximate word count or chapter count of your current manuscript?</label>
+          <input type="text" name="manuscript_size" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
 
-    function showMessage(type, text) {
-      const msg = document.getElementById('tokenMessage');
-      msg.className = 'token-message ' + type;
-      msg.textContent = text;
-    }
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Do you have a complete or near-complete manuscript (50%+), or are you early in drafting?</label>
+          <input type="text" name="manuscript_completeness" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
 
-    document.getElementById('tokenInput').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') validateToken();
-    });
-  </script>
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Have you self-published or traditionally published any previous work?</label>
+          <input type="text" name="publishing_history" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Are you currently using any other tools to assist your writing?</label>
+          <input type="text" name="writing_tools" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Experience using AI as a writing assistant? If yes, which tools?</label>
+          <input type="text" name="ai_experience" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How would you describe your process — a careful outliner/plotter, or casting wide for ideas to see what you catch, or a combination?</label>
+          <input type="text" name="writing_process" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <!-- ============================================================
+             AVAILABILITY & WORKING STYLE
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Availability &amp; Working Style</h3>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How much time per week could you realistically be able to spend testing WRC?</label>
+          <input type="text" name="testing_time_weekly" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Early rollout (rougher, first outside exposure) or later rollout (more polished, benefits from earlier feedback)? This is a preference we'll factor in, not a guarantee.</label>
+          <select name="rollout_preference" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+            <option value="">— Select —</option>
+            <option value="early">Early rollout</option>
+            <option value="later">Later rollout</option>
+            <option value="either">Either is fine</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Are you comfortable working through a 1–3 hour guided tutorial before diving in on your own? You'll be using your own manuscript throughout — real progress on your own work, not throwaway sample data.</label>
+          <select name="tutorial_comfort" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+            <option value="">— Select —</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Willing to fill out structured feedback forms/surveys during the beta, not just informal comments?</label>
+          <select name="feedback_willingness" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+            <option value="">— Select —</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How do you typically react when software doesn't work as expected?</label>
+          <select name="bug_reaction" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+            <option value="">— Select —</option>
+            <option value="frustrated">I get frustrated and close the app</option>
+            <option value="troubleshoot">I try to troubleshoot it myself</option>
+            <option value="document">I document the steps to report it to the developer</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Rate your patience for rough edges/bugs in early-stage software (1–10)</label>
+          <input type="number" name="patience_scale" min="1" max="10" required style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <!-- ============================================================
+             THE CLOSER
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Last thing</h3>
+
+        <div style="margin-bottom: 24px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Tell us why you're interested in beta testing WRC.</label>
+          <textarea name="interest_reason" rows="4" required style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Submit Application</button>
+
+      </form>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="copyright">&copy; 2026 Writer's Companion. All rights reserved.</p>
+      <p class="tagline">Story intelligence built for authors.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
