@@ -629,58 +629,55 @@
       </dialog>
 
       <dialog id="modal-connect" class="pillar-modal">
-        <form method="dialog">
-          <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">✉️</span>
-              <div class="pillar-modal-title">
-                <h3>Keep Me Posted</h3>
-                <span>What are you interested in?</span>
-              </div>
-            </div>
-            <div class="pillar-modal-body">
-
-              <div id="connect-choice">
-                <p style="text-align:center; margin-bottom: 20px;">Let us know how you'd like to stay in touch:</p>
-                <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-                  <button type="button" class="btn btn-primary" onclick="document.getElementById('connect-choice').style.display='none'; document.getElementById('connect-general').style.display='block';">Just Keep Me Posted</button>
-                  <button type="button" class="btn btn-primary" onclick="document.getElementById('connect-choice').style.display='none'; document.getElementById('connect-beta').style.display='block';">Apply for Beta Testing</button>
-                </div>
-              </div>
-
-              <div id="connect-general" style="display:none;">
-                <p>Great — we'll let you know as soon as WRC is ready.</p>
-                <form action="https://formspree.io/f/mykblbrn" method="POST">
-                  <div class="form-row">
-                    <input type="email" name="email" placeholder="Your email address" required>
-                    <input type="hidden" name="_subject" value="WRC Page — Keep Me Posted">
-                    <input type="hidden" name="signup_type" value="wrc_page_keep_me_posted">
-                    <button type="submit" class="btn btn-primary">Keep Me Posted</button>
-                  </div>
-                </form>
-              </div>
-
-              <div id="connect-beta" style="display:none;">
-                <p>Great — leave your email and we'll follow up about beta access.</p>
-                <form action="https://formspree.io/f/mykblbrn" method="POST">
-                  <div class="form-row">
-                    <input type="email" name="email" placeholder="Your email address" required>
-                    <input type="hidden" name="_subject" value="WRC Page — Beta Testing Application">
-                    <input type="hidden" name="signup_type" value="wrc_page_beta_application">
-                    <button type="submit" class="btn btn-primary">Apply for Beta Testing</button>
-                  </div>
-                </form>
-              </div>
-
-            </div>
-            <div class="pillar-modal-close-row">
-              <span class="pillar-modal-hint">Press Escape to exit</span>
-              <button type="submit" class="pillar-modal-close-btn">Close</button>
+        <div class="pillar-modal-inner">
+          <div class="pillar-modal-header">
+            <span class="pillar-modal-icon">✉️</span>
+            <div class="pillar-modal-title">
+              <h3>Keep Me Posted</h3>
+              <span>What are you interested in?</span>
             </div>
           </div>
-        </form>
-      </dialog>
+          <div class="pillar-modal-body">
 
+            <div id="connect-choice">
+              <p style="text-align:center; margin-bottom: 20px;">Let us know how you'd like to stay in touch:</p>
+              <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                <button type="button" class="btn btn-primary" onclick="document.getElementById('connect-choice').style.display='none'; document.getElementById('connect-general').style.display='block';">Just Keep Me Posted</button>
+                <button type="button" class="btn btn-primary" onclick="document.getElementById('connect-choice').style.display='none'; document.getElementById('connect-beta').style.display='block';">Apply for Beta Testing</button>
+              </div>
+            </div>
+
+            <div id="connect-general" style="display:none;">
+              <p>Great — we'll let you know as soon as WRC is ready.</p>
+              <form action="https://formspree.io/f/mykblbrn" method="POST">
+                <div class="form-row">
+                  <input type="email" name="email" placeholder="Your email address" required>
+                  <input type="hidden" name="_subject" value="WRC Page — Keep Me Posted">
+                  <input type="hidden" name="signup_type" value="wrc_page_keep_me_posted">
+                  <button type="submit" class="btn btn-primary">Keep Me Posted</button>
+                </div>
+              </form>
+            </div>
+
+            <div id="connect-beta" style="display:none;">
+              <p>Great — leave your email and we'll follow up about beta access.</p>
+              <form action="https://formspree.io/f/mykblbrn" method="POST">
+                <div class="form-row">
+                  <input type="email" name="email" placeholder="Your email address" required>
+                  <input type="hidden" name="_subject" value="WRC Page — Beta Testing Application">
+                  <input type="hidden" name="signup_type" value="wrc_page_beta_application">
+                  <button type="submit" class="btn btn-primary">Apply for Beta Testing</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+          <div class="pillar-modal-close-row">
+            <span class="pillar-modal-hint">Press Escape to exit</span>
+            <button type="button" class="pillar-modal-close-btn" onclick="document.getElementById('modal-connect').close();">Close</button>
+          </div>
+        </div>
+      </dialog>
     </div>
   </section>
 
