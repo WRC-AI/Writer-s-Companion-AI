@@ -488,6 +488,7 @@ a:hover { color: var(--color-accent-hover); }
 .about h2 {
   font-family: var(--font-display);
   font-size: 2rem;
+  text-align: center;
   color: var(--color-burgundy);
   margin-bottom: 32px;
 }
