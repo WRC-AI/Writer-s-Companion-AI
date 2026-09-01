@@ -516,7 +516,17 @@
       </p>
 
       <div class="cinematic-pillars">
-
+        
+        <div class="cinematic-pillar reveal">
+          <div class="cinematic-pillar-icon">🖋️</div>
+          <div>
+            <h3>Who WRC Is For</h3>
+            <span class="cinematic-pillar-accent"></span>
+            <p>Built for authors serious about their craft — with a quick technical note on what you'll need to get the most from it.</p>
+            <p><button type="button" class="link-button" onclick="document.getElementById('modal-audience').showModal()">Learn More →</button></p>
+          </div>
+        </div>
+        
         <div class="cinematic-pillar reveal">
           <div class="cinematic-pillar-icon">🔒</div>
           <div>
@@ -549,6 +559,28 @@
 
       </div>
 
+      <dialog id="modal-audience" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">🖋️</span>
+              <div class="pillar-modal-title">
+                <h3>Who WRC Is For</h3>
+                <span>Serious About Your Craft</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>WRC is built for authors who are serious about their craft — the kind of writer already juggling character sheets, timeline notes, and a dozen open questions about their manuscript. It rewards that seriousness with real depth.</p>
+              <p>A quick technical note: WRC works alongside your AI application, not inside it, so you'll be comfortable moving between two windows and copying text back and forth between them. If that's a normal part of how you already work, you'll feel right at home.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+      
       <!-- About / Connect modals -->
 
       <dialog id="modal-data" class="pillar-modal">
