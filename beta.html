@@ -161,10 +161,52 @@
         </div>
 
         <!-- ============================================================
+             WHAT EXCITES YOU
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">What Excites You</h3>
+
+        <div style="margin-bottom: 24px;">
+          <p style="font-weight:600; margin-bottom:12px;">Which of these interests you the most? Pick 1–3.</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_story_memory" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Story Memory</strong> — Your manuscript remembers itself. The Relevance Engine keeps your AI grounded in established characters, world rules, and storylines — no more re-explaining your book every session.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_expand" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blue Sky: Expand</strong> — Deepens a scene you've already written — sensory detail, emotional texture, unspoken motivation — without inventing new plot or drifting off course.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_parallel" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blue Sky: Parallel</strong> — Branch into an alternate version of a scene in a sandbox, completely separate from your real manuscript. Nothing commits until you choose it.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_trace" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blue Sky: Trace</strong> — Right-click any character, storyline, or continuity flag and instantly see every chapter it touches — with a relevance percentage, not just a yes-or-no match.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_analysis" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blue Sky: Analysis</strong> — A full structural and thematic review of your manuscript, or a targeted deep-dive into how up to three characters or storylines intersect across every chapter.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_blueprint" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blueprint Architecture</strong> — A factual, structured ledger for every chapter — what's been established, what's still open — that your AI reads before it ever writes a word.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_author_control" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Author Control &amp; Redline</strong> — Every AI change is tracked line-by-line against what you sent. You see exactly what changed and accept or reject each one individually.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_your_data" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Your Data</strong> — Import an existing work-in-progress — a plain document, or a Word manuscript where WRC auto-splits headers into chapters. Export your whole project back to Word whenever you want.</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ============================================================
              THE CLOSER
         ============================================================ -->
         <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Last thing</h3>
-
         <div style="margin-bottom: 24px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Tell us why you're interested in beta testing WRC.</label>
           <textarea name="interest_reason" rows="4" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
