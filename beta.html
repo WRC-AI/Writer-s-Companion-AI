@@ -316,9 +316,19 @@
         el.setAttribute('data-form-type', 'other');
       });
 
-      // Backup: only the name and email boxes should ever be filled by the browser's autofill.
-      // If autofill fills any other box, clear it right away.
+      // Only the name and email boxes may be filled by autofill or a password manager.
+      // Every other text box keeps only what the visitor really typed, dictated, or pasted.
+      // A real entry is an input event the browser itself generated (a "trusted" event) while
+      // the cursor is in that very box. A fill by an extension or by autofill fails that test,
+      // so the box is put back to what the visitor entered (empty, if nothing). The same check
+      // runs just before sending, so a stray value can never be submitted.
       var autofillAllowed = { applicant_name: true, email: true };
+      var enteredByVisitor = {};
+
+      function isGuarded(el) {
+        if (!el.name || autofillAllowed[el.name]) return false;
+        return el.type === 'text' || el.type === 'number' || el.type === 'textarea';
+      }
 
       function isAutofilled(el) {
         var selectors = [':-webkit-autofill', ':autofill'];
@@ -328,20 +338,31 @@
         return false;
       }
 
-      function scrubStrayAutofill() {
+      form.addEventListener('input', function (event) {
+        var el = event.target;
+        if (!isGuarded(el)) return;
+        if (event.isTrusted && document.activeElement === el && !isAutofilled(el)) {
+          enteredByVisitor[el.name] = el.value;
+        }
+      });
+
+      function restoreGuarded() {
         Array.prototype.forEach.call(form.elements, function (el) {
-          if (!el.name || autofillAllowed[el.name]) return;
-          if (el.type === 'hidden' || el.type === 'submit' || el.type === 'radio' || el.type === 'checkbox') return;
-          if (isAutofilled(el)) el.value = '';
+          if (!isGuarded(el)) return;
+          var want = Object.prototype.hasOwnProperty.call(enteredByVisitor, el.name) ? enteredByVisitor[el.name] : '';
+          if (el.value !== want) el.value = want;
         });
       }
 
-      ['input', 'change'].forEach(function (type) {
+      // Check after any activity on the form, and keep watching quietly in the background.
+      ['input', 'change', 'focusin', 'focusout'].forEach(function (type) {
         form.addEventListener(type, function () {
-          setTimeout(scrubStrayAutofill, 0);
-          setTimeout(scrubStrayAutofill, 150);
+          setTimeout(restoreGuarded, 0);
+          setTimeout(restoreGuarded, 150);
+          setTimeout(restoreGuarded, 600);
         });
       });
+      setInterval(restoreGuarded, 400);
 
       // Start empty every time the page is shown. If the visitor comes back with the Back
       // button, load a fresh copy so nothing from an earlier visit is left behind.
@@ -351,7 +372,10 @@
 
       window.addEventListener('pageshow', function (event) {
         if (event.persisted) { window.location.reload(); return; }
-        if (!visitorStarted) form.reset();
+        if (!visitorStarted) {
+          form.reset();
+          enteredByVisitor = {};
+        }
       });
 
       // Order here is the order of the page, so the first problem found is the highest on the page.
@@ -392,6 +416,7 @@
 
       function showThanks(fullName) {
         form.reset();
+        enteredByVisitor = {};
         form.style.display = 'none';
         if (hero) hero.style.display = 'none';
 
@@ -441,7 +466,7 @@
 
       form.addEventListener('submit', function (event) {
         event.preventDefault();
-        scrubStrayAutofill();
+        restoreGuarded();
 
         var firstBad = null;
         rules.forEach(function (rule) {
