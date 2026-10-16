@@ -37,9 +37,26 @@
 
         <input type="hidden" name="_subject" value="WRC Beta Application">
 
+        <!-- ============================================================
+             ABOUT YOU
+        ============================================================ -->
+        <div style="margin-bottom: 12px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Your name</label>
+          <input type="text" name="applicant_name" required autofocus autocomplete="off" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Are you a member of the Skokie Writers Group?</label>
+          <select name="skokie_member" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+            <option value="">— Select —</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
         <div style="margin-bottom: 12px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Your email address</label>
-          <input type="email" name="email" required autofocus style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="email" name="email" required style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <!-- ============================================================
