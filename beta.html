@@ -7,6 +7,17 @@
   <meta name="description" content="Apply to beta test Writer's Companion (WRC).">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
+  <style>
+    .field-wrap { scroll-margin-top: 120px; }
+    .field-error { color: #b00020; font-size: 0.95rem; font-weight: 600; margin: 6px 0 0; }
+    .field-error:empty { display: none; }
+    .has-error input[type="text"],
+    .has-error input[type="email"],
+    .has-error input[type="number"] { border: 2px solid #b00020 !important; background: #fff5f5; }
+    .has-error .radio-group { outline: 2px solid #b00020; outline-offset: 6px; border-radius: 6px; }
+    .req { color: #b00020; }
+    .form-note { color: var(--color-text-muted); margin-bottom: 20px; }
+  </style>
 </head>
 
 <body>
@@ -33,21 +44,24 @@
   <section class="features" style="padding: 20px 0 80px;">
     <div class="container" style="max-width: 680px;">
 
-      <form action="https://formspree.io/f/xvkoazvp" method="POST" autocomplete="off">
+      <form id="beta-form" action="https://formspree.io/f/xvkoazvp" method="POST" autocomplete="off">
 
         <input type="hidden" name="_subject" value="WRC Beta Application">
+
+        <p class="form-note">Only your name, Skokie answer, and email (marked <span class="req">*</span>) are required. Skip any other question that doesn't apply to you or that you have no comment on.</p>
 
         <!-- ============================================================
              ABOUT YOU
         ============================================================ -->
-        <div style="margin-bottom: 12px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">Your name</label>
-          <input type="text" name="applicant_name" required autofocus autocomplete="off" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        <div class="field-wrap" data-field="applicant_name" style="margin-bottom: 12px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Your name <span class="req">*</span></label>
+          <input type="text" name="applicant_name" required autocomplete="off" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <p class="field-error" role="alert"></p>
         </div>
 
-        <div style="margin-bottom: 16px;">
-          <p style="font-weight:600; margin-bottom:8px;">Are you a member of the Skokie Writers Group?</p>
-          <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
+        <div class="field-wrap" data-field="skokie_member" style="margin-bottom: 16px;">
+          <p style="font-weight:600; margin-bottom:8px;">Are you a member of the Skokie Writers Group? <span class="req">*</span></p>
+          <div class="radio-group" role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
               <input type="radio" name="skokie_member" value="yes" required autocomplete="off"> <span>Yes</span>
             </label>
@@ -55,11 +69,13 @@
               <input type="radio" name="skokie_member" value="no" autocomplete="off"> <span>No</span>
             </label>
           </div>
+          <p class="field-error" role="alert"></p>
         </div>
 
-        <div style="margin-bottom: 12px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">Your email address</label>
+        <div class="field-wrap" data-field="email" style="margin-bottom: 12px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Your email address <span class="req">*</span></label>
           <input type="email" name="email" required style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <p class="field-error" role="alert"></p>
         </div>
 
         <!-- ============================================================
@@ -67,19 +83,20 @@
         ============================================================ -->
         <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Technical Readiness</h3>
 
-        <div style="margin-bottom: 16px;">
+        <div class="field-wrap" data-field="multiwindow_comfort" style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">On a scale of 1–10, how comfortable are you working across multiple windows at once — copying and pasting between them?</label>
-          <input type="number" name="multiwindow_comfort" min="1" max="10" required autocomplete="off" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="number" name="multiwindow_comfort" min="1" max="10" autocomplete="off" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <p class="field-error" role="alert"></p>
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">What is your monitor resolution and setup — single screen, or dual monitor?</label>
-          <input type="text" name="monitor_setup" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="monitor_setup" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">How often do you typically work with two windows open side by side, actively switching between them?</label>
-          <input type="text" name="multiwindow_frequency" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="multiwindow_frequency" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <!-- ============================================================
@@ -89,22 +106,22 @@
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">What are you currently working on (genre/format)?</label>
-          <input type="text" name="project_genre" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="project_genre" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">How much time do you typically devote to writing per week?</label>
-          <input type="text" name="writing_time_weekly" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="writing_time_weekly" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Approximate word count or chapter count of your current manuscript?</label>
-          <input type="text" name="manuscript_size" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="manuscript_size" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Do you have a complete or near-complete manuscript (50%+), or are you early in drafting?</label>
-          <input type="text" name="manuscript_completeness" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="manuscript_completeness" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
@@ -134,14 +151,14 @@
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">How much time per week could you realistically be able to spend testing WRC?</label>
-          <input type="text" name="testing_time_weekly" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="testing_time_weekly" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <p style="font-weight:600; margin-bottom:8px;">Early rollout (rougher, first outside exposure) or later rollout (more polished, benefits from earlier feedback)? This is a preference we'll factor in, not a guarantee.</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="early" required autocomplete="off"> <span>Early rollout</span>
+              <input type="radio" name="rollout_preference" value="early" autocomplete="off"> <span>Early rollout</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
               <input type="radio" name="rollout_preference" value="later" autocomplete="off"> <span>Later rollout</span>
@@ -156,7 +173,7 @@
           <p style="font-weight:600; margin-bottom:8px;">Are you comfortable working through a 1–3 hour guided tutorial before diving in on your own? You'll be using your own manuscript throughout — real progress on your own work, not throwaway sample data.</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="tutorial_comfort" value="yes" required autocomplete="off"> <span>Yes</span>
+              <input type="radio" name="tutorial_comfort" value="yes" autocomplete="off"> <span>Yes</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
               <input type="radio" name="tutorial_comfort" value="no" autocomplete="off"> <span>No</span>
@@ -168,7 +185,7 @@
           <p style="font-weight:600; margin-bottom:8px;">Willing to fill out structured feedback forms/surveys during the beta, not just informal comments?</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="feedback_willingness" value="yes" required autocomplete="off"> <span>Yes</span>
+              <input type="radio" name="feedback_willingness" value="yes" autocomplete="off"> <span>Yes</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
               <input type="radio" name="feedback_willingness" value="no" autocomplete="off"> <span>No</span>
@@ -180,7 +197,7 @@
           <p style="font-weight:600; margin-bottom:8px;">How do you typically react when software doesn't work as expected?</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="frustrated" required autocomplete="off"> <span>I get frustrated and close the app</span>
+              <input type="radio" name="bug_reaction" value="frustrated" autocomplete="off"> <span>I get frustrated and close the app</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
               <input type="radio" name="bug_reaction" value="troubleshoot" autocomplete="off"> <span>I try to troubleshoot it myself</span>
@@ -191,9 +208,10 @@
           </div>
         </div>
 
-        <div style="margin-bottom: 16px;">
+        <div class="field-wrap" data-field="patience_scale" style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Rate your patience for rough edges/bugs in early-stage software (1–10)</label>
-          <input type="number" name="patience_scale" min="1" max="10" required autocomplete="off" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="number" name="patience_scale" min="1" max="10" autocomplete="off" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <p class="field-error" role="alert"></p>
         </div>
 
         <!-- ============================================================
@@ -245,8 +263,10 @@
         <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Last thing</h3>
         <div style="margin-bottom: 24px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Tell us why you're interested in beta testing WRC.</label>
-          <textarea name="interest_reason" rows="4" required autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+          <textarea name="interest_reason" rows="4" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
         </div>
+
+        <p id="form-summary" class="field-error" role="alert" style="margin: 0 0 12px;"></p>
 
         <button type="submit" class="btn btn-primary" style="width:100%;">Submit Application</button>
 
@@ -261,6 +281,85 @@
       <p class="tagline">Story intelligence built for authors.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('beta-form');
+      if (!form) return;
+
+      // Take over validation so errors are shown next to each field and stay until fixed.
+      form.setAttribute('novalidate', '');
+
+      var summary = document.getElementById('form-summary');
+
+      // Order here is the order of the page, so the first problem found is the highest on the page.
+      var rules = [
+        { name: 'applicant_name',      kind: 'text',   required: true,  msg: 'Please enter your name.' },
+        { name: 'skokie_member',       kind: 'radio',  required: true,  msg: 'Please choose Yes or No.' },
+        { name: 'email',               kind: 'email',  required: true,  msg: 'Please enter a valid email address, such as name@example.com.' },
+        { name: 'multiwindow_comfort', kind: 'number', required: false, msg: 'Please enter a whole number from 1 to 10, or leave this blank.' },
+        { name: 'patience_scale',      kind: 'number', required: false, msg: 'Please enter a whole number from 1 to 10, or leave this blank.' }
+      ];
+
+      function wrapperFor(name) {
+        return form.querySelector('[data-field="' + name + '"]');
+      }
+
+      function isValid(rule) {
+        var field = form.elements[rule.name];
+        var value = String(field.value || '').trim();
+        if (rule.kind === 'radio') return value !== '';
+        if (value === '') return !rule.required;
+        if (rule.kind === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        if (rule.kind === 'number') {
+          var n = Number(value);
+          return Number.isInteger(n) && n >= 1 && n <= 10;
+        }
+        return true;
+      }
+
+      function showError(rule, on) {
+        var wrap = wrapperFor(rule.name);
+        wrap.classList.toggle('has-error', on);
+        wrap.querySelector('.field-error').textContent = on ? rule.msg : '';
+      }
+
+      function refreshSummary() {
+        if (!form.querySelector('.has-error')) summary.textContent = '';
+      }
+
+      form.addEventListener('submit', function (event) {
+        var firstBad = null;
+        rules.forEach(function (rule) {
+          var ok = isValid(rule);
+          showError(rule, !ok);
+          if (!ok && !firstBad) firstBad = rule;
+        });
+
+        if (firstBad) {
+          event.preventDefault();
+          summary.textContent = 'Please fix the highlighted question(s) above, then submit again.';
+          wrapperFor(firstBad.name).scrollIntoView({ behavior: 'smooth', block: 'center' });
+          form.querySelector('[name="' + firstBad.name + '"]').focus({ preventScroll: true });
+        } else {
+          summary.textContent = '';
+        }
+      });
+
+      // Clear a field's highlight as soon as it is corrected; leave it highlighted until then.
+      rules.forEach(function (rule) {
+        var wrap = wrapperFor(rule.name);
+        function recheck() {
+          if (wrap.classList.contains('has-error') && isValid(rule)) {
+            showError(rule, false);
+            refreshSummary();
+          }
+        }
+        wrap.addEventListener('input', recheck);
+        wrap.addEventListener('change', recheck);
+      });
+    })();
+  </script>
 
 </body>
 </html>
