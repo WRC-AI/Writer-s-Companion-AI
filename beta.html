@@ -54,15 +54,16 @@
         <a href="index.html" class="btn btn-primary">Return to Writer's Companion now</a>
       </div>
 
-      <form id="beta-form" action="https://formspree.io/f/xvkoazvp" method="POST">
-
-        <input type="hidden" name="_subject" value="WRC Beta Application">
+      <!-- ============================================================
+           PART 1: NAME / SKOKIE / EMAIL
+           These three live in their own small form on purpose. Password managers fill
+           one form at a time, so this keeps them away from every other question.
+           Both parts are sent together as ONE application when Submit is pressed.
+      ============================================================ -->
+      <form id="who-form" action="#" method="POST">
 
         <p class="form-note">Only your name, Skokie answer, and email (marked <span class="req">*</span>) are required. Skip any other question that doesn't apply to you or that you have no comment on.</p>
 
-        <!-- ============================================================
-             ABOUT YOU
-        ============================================================ -->
         <div class="field-wrap" data-field="applicant_name" style="margin-bottom: 12px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Your name <span class="req">*</span></label>
           <input type="text" name="applicant_name" required autocomplete="name" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
@@ -73,10 +74,10 @@
           <p style="font-weight:600; margin-bottom:8px;">Are you a member of the Skokie Writers Group? <span class="req">*</span></p>
           <div class="radio-group" role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="skokie_member" value="yes" required autocomplete="nope"> <span>Yes</span>
+              <input type="radio" name="skokie_member" value="yes" required autocomplete="off"> <span>Yes</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="skokie_member" value="no" autocomplete="nope"> <span>No</span>
+              <input type="radio" name="skokie_member" value="no" autocomplete="off"> <span>No</span>
             </label>
           </div>
           <p class="field-error" role="alert"></p>
@@ -87,6 +88,15 @@
           <input type="email" name="email" required autocomplete="email" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
           <p class="field-error" role="alert"></p>
         </div>
+
+      </form>
+
+      <!-- ============================================================
+           PART 2: EVERYTHING ELSE (all optional)
+      ============================================================ -->
+      <form id="beta-form" action="https://formspree.io/f/xvkoazvp" method="POST">
+
+        <input type="hidden" name="_subject" value="WRC Beta Application">
 
         <!-- ============================================================
              TECHNICAL READINESS
@@ -168,13 +178,13 @@
           <p style="font-weight:600; margin-bottom:8px;">Early rollout (rougher, first outside exposure) or later rollout (more polished, benefits from earlier feedback)? This is a preference we'll factor in, not a guarantee.</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="early" autocomplete="nope"> <span>Early rollout</span>
+              <input type="radio" name="rollout_preference" value="early" autocomplete="off"> <span>Early rollout</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="later" autocomplete="nope"> <span>Later rollout</span>
+              <input type="radio" name="rollout_preference" value="later" autocomplete="off"> <span>Later rollout</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="either" autocomplete="nope"> <span>Either is fine</span>
+              <input type="radio" name="rollout_preference" value="either" autocomplete="off"> <span>Either is fine</span>
             </label>
           </div>
         </div>
@@ -183,10 +193,10 @@
           <p style="font-weight:600; margin-bottom:8px;">Are you comfortable working through a 1–3 hour guided tutorial before diving in on your own? You'll be using your own manuscript throughout — real progress on your own work, not throwaway sample data.</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="tutorial_comfort" value="yes" autocomplete="nope"> <span>Yes</span>
+              <input type="radio" name="tutorial_comfort" value="yes" autocomplete="off"> <span>Yes</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="tutorial_comfort" value="no" autocomplete="nope"> <span>No</span>
+              <input type="radio" name="tutorial_comfort" value="no" autocomplete="off"> <span>No</span>
             </label>
           </div>
         </div>
@@ -195,10 +205,10 @@
           <p style="font-weight:600; margin-bottom:8px;">Willing to fill out structured feedback forms/surveys during the beta, not just informal comments?</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="feedback_willingness" value="yes" autocomplete="nope"> <span>Yes</span>
+              <input type="radio" name="feedback_willingness" value="yes" autocomplete="off"> <span>Yes</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="feedback_willingness" value="no" autocomplete="nope"> <span>No</span>
+              <input type="radio" name="feedback_willingness" value="no" autocomplete="off"> <span>No</span>
             </label>
           </div>
         </div>
@@ -207,13 +217,13 @@
           <p style="font-weight:600; margin-bottom:8px;">How do you typically react when software doesn't work as expected?</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="frustrated" autocomplete="nope"> <span>I get frustrated and close the app</span>
+              <input type="radio" name="bug_reaction" value="frustrated" autocomplete="off"> <span>I get frustrated and close the app</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="troubleshoot" autocomplete="nope"> <span>I try to troubleshoot it myself</span>
+              <input type="radio" name="bug_reaction" value="troubleshoot" autocomplete="off"> <span>I try to troubleshoot it myself</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="document" autocomplete="nope"> <span>I document the steps to report it to the developer</span>
+              <input type="radio" name="bug_reaction" value="document" autocomplete="off"> <span>I document the steps to report it to the developer</span>
             </label>
           </div>
         </div>
@@ -233,35 +243,35 @@
           <p style="font-weight:600; margin-bottom:12px;">Which of these interests you the most? Pick 1–3.</p>
           <div style="display:flex; flex-direction:column; gap:14px;">
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_story_memory" value="yes" autocomplete="nope" style="margin-top:4px;">
+              <input type="checkbox" name="feat_story_memory" value="yes" autocomplete="off" style="margin-top:4px;">
               <span><strong>Story Memory</strong> — Your manuscript remembers itself. The Relevance Engine keeps your AI grounded in established characters, world rules, and storylines — no more re-explaining your book every session.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_expand" value="yes" autocomplete="nope" style="margin-top:4px;">
+              <input type="checkbox" name="feat_expand" value="yes" autocomplete="off" style="margin-top:4px;">
               <span><strong>Blue Sky: Expand</strong> — Deepens a scene you've already written — sensory detail, emotional texture, unspoken motivation — without inventing new plot or drifting off course.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_parallel" value="yes" autocomplete="nope" style="margin-top:4px;">
+              <input type="checkbox" name="feat_parallel" value="yes" autocomplete="off" style="margin-top:4px;">
               <span><strong>Blue Sky: Parallel</strong> — Branch into an alternate version of a scene in a sandbox, completely separate from your real manuscript. Nothing commits until you choose it.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_trace" value="yes" autocomplete="nope" style="margin-top:4px;">
+              <input type="checkbox" name="feat_trace" value="yes" autocomplete="off" style="margin-top:4px;">
               <span><strong>Blue Sky: Trace</strong> — Right-click any character, storyline, or continuity flag and instantly see every chapter it touches — with a relevance percentage, not just a yes-or-no match.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_analysis" value="yes" autocomplete="nope" style="margin-top:4px;">
+              <input type="checkbox" name="feat_analysis" value="yes" autocomplete="off" style="margin-top:4px;">
               <span><strong>Blue Sky: Analysis</strong> — A full structural and thematic review of your manuscript, or a targeted deep-dive into how up to three characters or storylines intersect across every chapter.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_blueprint" value="yes" autocomplete="nope" style="margin-top:4px;">
+              <input type="checkbox" name="feat_blueprint" value="yes" autocomplete="off" style="margin-top:4px;">
               <span><strong>Blueprint Architecture</strong> — A factual, structured ledger for every chapter — what's been established, what's still open — that your AI reads before it ever writes a word.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_author_control" value="yes" autocomplete="nope" style="margin-top:4px;">
+              <input type="checkbox" name="feat_author_control" value="yes" autocomplete="off" style="margin-top:4px;">
               <span><strong>Author Control &amp; Redline</strong> — Every AI change is tracked line-by-line against what you sent. You see exactly what changed and accept or reject each one individually.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_your_data" value="yes" autocomplete="nope" style="margin-top:4px;">
+              <input type="checkbox" name="feat_your_data" value="yes" autocomplete="off" style="margin-top:4px;">
               <span><strong>Your Data</strong> — Import an existing work-in-progress — a plain document, or a Word manuscript where WRC auto-splits headers into chapters. Export your whole project back to Word whenever you want.</span>
             </label>
           </div>
@@ -294,11 +304,13 @@
 
   <script>
     (function () {
+      var whoForm = document.getElementById('who-form');
       var form = document.getElementById('beta-form');
-      if (!form) return;
+      if (!whoForm || !form) return;
 
       // We handle validation and sending ourselves, so errors appear beside each field
       // and the visitor never leaves this page for a Formspree screen.
+      whoForm.setAttribute('novalidate', '');
       form.setAttribute('novalidate', '');
 
       var summary = document.getElementById('form-summary');
@@ -307,8 +319,16 @@
       var thanks = document.getElementById('thanks');
       var HOME_URL = 'index.html';
 
-      // Ask password managers and autofill helpers to leave every field alone.
-      Array.prototype.forEach.call(form.elements, function (el) {
+      function now() { return Date.now(); }
+      function trusted(event) { return event.isTrusted; }
+      function allFields() {
+        return Array.prototype.slice.call(whoForm.elements).concat(Array.prototype.slice.call(form.elements));
+      }
+      function fieldNamed(name) { return whoForm.elements[name] || form.elements[name]; }
+      function resetBoth() { whoForm.reset(); form.reset(); }
+
+      // Ask password managers and autofill helpers to leave the optional boxes alone.
+      allFields().forEach(function (el) {
         if (el.type === 'hidden' || el.type === 'submit') return;
         el.setAttribute('data-lpignore', 'true');
         el.setAttribute('data-1p-ignore', 'true');
@@ -316,17 +336,16 @@
         el.setAttribute('data-form-type', 'other');
       });
 
-      // Only the name and email boxes may be filled by autofill or a password manager.
-      // Every other text box keeps only what the visitor really typed, dictated, or pasted.
-      // A real entry is an input event the browser itself generated (a "trusted" event) while
-      // the cursor is in that very box. A fill by an extension or by autofill fails that test,
-      // so the box is put back to what the visitor entered (empty, if nothing). The same check
-      // runs just before sending, so a stray value can never be submitted.
-      var autofillAllowed = { applicant_name: true, email: true };
+      // -------------------------------------------------------------------------------------
+      // GUARD 1: the optional boxes keep only what the visitor really typed, dictated, or pasted.
+      // A real entry is an input event the browser itself generated (a "trusted" event) while the
+      // cursor is in that very box. A fill by an extension fails that test, so the box is put back
+      // to what the visitor entered (empty, if nothing). The same check runs just before sending.
+      // -------------------------------------------------------------------------------------
       var enteredByVisitor = {};
 
       function isGuarded(el) {
-        if (!el.name || autofillAllowed[el.name]) return false;
+        if (!el.name || el.form !== form) return false;
         return el.type === 'text' || el.type === 'number' || el.type === 'textarea';
       }
 
@@ -341,7 +360,7 @@
       form.addEventListener('input', function (event) {
         var el = event.target;
         if (!isGuarded(el)) return;
-        if (event.isTrusted && document.activeElement === el && !isAutofilled(el)) {
+        if (trusted(event) && document.activeElement === el && !isAutofilled(el)) {
           enteredByVisitor[el.name] = el.value;
         }
       });
@@ -354,31 +373,131 @@
         });
       }
 
-      // Check after any activity on the form, and keep watching quietly in the background.
-      ['input', 'change', 'focusin', 'focusout'].forEach(function (type) {
-        form.addEventListener(type, function () {
-          setTimeout(restoreGuarded, 0);
-          setTimeout(restoreGuarded, 150);
-          setTimeout(restoreGuarded, 600);
+      // -------------------------------------------------------------------------------------
+      // GUARD 2: keep the screen and the cursor where the visitor put them.
+      // When a password manager fills the form it can move the cursor to the last box it filled
+      // and scroll the page down to it. If that happens without the visitor doing anything, put
+      // the cursor and the scroll position back where they were.
+      // -------------------------------------------------------------------------------------
+      var NAV_KEYS = ['Tab', 'PageUp', 'PageDown', 'Home', 'End', 'ArrowUp', 'ArrowDown', ' '];
+      var lastGestureAt = 0;   // last time the visitor clicked, touched, scrolled, or tabbed
+      var fillUntil = 0;       // while now() < fillUntil, a fill of name/email is in progress
+      var holdUntil = 0;       // while now() < holdUntil, sudden scroll jumps are undone
+      var ownFocus = false;    // true while this page moves the cursor itself
+      var typed = { applicant_name: '', email: '' };
+      var anchor = { x: window.pageXOffset || 0, y: window.pageYOffset || 0, el: null };
+
+      ['pointerdown', 'mousedown', 'touchstart', 'wheel'].forEach(function (type) {
+        document.addEventListener(type, function (event) {
+          if (trusted(event)) lastGestureAt = now();
+        }, { capture: true, passive: true });
+      });
+      document.addEventListener('keydown', function (event) {
+        if (trusted(event) && NAV_KEYS.indexOf(event.key) !== -1) lastGestureAt = now();
+      }, true);
+
+      function visitorActedRecently() { return now() - lastGestureAt < 700; }
+
+      // Has the name or email box changed by anything other than the visitor typing in it?
+      function noteFill() {
+        var changed = false;
+        Object.keys(typed).forEach(function (name) {
+          var el = whoForm.elements[name];
+          if (el && el.value !== typed[name]) { typed[name] = el.value; changed = true; }
+        });
+        if (changed) fillUntil = now() + 2500;
+      }
+
+      whoForm.addEventListener('input', function (event) {
+        var el = event.target;
+        if (Object.prototype.hasOwnProperty.call(typed, el.name) && trusted(event) && document.activeElement === el) {
+          typed[el.name] = el.value;
+        }
+        noteFill();
+      });
+      whoForm.addEventListener('change', noteFill);
+
+      function jumpBack() {
+        var root = document.documentElement;
+        var previous = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';   // no sliding, even if the site CSS asks for smooth scrolling
+        window.scrollTo(anchor.x, anchor.y);
+        root.style.scrollBehavior = previous;
+      }
+
+      function stopStrayFocus(el) {
+        holdUntil = now() + 1500;
+        ownFocus = true;
+        try {
+          if (anchor.el && anchor.el !== el && document.contains(anchor.el)) {
+            anchor.el.focus({ preventScroll: true });
+          } else {
+            el.blur();
+          }
+        } finally {
+          ownFocus = false;
+        }
+        jumpBack();
+        [0, 30, 100, 300, 800].forEach(function (ms) { setTimeout(jumpBack, ms); });
+      }
+
+      function onFocusIn(event) {
+        if (ownFocus) return;
+        var el = event.target;
+        noteFill();
+        if (isGuarded(el) && !visitorActedRecently() && now() < fillUntil) {
+          stopStrayFocus(el);
+          return;
+        }
+        anchor.el = el;
+      }
+      whoForm.addEventListener('focusin', onFocusIn);
+      form.addEventListener('focusin', onFocusIn);
+
+      window.addEventListener('scroll', function () {
+        var t = now();
+        var visitorDriven = visitorActedRecently();
+        if (!visitorDriven && (t < holdUntil || t < fillUntil)) {
+          jumpBack();
+          return;
+        }
+        anchor.x = window.pageXOffset;
+        anchor.y = window.pageYOffset;
+        if (visitorDriven) holdUntil = 0;
+      }, { passive: true });
+
+      // Check after any activity on the forms, and keep watching quietly in the background.
+      [whoForm, form].forEach(function (f) {
+        ['input', 'change', 'focusin', 'focusout'].forEach(function (type) {
+          f.addEventListener(type, function () {
+            setTimeout(restoreGuarded, 0);
+            setTimeout(restoreGuarded, 150);
+            setTimeout(restoreGuarded, 600);
+          });
         });
       });
-      setInterval(restoreGuarded, 400);
+      setInterval(function () { restoreGuarded(); noteFill(); }, 400);
 
       // Start empty every time the page is shown. If the visitor comes back with the Back
       // button, load a fresh copy so nothing from an earlier visit is left behind.
       // (If someone has already started typing on a slow connection, their work is left alone.)
       var visitorStarted = false;
-      form.addEventListener('focusin', function () { visitorStarted = true; });
+      function markStarted() { visitorStarted = true; }
+      whoForm.addEventListener('focusin', markStarted);
+      form.addEventListener('focusin', markStarted);
 
       window.addEventListener('pageshow', function (event) {
         if (event.persisted) { window.location.reload(); return; }
         if (!visitorStarted) {
-          form.reset();
+          resetBoth();
           enteredByVisitor = {};
+          typed = { applicant_name: '', email: '' };
         }
       });
 
-      // Order here is the order of the page, so the first problem found is the highest on the page.
+      // -------------------------------------------------------------------------------------
+      // Validation: order here is the order of the page, so the first problem found is the highest.
+      // -------------------------------------------------------------------------------------
       var rules = [
         { name: 'applicant_name',      kind: 'text',   required: true,  msg: 'Please enter your name.' },
         { name: 'skokie_member',       kind: 'radio',  required: true,  msg: 'Please choose Yes or No.' },
@@ -388,11 +507,11 @@
       ];
 
       function wrapperFor(name) {
-        return form.querySelector('[data-field="' + name + '"]');
+        return document.querySelector('[data-field="' + name + '"]');
       }
 
       function isValid(rule) {
-        var field = form.elements[rule.name];
+        var field = fieldNamed(rule.name);
         var value = String(field.value || '').trim();
         if (rule.kind === 'radio') return value !== '';
         if (value === '') return !rule.required;
@@ -411,12 +530,17 @@
       }
 
       function refreshSummary() {
-        if (!form.querySelector('.has-error')) summary.textContent = '';
+        if (!document.querySelector('.has-error')) summary.textContent = '';
       }
 
+      // -------------------------------------------------------------------------------------
+      // Sending
+      // -------------------------------------------------------------------------------------
       function showThanks(fullName) {
-        form.reset();
+        resetBoth();
         enteredByVisitor = {};
+        typed = { applicant_name: '', email: '' };
+        whoForm.style.display = 'none';
         form.style.display = 'none';
         if (hero) hero.style.display = 'none';
 
@@ -445,11 +569,15 @@
         sending = true;
         button.disabled = true;
         button.textContent = 'Sending…';
-        var applicantName = form.elements.applicant_name.value;
+        var applicantName = whoForm.elements.applicant_name.value;
+
+        // Both parts go together as one application.
+        var data = new FormData(whoForm);
+        new FormData(form).forEach(function (value, key) { data.append(key, value); });
 
         fetch(form.action, {
           method: 'POST',
-          body: new FormData(form),
+          body: data,
           headers: { 'Accept': 'application/json' }
         })
           .then(function (response) {
@@ -464,9 +592,10 @@
           });
       }
 
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
+      function handleSubmit() {
         restoreGuarded();
+        fillUntil = 0;
+        holdUntil = 0;
 
         var firstBad = null;
         rules.forEach(function (rule) {
@@ -478,13 +607,19 @@
         if (firstBad) {
           summary.textContent = 'Please fix the highlighted question(s) above, then submit again.';
           wrapperFor(firstBad.name).scrollIntoView({ behavior: 'smooth', block: 'center' });
-          form.querySelector('[name="' + firstBad.name + '"]').focus({ preventScroll: true });
+          var target = document.querySelector('[name="' + firstBad.name + '"]');
+          ownFocus = true;
+          try { target.focus({ preventScroll: true }); } finally { ownFocus = false; }
+          anchor.el = target;
           return;
         }
 
         summary.textContent = '';
         send();
-      });
+      }
+
+      form.addEventListener('submit', function (event) { event.preventDefault(); handleSubmit(); });
+      whoForm.addEventListener('submit', function (event) { event.preventDefault(); });
 
       // Clear a field's highlight as soon as it is corrected; leave it highlighted until then.
       rules.forEach(function (rule) {
