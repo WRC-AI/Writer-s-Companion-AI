@@ -651,8 +651,13 @@
             </div>
 
             <div id="connect-general" style="display:none;">
-              <p>Great — we'll let you know as soon as WRC is ready.</p>
-              <form action="https://formspree.io/f/mykblbrn" method="POST">
+              <div id="keep-thanks" tabindex="-1" style="display:none; text-align:center; padding: 24px 0; outline:none;">
+                <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin-bottom: 10px;">Thank you!</h3>
+                <p>You're on the list. We'll let you know as soon as WRC is ready.</p>
+                <p style="color: var(--color-text-muted); font-size: 0.95rem;">Returning you to Writer's Companion…</p>
+              </div>
+              <p id="keep-intro">Great — we'll let you know as soon as WRC is ready.</p>
+              <form id="keep-form" action="https://formspree.io/f/mykblbrn" method="POST">
                 <div style="margin-bottom: 20px; text-align: left;">
                   <p style="font-weight:600; margin-bottom:12px;">Which of these interests you the most? Pick 1–3.</p>
                   <div style="display:flex; flex-direction:column; gap:12px;">
@@ -694,8 +699,9 @@
                   <input type="email" name="email" placeholder="Your email address" required>
                   <input type="hidden" name="_subject" value="WRC Page — Keep Me Posted">
                   <input type="hidden" name="signup_type" value="wrc_page_keep_me_posted">
-                  <button type="submit" class="btn btn-primary">Keep Me Posted</button>
+                  <button id="keep-submit" type="submit" class="btn btn-primary">Keep Me Posted</button>
                 </div>
+                <p id="keep-error" role="alert" style="color:#b00020; font-weight:600; margin-top:10px;"></p>
               </form>
             </div>
 
@@ -749,5 +755,72 @@
   <script src="js/main.js"></script>
   <script src="js/modals.js"></script>
   <script src="js/cinematic.js"></script>
+  <script>
+    // "Keep Me Posted": send in the background, thank the visitor, close the pop-up,
+    // and leave them right where they were on this page (no trip to Formspree's site).
+    (function () {
+      var modal = document.getElementById('modal-connect');
+      var form = document.getElementById('keep-form');
+      if (!modal || !form) return;
+
+      var choice = document.getElementById('connect-choice');
+      var general = document.getElementById('connect-general');
+      var intro = document.getElementById('keep-intro');
+      var thanks = document.getElementById('keep-thanks');
+      var button = document.getElementById('keep-submit');
+      var errorBox = document.getElementById('keep-error');
+      var closeTimer = null;
+      var sending = false;
+
+      function resetModal() {
+        if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+        form.reset();
+        form.style.display = '';
+        intro.style.display = '';
+        thanks.style.display = 'none';
+        general.style.display = 'none';
+        choice.style.display = '';
+        errorBox.textContent = '';
+        button.disabled = false;
+        button.textContent = 'Keep Me Posted';
+        sending = false;
+      }
+
+      // Whenever the pop-up closes (Close button, Escape, click outside, or our own timer),
+      // put it back to its starting view so the next visit begins fresh.
+      modal.addEventListener('close', resetModal);
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (sending) return;
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        sending = true;
+        errorBox.textContent = '';
+        button.disabled = true;
+        button.textContent = 'Sending…';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(function (response) {
+            if (!response.ok) throw new Error('Send failed: ' + response.status);
+            form.style.display = 'none';
+            intro.style.display = 'none';
+            thanks.style.display = 'block';
+            thanks.focus({ preventScroll: true });
+            closeTimer = setTimeout(function () { modal.close(); }, 3000);
+          })
+          .catch(function () {
+            sending = false;
+            button.disabled = false;
+            button.textContent = 'Keep Me Posted';
+            errorBox.textContent = "We couldn't send that just now. Please check your connection and try again.";
+          });
+      });
+    })();
+  </script>
 </body>
 </html>
