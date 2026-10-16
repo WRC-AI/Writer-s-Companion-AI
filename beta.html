@@ -32,7 +32,7 @@
     </div>
   </header>
 
-  <section class="hero" style="padding: 60px 0 40px;">
+  <section id="page-hero" class="hero" style="padding: 60px 0 40px;">
     <div class="container">
       <h1 style="font-size: clamp(1.6rem, 4vw, 2.4rem);">Apply for Beta Testing</h1>
       <p class="hero-subtitle" style="max-width: 640px;">
@@ -43,6 +43,16 @@
 
   <section class="features" style="padding: 20px 0 80px;">
     <div class="container" style="max-width: 680px;">
+
+      <!-- ============================================================
+           THANK-YOU PANEL (hidden until the application is sent)
+      ============================================================ -->
+      <div id="thanks" tabindex="-1" style="display:none; text-align:center; padding: 60px 0 20px; outline:none;">
+        <h2 style="font-family: var(--font-display); color: var(--color-burgundy); margin-bottom: 14px;">Thank you<span id="thanks-name"></span>!</h2>
+        <p style="max-width: 520px; margin: 0 auto 12px;">Your application has been received. We'll be in touch by email.</p>
+        <p style="max-width: 520px; margin: 0 auto 24px; color: var(--color-text-muted);">You'll be returned to the Writer's Companion home page in <span id="countdown">10</span> seconds.</p>
+        <a href="index.html" class="btn btn-primary">Return to Writer's Companion now</a>
+      </div>
 
       <form id="beta-form" action="https://formspree.io/f/xvkoazvp" method="POST" autocomplete="off">
 
@@ -74,7 +84,7 @@
 
         <div class="field-wrap" data-field="email" style="margin-bottom: 12px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Your email address <span class="req">*</span></label>
-          <input type="email" name="email" required style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="email" name="email" required autocomplete="off" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
           <p class="field-error" role="alert"></p>
         </div>
 
@@ -141,7 +151,7 @@
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">How would you describe your process — a careful outliner/plotter, or casting wide for ideas to see what you catch, or a combination?</label>
-          <textarea name="writing_process" rows="3" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+          <textarea name="writing_process" rows="3" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
         </div>
 
         <!-- ============================================================
@@ -268,7 +278,7 @@
 
         <p id="form-summary" class="field-error" role="alert" style="margin: 0 0 12px;"></p>
 
-        <button type="submit" class="btn btn-primary" style="width:100%;">Submit Application</button>
+        <button id="submit-btn" type="submit" class="btn btn-primary" style="width:100%;">Submit Application</button>
 
       </form>
 
@@ -287,10 +297,31 @@
       var form = document.getElementById('beta-form');
       if (!form) return;
 
-      // Take over validation so errors are shown next to each field and stay until fixed.
+      // We handle validation and sending ourselves, so errors appear beside each field
+      // and the visitor never leaves this page for a Formspree screen.
       form.setAttribute('novalidate', '');
 
       var summary = document.getElementById('form-summary');
+      var button = document.getElementById('submit-btn');
+      var hero = document.getElementById('page-hero');
+      var thanks = document.getElementById('thanks');
+      var HOME_URL = 'index.html';
+
+      // Ask password managers and autofill helpers to leave every field alone.
+      Array.prototype.forEach.call(form.elements, function (el) {
+        if (el.type === 'hidden' || el.type === 'submit') return;
+        el.setAttribute('data-lpignore', 'true');
+        el.setAttribute('data-1p-ignore', 'true');
+        el.setAttribute('data-bwignore', 'true');
+        el.setAttribute('data-form-type', 'other');
+      });
+
+      // Start empty every time the page is shown. If the visitor comes back with the Back
+      // button, load a fresh copy so nothing from an earlier visit is left behind.
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted) { window.location.reload(); return; }
+        form.reset();
+      });
 
       // Order here is the order of the page, so the first problem found is the highest on the page.
       var rules = [
@@ -328,7 +359,58 @@
         if (!form.querySelector('.has-error')) summary.textContent = '';
       }
 
+      function showThanks(fullName) {
+        form.reset();
+        form.style.display = 'none';
+        if (hero) hero.style.display = 'none';
+
+        var first = String(fullName || '').trim().split(/\s+/)[0];
+        document.getElementById('thanks-name').textContent = first ? ', ' + first : '';
+        thanks.style.display = 'block';
+        window.scrollTo(0, 0);
+        thanks.focus({ preventScroll: true });
+
+        var left = 10;
+        var counter = document.getElementById('countdown');
+        var timer = setInterval(function () {
+          left -= 1;
+          counter.textContent = String(left);
+          if (left <= 0) {
+            clearInterval(timer);
+            window.location.href = HOME_URL;
+          }
+        }, 1000);
+      }
+
+      var sending = false;
+
+      function send() {
+        if (sending) return;
+        sending = true;
+        button.disabled = true;
+        button.textContent = 'Sending…';
+        var applicantName = form.elements.applicant_name.value;
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(function (response) {
+            if (!response.ok) throw new Error('Send failed: ' + response.status);
+            showThanks(applicantName);
+          })
+          .catch(function () {
+            sending = false;
+            button.disabled = false;
+            button.textContent = 'Submit Application';
+            summary.textContent = "We couldn't send your application just now. Please check your connection and try again in a moment.";
+          });
+      }
+
       form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
         var firstBad = null;
         rules.forEach(function (rule) {
           var ok = isValid(rule);
@@ -337,13 +419,14 @@
         });
 
         if (firstBad) {
-          event.preventDefault();
           summary.textContent = 'Please fix the highlighted question(s) above, then submit again.';
           wrapperFor(firstBad.name).scrollIntoView({ behavior: 'smooth', block: 'center' });
           form.querySelector('[name="' + firstBad.name + '"]').focus({ preventScroll: true });
-        } else {
-          summary.textContent = '';
+          return;
         }
+
+        summary.textContent = '';
+        send();
       });
 
       // Clear a field's highlight as soon as it is corrected; leave it highlighted until then.
