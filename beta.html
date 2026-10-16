@@ -54,7 +54,7 @@
         <a href="index.html" class="btn btn-primary">Return to Writer's Companion now</a>
       </div>
 
-      <form id="beta-form" action="https://formspree.io/f/xvkoazvp" method="POST" autocomplete="off">
+      <form id="beta-form" action="https://formspree.io/f/xvkoazvp" method="POST">
 
         <input type="hidden" name="_subject" value="WRC Beta Application">
 
@@ -65,7 +65,7 @@
         ============================================================ -->
         <div class="field-wrap" data-field="applicant_name" style="margin-bottom: 12px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Your name <span class="req">*</span></label>
-          <input type="text" name="applicant_name" required autocomplete="off" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="applicant_name" required autocomplete="name" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
           <p class="field-error" role="alert"></p>
         </div>
 
@@ -73,10 +73,10 @@
           <p style="font-weight:600; margin-bottom:8px;">Are you a member of the Skokie Writers Group? <span class="req">*</span></p>
           <div class="radio-group" role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="skokie_member" value="yes" required autocomplete="off"> <span>Yes</span>
+              <input type="radio" name="skokie_member" value="yes" required autocomplete="nope"> <span>Yes</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="skokie_member" value="no" autocomplete="off"> <span>No</span>
+              <input type="radio" name="skokie_member" value="no" autocomplete="nope"> <span>No</span>
             </label>
           </div>
           <p class="field-error" role="alert"></p>
@@ -84,7 +84,7 @@
 
         <div class="field-wrap" data-field="email" style="margin-bottom: 12px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Your email address <span class="req">*</span></label>
-          <input type="email" name="email" required autocomplete="off" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="email" name="email" required autocomplete="email" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
           <p class="field-error" role="alert"></p>
         </div>
 
@@ -95,18 +95,18 @@
 
         <div class="field-wrap" data-field="multiwindow_comfort" style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">On a scale of 1–10, how comfortable are you working across multiple windows at once — copying and pasting between them?</label>
-          <input type="number" name="multiwindow_comfort" min="1" max="10" autocomplete="off" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="number" name="multiwindow_comfort" min="1" max="10" autocomplete="nope" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
           <p class="field-error" role="alert"></p>
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">What is your monitor resolution and setup — single screen, or dual monitor?</label>
-          <input type="text" name="monitor_setup" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="monitor_setup" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">How often do you typically work with two windows open side by side, actively switching between them?</label>
-          <input type="text" name="multiwindow_frequency" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="multiwindow_frequency" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <!-- ============================================================
@@ -116,37 +116,37 @@
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">What are you currently working on (genre/format)?</label>
-          <input type="text" name="project_genre" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="project_genre" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">How much time do you typically devote to writing per week?</label>
-          <input type="text" name="writing_time_weekly" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="writing_time_weekly" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Approximate word count or chapter count of your current manuscript?</label>
-          <input type="text" name="manuscript_size" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="manuscript_size" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Do you have a complete or near-complete manuscript (50%+), or are you early in drafting?</label>
-          <input type="text" name="manuscript_completeness" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="manuscript_completeness" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Have you self-published or traditionally published any previous work?</label>
-          <input type="text" name="publishing_history" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="publishing_history" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Are you currently using any other tools to assist your writing?</label>
-          <input type="text" name="writing_tools" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="writing_tools" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Experience using AI as a writing assistant? If yes, which tools?</label>
-          <input type="text" name="ai_experience" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="ai_experience" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
@@ -161,20 +161,20 @@
 
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">How much time per week could you realistically be able to spend testing WRC?</label>
-          <input type="text" name="testing_time_weekly" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="text" name="testing_time_weekly" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
           <p style="font-weight:600; margin-bottom:8px;">Early rollout (rougher, first outside exposure) or later rollout (more polished, benefits from earlier feedback)? This is a preference we'll factor in, not a guarantee.</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="early" autocomplete="off"> <span>Early rollout</span>
+              <input type="radio" name="rollout_preference" value="early" autocomplete="nope"> <span>Early rollout</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="later" autocomplete="off"> <span>Later rollout</span>
+              <input type="radio" name="rollout_preference" value="later" autocomplete="nope"> <span>Later rollout</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="either" autocomplete="off"> <span>Either is fine</span>
+              <input type="radio" name="rollout_preference" value="either" autocomplete="nope"> <span>Either is fine</span>
             </label>
           </div>
         </div>
@@ -183,10 +183,10 @@
           <p style="font-weight:600; margin-bottom:8px;">Are you comfortable working through a 1–3 hour guided tutorial before diving in on your own? You'll be using your own manuscript throughout — real progress on your own work, not throwaway sample data.</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="tutorial_comfort" value="yes" autocomplete="off"> <span>Yes</span>
+              <input type="radio" name="tutorial_comfort" value="yes" autocomplete="nope"> <span>Yes</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="tutorial_comfort" value="no" autocomplete="off"> <span>No</span>
+              <input type="radio" name="tutorial_comfort" value="no" autocomplete="nope"> <span>No</span>
             </label>
           </div>
         </div>
@@ -195,10 +195,10 @@
           <p style="font-weight:600; margin-bottom:8px;">Willing to fill out structured feedback forms/surveys during the beta, not just informal comments?</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="feedback_willingness" value="yes" autocomplete="off"> <span>Yes</span>
+              <input type="radio" name="feedback_willingness" value="yes" autocomplete="nope"> <span>Yes</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="feedback_willingness" value="no" autocomplete="off"> <span>No</span>
+              <input type="radio" name="feedback_willingness" value="no" autocomplete="nope"> <span>No</span>
             </label>
           </div>
         </div>
@@ -207,20 +207,20 @@
           <p style="font-weight:600; margin-bottom:8px;">How do you typically react when software doesn't work as expected?</p>
           <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="frustrated" autocomplete="off"> <span>I get frustrated and close the app</span>
+              <input type="radio" name="bug_reaction" value="frustrated" autocomplete="nope"> <span>I get frustrated and close the app</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="troubleshoot" autocomplete="off"> <span>I try to troubleshoot it myself</span>
+              <input type="radio" name="bug_reaction" value="troubleshoot" autocomplete="nope"> <span>I try to troubleshoot it myself</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="document" autocomplete="off"> <span>I document the steps to report it to the developer</span>
+              <input type="radio" name="bug_reaction" value="document" autocomplete="nope"> <span>I document the steps to report it to the developer</span>
             </label>
           </div>
         </div>
 
         <div class="field-wrap" data-field="patience_scale" style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Rate your patience for rough edges/bugs in early-stage software (1–10)</label>
-          <input type="number" name="patience_scale" min="1" max="10" autocomplete="off" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <input type="number" name="patience_scale" min="1" max="10" autocomplete="nope" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
           <p class="field-error" role="alert"></p>
         </div>
 
@@ -233,35 +233,35 @@
           <p style="font-weight:600; margin-bottom:12px;">Which of these interests you the most? Pick 1–3.</p>
           <div style="display:flex; flex-direction:column; gap:14px;">
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_story_memory" value="yes" autocomplete="off" style="margin-top:4px;">
+              <input type="checkbox" name="feat_story_memory" value="yes" autocomplete="nope" style="margin-top:4px;">
               <span><strong>Story Memory</strong> — Your manuscript remembers itself. The Relevance Engine keeps your AI grounded in established characters, world rules, and storylines — no more re-explaining your book every session.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_expand" value="yes" autocomplete="off" style="margin-top:4px;">
+              <input type="checkbox" name="feat_expand" value="yes" autocomplete="nope" style="margin-top:4px;">
               <span><strong>Blue Sky: Expand</strong> — Deepens a scene you've already written — sensory detail, emotional texture, unspoken motivation — without inventing new plot or drifting off course.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_parallel" value="yes" autocomplete="off" style="margin-top:4px;">
+              <input type="checkbox" name="feat_parallel" value="yes" autocomplete="nope" style="margin-top:4px;">
               <span><strong>Blue Sky: Parallel</strong> — Branch into an alternate version of a scene in a sandbox, completely separate from your real manuscript. Nothing commits until you choose it.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_trace" value="yes" autocomplete="off" style="margin-top:4px;">
+              <input type="checkbox" name="feat_trace" value="yes" autocomplete="nope" style="margin-top:4px;">
               <span><strong>Blue Sky: Trace</strong> — Right-click any character, storyline, or continuity flag and instantly see every chapter it touches — with a relevance percentage, not just a yes-or-no match.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_analysis" value="yes" autocomplete="off" style="margin-top:4px;">
+              <input type="checkbox" name="feat_analysis" value="yes" autocomplete="nope" style="margin-top:4px;">
               <span><strong>Blue Sky: Analysis</strong> — A full structural and thematic review of your manuscript, or a targeted deep-dive into how up to three characters or storylines intersect across every chapter.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_blueprint" value="yes" autocomplete="off" style="margin-top:4px;">
+              <input type="checkbox" name="feat_blueprint" value="yes" autocomplete="nope" style="margin-top:4px;">
               <span><strong>Blueprint Architecture</strong> — A factual, structured ledger for every chapter — what's been established, what's still open — that your AI reads before it ever writes a word.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_author_control" value="yes" autocomplete="off" style="margin-top:4px;">
+              <input type="checkbox" name="feat_author_control" value="yes" autocomplete="nope" style="margin-top:4px;">
               <span><strong>Author Control &amp; Redline</strong> — Every AI change is tracked line-by-line against what you sent. You see exactly what changed and accept or reject each one individually.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
-              <input type="checkbox" name="feat_your_data" value="yes" autocomplete="off" style="margin-top:4px;">
+              <input type="checkbox" name="feat_your_data" value="yes" autocomplete="nope" style="margin-top:4px;">
               <span><strong>Your Data</strong> — Import an existing work-in-progress — a plain document, or a Word manuscript where WRC auto-splits headers into chapters. Export your whole project back to Word whenever you want.</span>
             </label>
           </div>
@@ -273,7 +273,7 @@
         <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Last thing</h3>
         <div style="margin-bottom: 24px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Tell us why you're interested in beta testing WRC.</label>
-          <textarea name="interest_reason" rows="4" autocomplete="off" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+          <textarea name="interest_reason" rows="4" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
         </div>
 
         <p id="form-summary" class="field-error" role="alert" style="margin: 0 0 12px;"></p>
@@ -316,11 +316,42 @@
         el.setAttribute('data-form-type', 'other');
       });
 
+      // Backup: only the name and email boxes should ever be filled by the browser's autofill.
+      // If autofill fills any other box, clear it right away.
+      var autofillAllowed = { applicant_name: true, email: true };
+
+      function isAutofilled(el) {
+        var selectors = [':-webkit-autofill', ':autofill'];
+        for (var i = 0; i < selectors.length; i++) {
+          try { if (el.matches(selectors[i])) return true; } catch (e) { /* not supported by this browser */ }
+        }
+        return false;
+      }
+
+      function scrubStrayAutofill() {
+        Array.prototype.forEach.call(form.elements, function (el) {
+          if (!el.name || autofillAllowed[el.name]) return;
+          if (el.type === 'hidden' || el.type === 'submit' || el.type === 'radio' || el.type === 'checkbox') return;
+          if (isAutofilled(el)) el.value = '';
+        });
+      }
+
+      ['input', 'change'].forEach(function (type) {
+        form.addEventListener(type, function () {
+          setTimeout(scrubStrayAutofill, 0);
+          setTimeout(scrubStrayAutofill, 150);
+        });
+      });
+
       // Start empty every time the page is shown. If the visitor comes back with the Back
       // button, load a fresh copy so nothing from an earlier visit is left behind.
+      // (If someone has already started typing on a slow connection, their work is left alone.)
+      var visitorStarted = false;
+      form.addEventListener('focusin', function () { visitorStarted = true; });
+
       window.addEventListener('pageshow', function (event) {
         if (event.persisted) { window.location.reload(); return; }
-        form.reset();
+        if (!visitorStarted) form.reset();
       });
 
       // Order here is the order of the page, so the first problem found is the highest on the page.
@@ -410,6 +441,7 @@
 
       form.addEventListener('submit', function (event) {
         event.preventDefault();
+        scrubStrayAutofill();
 
         var firstBad = null;
         rules.forEach(function (rule) {
