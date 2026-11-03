@@ -236,7 +236,8 @@
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p><span class="review-flag">[DRAFT]</span> Reads every chapter you've written, determines which ones genuinely matter to the one you're working on, and hands your AI that backstory automatically. It recognizes recurring characters and storylines the way an attentive reader would — not by keyword matching.</p>
+              <p>Evaluates every chapter you've written, determines which ones genuinely matter to the one you're working on, and instructs your AI to consider relevant backstory when evaluating your manuscript.</p>
+              <p><span class="review-flag">[DRAFT]</span> When you work on a new chapter, WRC gathers the blueprint entries of the chapters related to it and hands them to your AI as backstory — the heart and soul of your manuscript, delivered exactly when it's needed.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
@@ -257,7 +258,8 @@
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p><span class="review-flag">[DRAFT]</span> Tracks who your characters are, how they relate to one another, and how they change across the manuscript — and surfaces where a character's behavior contradicts what came before.</p>
+              <p><strong>In every blueprint entry:</strong> <span class="review-flag">[DRAFT: verify against actual Blueprint Entry contents]</span> who appears in the chapter, what they do, and how they act.</p>
+              <p><strong>With the tools:</strong> Tracks who your characters are, and provides compelling tools to identify how they relate to one another, how they change across the manuscript, and where a character's behavior contradicts what came before.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
@@ -278,7 +280,8 @@
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p><span class="review-flag">[DRAFT]</span> Records the facts, timelines, and constraints each chapter establishes, and flags the unresolved questions and loose threads that later chapters still owe the reader.</p>
+              <p><strong>In every blueprint entry:</strong> <span class="review-flag">[DRAFT: verify against actual Blueprint Entry contents]</span> the facts, timelines, and constraints the chapter establishes, plus the questions and loose threads it leaves open.</p>
+              <p><strong>With the tools:</strong> Flags the unresolved questions and loose threads that later chapters still owe the reader.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
@@ -299,7 +302,7 @@
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p><span class="review-flag">[DRAFT]</span> Evaluates plot, structure, pacing, and theme — and examines your manuscript as a connected whole, including how the characters and storylines you choose intersect across every chapter.</p>
+              <p>Evaluates plot, structure, pacing, and theme — and examines your manuscript as a connected whole, including how the characters and storylines you choose intersect across every chapter.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
@@ -309,26 +312,139 @@
         </form>
       </dialog>
 
-      <dialog id="modal-author-control" class="pillar-modal">
+      <dialog id="modal-author-control" class="pillar-modal" style="max-width: 760px;">
         <form method="dialog">
           <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">⚙️</span>
-              <div class="pillar-modal-title">
+            <div class="pillar-modal-header" style="justify-content: center;">
+              <div class="pillar-modal-title" style="text-align: center;">
                 <h3>Author Control</h3>
-                <span>Deterministic Workflow</span>
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p>This is the pillar that makes WRC different from every other writing tool.</p>
-              <p>Author Control is a deterministic workflow — a system that ensures you remain the architect of your manuscript at every step. No AI drift. No tonal contamination. No accidental rewrites of your voice.</p>
-              <p>Every interaction is structured. Every suggestion is contextual. Every transformation is reversible.</p>
-              <p>It keeps your intent at the center of the creative process. It ensures that the manuscript evolves according to your rules, your canon, your emotional arc, and your long-term vision.</p>
-              <p>You are not handing your story to an AI. You are directing it.</p>
-              <p>WRC is built like an instrument — precise, deterministic, and built for authors who architect entire worlds.</p>
+              <p style="text-align:center;">Author Control ensures that you remain the architect of every decision.</p>
+              <p style="text-align:center;">No AI drift. No tonal contamination. No unwanted rewrites of your voice.</p>
+              <p style="text-align:center; font-weight:bold;">You are not handing your story to an AI. You are directing it.</p>
+              <div class="cinematic-pillars" style="gap: 36px; margin-top: 28px;">
+          <div class="cinematic-pillar">
+            <div class="cinematic-pillar-icon">💡</div>
+            <div>
+              <h3>Expand/Parallel</h3>
+              <span class="cinematic-pillar-accent"></span>
+              <p>Ask for ideas that grow out of your own story. You decide which, if any, to keep.</p>
+              <p><button type="button" class="link-button" onclick="document.getElementById('modal-ac-expand').showModal()">Learn More →</button></p>
+            </div>
+          </div>
+          <div class="cinematic-pillar">
+            <div class="cinematic-pillar-icon">📊</div>
+            <div>
+              <h3>Analysis</h3>
+              <span class="cinematic-pillar-accent"></span>
+              <p>Create a fully customized and focused analysis of the whole manuscript based on your selection of characters and/or storylines.</p>
+              <p><button type="button" class="link-button" onclick="document.getElementById('modal-ac-analysis').showModal()">Learn More →</button></p>
+            </div>
+          </div>
+          <div class="cinematic-pillar">
+            <div class="cinematic-pillar-icon">🧭</div>
+            <div>
+              <h3>Trace</h3>
+              <span class="cinematic-pillar-accent"></span>
+              <p>See every chapter where a blueprint entry appears.</p>
+              <p><button type="button" class="link-button" onclick="document.getElementById('modal-ac-trace').showModal()">Learn More →</button></p>
+            </div>
+          </div>
+          <div class="cinematic-pillar">
+            <div class="cinematic-pillar-icon">🔍</div>
+            <div>
+              <h3>Redline Review</h3>
+              <span class="cinematic-pillar-accent"></span>
+              <p>See exactly what changed, and accept or reject each change.</p>
+              <p><button type="button" class="link-button" onclick="document.getElementById('modal-ac-redline').showModal()">Learn More →</button></p>
+            </div>
+          </div>
+              </div>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+      <!-- Author Control detail panels (opened from the panel above) -->
+      <dialog id="modal-ac-expand" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">💡</span>
+              <div class="pillar-modal-title">
+                <h3>Expand/Parallel</h3>
+                <span>Ideas from your own story</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p><span class="review-flag">[DRAFT]</span> Offers creative ideas for alternate storylines. <strong>Expand</strong> builds on the ideas you already have; <strong>Parallel</strong> proposes independent storylines that eventually merge with your existing chapter.</p>
+              <p><span class="review-flag">[DRAFT]</span> Because WRC supplies the relevant backstory with every request, the ideas grow out of your story. Nothing is added to your manuscript unless you choose it.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+      <dialog id="modal-ac-analysis" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">📊</span>
+              <div class="pillar-modal-title">
+                <h3>Analysis</h3>
+                <span>Focused on what matters to you</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p><span class="review-flag">[DRAFT]</span> Choose any handful of characters or storylines that matter most — a protagonist and antagonist, a love triangle, a subplot and the characters tangled in it — and go deep on exactly how they intersect across every chapter.</p>
+              <p style="text-align:center; font-weight:bold;">Analytics that don’t judge — they reveal.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+      <dialog id="modal-ac-trace" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">🧭</span>
+              <div class="pillar-modal-title">
+                <h3>Trace</h3>
+                <span>Blueprint Mapping</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p>Right-click any blueprint entry and see every chapter where it appears, scored by how closely each one relates to the chapter you're working in.</p>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+      <dialog id="modal-ac-redline" class="pillar-modal">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header">
+              <span class="pillar-modal-icon">🔍</span>
+              <div class="pillar-modal-title">
+                <h3>Redline Review</h3>
+                <span>Nothing changes without your say</span>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
               <p>Every AI change is tracked with full redline comparison against what you originally sent — see exactly what changed, line by line, and accept or reject each one. Nothing is applied to your manuscript without your review.</p>
-              <p><span class="review-flag">[DRAFT]</span> <strong>Trace — Blueprint Mapping.</strong> Right-click any blueprint entry and see every chapter where it appears, scored by how closely each one relates to the chapter you're working in.</p>
-              <p style="text-align:center; font-weight:bold;">You ARE the architect.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
