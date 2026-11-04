@@ -161,6 +161,10 @@
         </form>
       </dialog>
 
+      <!-- Manuscript Intelligence: single panel, three headed sections
+           (Relevance Engine, Blueprint, Backstory). The four former
+           sub-panels (relevance, character, continuity, story) were removed
+           on 2026-11-04. -->
       <dialog id="modal-intelligence" class="pillar-modal" style="max-width: 760px;">
         <form method="dialog">
           <div class="pillar-modal-inner">
@@ -170,138 +174,19 @@
               </div>
             </div>
             <div class="pillar-modal-body">
-              <div class="cinematic-pillars" style="gap: 36px;">
 
-          <div class="cinematic-pillar">
-            <div class="cinematic-pillar-icon">🎯</div>
-            <div>
-              <h3>Relevance Engine</h3>
-              <span class="cinematic-pillar-accent"></span>
-              <p>Finds the chapters that matter to the one you're working on.</p>
-              <p><button type="button" class="link-button" onclick="document.getElementById('modal-mi-relevance').showModal()">Learn More →</button></p>
-            </div>
-          </div>
+              <h4 style="margin: 0 0 8px;">Relevance Engine</h4>
+              <p>Every chapter has its own storylines and characters. When you work on one, the Relevance Engine follows those threads through everything you've written, weighs how closely each earlier chapter connects, and selects the most relevant ones.</p>
 
-          <div class="cinematic-pillar">
-            <div class="cinematic-pillar-icon">👤</div>
-            <div>
-              <h3>Character Intelligence</h3>
-              <span class="cinematic-pillar-accent"></span>
-              <p>Follows who your characters are and how they change.</p>
-              <p><button type="button" class="link-button" onclick="document.getElementById('modal-mi-character').showModal()">Learn More →</button></p>
-            </div>
-          </div>
+              <h4 style="margin: 28px 0 8px;">Blueprint</h4>
+              <p>Every chapter carries a blueprint: a full editorial read. Each entry names what's there, judges how well it works, and suggests one way to strengthen it. Entries also look for what you might have missed: the detail that foreshadows, the thread left loose, the emotion beneath a character's reaction. They describe and suggest. They never rewrite your story, and anything you add is treated as your intent.</p>
+              <p style="text-align:center; font-weight:bold; margin: 20px 0;">Together, they show an intricate tapestry of your chapter.</p>
 
-          <div class="cinematic-pillar">
-            <div class="cinematic-pillar-icon">🧵</div>
-            <div>
-              <h3>Continuity Intelligence</h3>
-              <span class="cinematic-pillar-accent"></span>
-              <p>Keeps every fact, timeline, and thread consistent.</p>
-              <p><button type="button" class="link-button" onclick="document.getElementById('modal-mi-continuity').showModal()">Learn More →</button></p>
-            </div>
-          </div>
+              <h4 style="margin: 28px 0 8px;">Backstory</h4>
+              <p>The blueprint entries of the chapters the engine selects travel with your request as backstory, so the analysis reflects your whole manuscript, not just the chapter in front of you.</p>
 
-          <div class="cinematic-pillar">
-            <div class="cinematic-pillar-icon">📖</div>
-            <div>
-              <h3>Story Intelligence</h3>
-              <span class="cinematic-pillar-accent"></span>
-              <p>Evaluates your plot, structure, and themes as a whole.</p>
-              <p><button type="button" class="link-button" onclick="document.getElementById('modal-mi-story').showModal()">Learn More →</button></p>
-            </div>
-          </div>
+              <p style="text-align:center; font-style:italic; margin-top: 28px;">A wealth of insights for your review.</p>
 
-              </div>
-              <p style="text-align:center; font-weight:bold; margin-top: 28px;">Together, they show what no single chapter can.</p>
-            </div>
-            <div class="pillar-modal-close-row">
-              <span class="pillar-modal-hint">Press Escape to exit</span>
-              <button type="submit" class="pillar-modal-close-btn">Close</button>
-            </div>
-          </div>
-        </form>
-      </dialog>
-
-      <!-- Manuscript Intelligence detail panels (opened from the panel above) -->
-      <dialog id="modal-mi-relevance" class="pillar-modal">
-        <form method="dialog">
-          <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">🎯</span>
-              <div class="pillar-modal-title">
-                <h3>Relevance Engine</h3>
-                <span>Backstory, selected for you</span>
-              </div>
-            </div>
-            <div class="pillar-modal-body">
-              <p>Evaluates every chapter you've written, determines which ones genuinely matter to the one you're working on, and instructs your AI to consider relevant backstory when evaluating your manuscript.</p>
-              <p><span class="review-flag">[DRAFT]</span> When you work on a new chapter, WRC gathers the blueprint entries of the chapters related to it and hands them to your AI as backstory — the heart and soul of your manuscript, delivered exactly when it's needed.</p>
-            </div>
-            <div class="pillar-modal-close-row">
-              <span class="pillar-modal-hint">Press Escape to exit</span>
-              <button type="submit" class="pillar-modal-close-btn">Close</button>
-            </div>
-          </div>
-        </form>
-      </dialog>
-
-      <dialog id="modal-mi-character" class="pillar-modal">
-        <form method="dialog">
-          <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">👤</span>
-              <div class="pillar-modal-title">
-                <h3>Character Intelligence</h3>
-                <span>Understands the people</span>
-              </div>
-            </div>
-            <div class="pillar-modal-body">
-              <p><strong>In every blueprint entry:</strong> <span class="review-flag">[DRAFT: verify against actual Blueprint Entry contents]</span> who appears in the chapter, what they do, and how they act.</p>
-              <p><strong>With the tools:</strong> Tracks who your characters are, and provides compelling tools to identify how they relate to one another, how they change across the manuscript, and where a character's behavior contradicts what came before.</p>
-            </div>
-            <div class="pillar-modal-close-row">
-              <span class="pillar-modal-hint">Press Escape to exit</span>
-              <button type="submit" class="pillar-modal-close-btn">Close</button>
-            </div>
-          </div>
-        </form>
-      </dialog>
-
-      <dialog id="modal-mi-continuity" class="pillar-modal">
-        <form method="dialog">
-          <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">🧵</span>
-              <div class="pillar-modal-title">
-                <h3>Continuity Intelligence</h3>
-                <span>Understands consistency</span>
-              </div>
-            </div>
-            <div class="pillar-modal-body">
-              <p><strong>In every blueprint entry:</strong> <span class="review-flag">[DRAFT: verify against actual Blueprint Entry contents]</span> the facts, timelines, and constraints the chapter establishes, plus the questions and loose threads it leaves open.</p>
-              <p><strong>With the tools:</strong> Flags the unresolved questions and loose threads that later chapters still owe the reader.</p>
-            </div>
-            <div class="pillar-modal-close-row">
-              <span class="pillar-modal-hint">Press Escape to exit</span>
-              <button type="submit" class="pillar-modal-close-btn">Close</button>
-            </div>
-          </div>
-        </form>
-      </dialog>
-
-      <dialog id="modal-mi-story" class="pillar-modal">
-        <form method="dialog">
-          <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">📖</span>
-              <div class="pillar-modal-title">
-                <h3>Story Intelligence</h3>
-                <span>Understands the narrative</span>
-              </div>
-            </div>
-            <div class="pillar-modal-body">
-              <p>Evaluates plot, structure, pacing, and theme — and examines your manuscript as a connected whole, including how the characters and storylines you choose intersect across every chapter.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
