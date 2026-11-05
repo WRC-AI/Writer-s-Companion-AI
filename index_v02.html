@@ -11,6 +11,16 @@
   <meta property="og:description" content="Writer's Companion understands the intricacies of every storyline and character, and builds that understanding into every request to your AI application.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* HEADING LOOK (added 2026-11-05). Burgundy marks the named things: section headings,
+       card titles, and pop-up titles. Smaller topic headings inside a pop-up stay dark.
+       Can be moved into css/style.css once approved. */
+    .pain-heading { color: var(--color-burgundy); }
+    .cinematic-pillar h3 { color: var(--color-burgundy); }
+    .pillar-modal-title h3 { color: var(--color-burgundy); }
+    .pillar-modal-body h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--color-text); }
+    .pillar-modal-body strong { color: var(--color-text); }
+  </style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
 </head>
 
@@ -148,8 +158,7 @@
               <ul>
                 <li><strong>Storyline:</strong> the living threads of your manuscript. They vanish and resurface, collide and converge, and build toward the climax.</li>
                 <li><strong>Characters:</strong> who appears, what drives them, how they change, and the thread that links every chapter they appear in.</li>
-                <li><strong>Continuity:</strong> the facts, timelines, open questions, and other threads that hold the story together.</li>
-                <li><strong>What Works and What Could Be Stronger:</strong> what the chapter does well, and where it could improve.</li>
+                <li><strong>Continuity:</strong> the facts, timelines, open questions, and other threads that hold the story together, along with what works and what could be stronger.</li>
               </ul>
             </div>
             <div class="pillar-modal-close-row">
@@ -178,11 +187,11 @@
               <p>Every chapter has its own storylines and characters. When you work on one, the Relevance Engine follows those threads through everything you've written, weighs how closely each earlier chapter connects, and selects the most relevant ones.</p>
 
               <h4 style="margin: 28px 0 8px;">Blueprint</h4>
-              <p>Every chapter carries a blueprint: a full editorial read. Each entry names what's there, judges how well it works, and suggests one way to strengthen it. Entries also look for what you might have missed: the detail that foreshadows, the thread left loose, the emotion beneath a character's reaction. They describe and suggest. They never rewrite your story, and anything you add is treated as your intent.</p>
+              <p>Every chapter carries a comprehensive set of blueprint entries, each providing a full editorial read. Each entry names what's there, judges how well it works, and suggests one way to strengthen it. Entries also look for what you might have missed: the detail that foreshadows, the thread left loose, the emotion beneath a character's reaction. They summarize, evaluate, describe, and suggest. They never rewrite your story. Ignore what you like, or use them as creative stepping stones. It's your decision.</p>
               <p style="text-align:center; font-weight:bold; margin: 20px 0;">Together, they show an intricate tapestry of your chapter.</p>
 
               <h4 style="margin: 28px 0 8px;">Backstory</h4>
-              <p>The blueprint entries of the chapters the engine selects travel with your request as backstory, so the analysis reflects your whole manuscript, not just the chapter in front of you.</p>
+              <p>Blueprint entries of selected chapters become the backstory that forms the foundation necessary for an insightful analysis that reflects the nuances of your manuscript, not just the chapter in front of you.</p>
 
               <p style="text-align:center; font-style:italic; margin-top: 28px;">A wealth of insights for your review.</p>
 
@@ -349,12 +358,12 @@
     <div class="container">
       <h2>Why WRC Works</h2>
       <p>WRC doesn't ask your AI to remember your manuscript. It does the remembering, and hands your AI exactly what it needs.</p>
-      <p>Behind every request, WRC:</p>
+      <p>At the center of it all is the WRC Relevance Engine™, the system that:</p>
       <ul class="relevance-list">
-        <li>analyzes every chapter you've written and builds blueprint entries that capture its storylines, characters, and continuity</li>
-        <li>uses the WRC Relevance Engine™ to follow those storylines and characters, and finds the chapters that genuinely matter to the one you're working on now</li>
-        <li>delivers those chapters' blueprint entries as backstory, so your AI sees the parts of your story that matter, not just one chapter</li>
-        <li>keeps you in charge of what to examine, what to explore, and what to keep</li>
+        <li>maintains comprehensive and insightful blueprint entries for every chapter you've written</li>
+        <li>determines which chapters genuinely matter to the one you're working on now</li>
+        <li>recognizes recurring characters and storylines the way an attentive reader would</li>
+        <li>grounds every AI response in the correct parts of your story, automatically</li>
       </ul>
       <p style="text-align:center; font-weight:bold; margin-top: 24px;">Every request starts with the right backstory.</p>
     </div>
@@ -613,6 +622,26 @@
   <script src="js/main.js"></script>
   <script src="js/modals.js"></script>
   <script src="js/cinematic.js"></script>
+  <script>
+    // Every Learn More pop-up opens scrolled to the very top. showModal() focuses the
+    // first focusable control (often the Close button at the bottom), which can scroll
+    // the pop-up down, so reset the scroll position after opening.
+    (function () {
+      var original = HTMLDialogElement.prototype.showModal;
+      HTMLDialogElement.prototype.showModal = function () {
+        original.call(this);
+        var dlg = this;
+        function toTop() {
+          dlg.scrollTop = 0;
+          var inner = dlg.querySelectorAll('.pillar-modal-inner, .pillar-modal-body');
+          for (var i = 0; i < inner.length; i++) inner[i].scrollTop = 0;
+        }
+        toTop();
+        requestAnimationFrame(toTop);
+        setTimeout(toTop, 60);
+      };
+    })();
+  </script>
   <script>
     // "Keep Me Posted": send in the background, thank the visitor, close the pop-up,
     // and leave them right where they were on this page (no trip to Formspree's site).
