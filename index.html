@@ -1,17 +1,959 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Writer's Companion — Your AI Finally Knows Your Whole Story</title>
-  <meta name="description" content="Writer's Companion: a manuscript intelligence system built for authors who architect entire worlds. Story memory, creative momentum, and author control — working together.">
+  <title>Writer's Companion — The memory your AI can't keep</title>
+  <meta name="description" content="Writer's Companion remembers your entire manuscript, including the nuances and interactions between every storyline and character, and builds that memory into every request to your AI application.">
   <meta property="og:title" content="Writer's Companion">
-  <meta property="og:description" content="Your AI finally knows your whole story.">
+  <meta property="og:description" content="Writer's Companion remembers your entire manuscript, including the nuances and interactions between every storyline and character, and builds that memory into every request to your AI application.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://writerscompanion.ai/">
-  <link rel="canonical" href="https://writerscompanion.ai/">  
+  <style>
+/* Built-in copy of css/style.css so this page looks right when opened on its own. On the live site, the linked css/style.css below takes over. */
+/* ============================================================
+   Writer's Companion — Base Stylesheet
+   Design tokens + mobile-first layout
+   ============================================================ */
+
+:root {
+  --color-bg:          #F5F0E8;
+  --color-bg-card:     #FFFFFF;
+  --color-bg-dark:     #1A1A2E;
+  --color-text:        #1A1A1A;
+  --color-text-muted:  #6B7280;
+  --color-text-light:  #D1D5DB;
+  --color-accent:      #2A6FDB;
+  --color-accent-hover:#1E56B0;
+  --color-highlight:   #DCEBFF;
+  --color-border:      #E5E7EB;
+  --color-burgundy:    #6B0F2A;
+  --font-display:      'Arial', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body:         'Segoe UI', system-ui, -apple-system, sans-serif;
+  --max-width:         1080px;
+  --radius:            8px;
+  --shadow-card:       0 2px 8px rgba(0,0,0,0.06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a   { color: var(--color-accent); text-decoration: none; }
+a:hover { color: var(--color-accent-hover); }
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(245,240,232,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 16px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.logo:hover { color: var(--color-accent); }
+.logo-icon  { font-size: 1.4rem; }
+
+.main-nav { display: flex; gap: 28px; }
+.main-nav a {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+.main-nav a:hover { color: var(--color-accent); }
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+  padding: 80px 0 60px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--color-burgundy); 
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  max-width: 620px;
+  margin: 0 auto 48px;
+}
+
+/* ============================================================
+   PAIN BLOCK
+============================================================ */
+.pain-block {
+  background: var(--color-highlight);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 48px 40px;
+  margin: 0 auto 48px;
+  max-width: 720px;
+  text-align: left;
+}
+
+.pain-heading {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-text);
+  margin-bottom: 28px;
+}
+
+.pain-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.pain-list li {
+  border-left: 3px solid var(--color-accent);
+  padding: 12px 18px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.pain-quote {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.pain-close {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.btn-secondary:hover {
+  background: var(--color-highlight);
+  color: var(--color-accent-hover);
+}
+
+/* ============================================================
+   SURVEY SECTION
+============================================================ */
+.survey-section {
+  padding: 60px 0;
+  background: var(--color-bg);
+  text-align: center;
+}
+
+.survey-block {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+  text-align: left;
+  box-shadow: var(--shadow-card);
+}
+
+.survey-heading {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--color-text);
+}
+
+.survey-sub {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+}
+
+.survey-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.survey-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.survey-item input[type="checkbox"] {
+  display: none;
+}
+
+.survey-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.98rem;
+  color: var(--color-text);
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.survey-label::before {
+  content: '☐';
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: all 0.2s;
+}
+
+.survey-item input:checked + .survey-label {
+  background: var(--color-highlight);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.survey-item input:checked + .survey-label::before {
+  content: '☑';
+  color: var(--color-accent);
+}
+
+.survey-response {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--color-accent);
+  padding-left: 14px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.survey-response.visible {
+  max-height: 40px;
+  opacity: 1;
+}
+
+/* ============================================================
+   FEATURES
+============================================================ */
+.features {
+  padding: 80px 0;
+  background: var(--color-bg-card);
+}
+
+.features h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-burgundy);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.features-philosophy {
+  max-width: 780px;
+  margin: 0 auto 48px auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.features-philosophy strong {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-top: 8px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.feature-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.feature-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card);
+}
+
+.feature-icon { font-size: 2rem; margin-bottom: 16px; }
+
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   BETA TESTERS
+============================================================ */
+.beta {
+  padding: 80px 0;
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.beta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.beta-badge {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 40px;
+  margin-bottom: 20px;
+}
+
+.beta h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.beta-lead {
+  font-size: 1.05rem;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.beta-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 36px;
+  text-align: left;
+}
+
+.beta-perk {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+
+.beta-perk-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.beta-perk strong {
+  display: block;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.beta-perk p {
+  font-size: 0.93rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.beta-ask {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  padding: 0 8px;
+}
+
+.beta .form-row {
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.beta .form-row input[type="email"] {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.beta .form-row input[type="email"]:focus {
+  border-color: var(--color-accent);
+  background: rgba(255,255,255,0.15);
+}
+
+.beta .form-row input[type="email"]::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+.beta-fine {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.4);
+  font-style: italic;
+}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+.about { padding: 80px 0; }
+
+.about-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  text-align: center;
+  color: var(--color-burgundy);
+  margin-bottom: 32px;
+}
+
+.founder-quote {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  border-left: 4px solid var(--color-accent);
+  padding: 20px 28px;
+  background: var(--color-highlight);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.founder-attribution {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  text-align: right;
+}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact {
+  padding: 80px 0;
+  background: var(--color-bg-card);
+  text-align: center;
+}
+
+.contact h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-burgundy);  
+  margin-bottom: 16px;
+}
+
+.contact > .container > p {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+
+.relevance-list {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  text-align: left;
+  padding-left: 20px;
+}
+.relevance-list li {
+  margin-bottom: 10px;
+}
+.relevance-list li:last-child {
+  margin-bottom: 0;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 32px auto;
+  max-width: 560px;
+}
+
+.form-row input[type="email"] {
+  flex: 1;
+  min-width: 220px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-row input[type="email"]:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(42,111,219,0.15);
+}
+
+.form-row input[type="email"]::placeholder {
+  color: var(--color-text-muted);
+}
+
+.form-row .btn {
+  white-space: nowrap;
+}
+
+.contact-fine {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.site-footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.copyright { font-size: 0.9rem; color: var(--color-text-muted); }
+.tagline   { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 640px) {
+  .main-nav { gap: 16px; }
+  .main-nav a { font-size: 0.85rem; }
+  .hero { padding: 60px 0 40px; }
+  .pain-block { padding: 32px 24px; }
+  .survey-block { padding: 24px 20px; }
+  .features, .about, .contact, .beta { padding: 56px 0; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .founder-quote { padding: 16px 20px; }
+  .form-row { flex-direction: column; align-items: stretch; }
+  .form-row input[type="email"] { min-width: unset; }
+  .beta-perk { flex-direction: column; gap: 10px; }
+}
+
+/* ============================================================
+   CINEMATIC VERSION — ADDITIONAL STYLES
+   New classes only — nothing above this line is modified.
+   Used exclusively by wrc-cinematic.html; the Classic page
+   (wrc.html) does not reference any class below.
+============================================================ */
+
+.reveal {
+  opacity: 1;
+}
+.reveal.js-ready {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes cinematicFadeIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.cinematic-header {
+  animation: cinematicFadeIn 1s ease;
+}
+
+.cinematic-hero {
+  padding: 130px 0 100px;
+}
+.cinematic-hero h1 {
+  position: relative;
+  display: inline-block;
+}
+.cinematic-underline {
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--color-burgundy);
+  margin: 24px auto 0;
+}
+
+.btn-secondary-burgundy {
+  background: transparent;
+  color: var(--color-burgundy);
+  border: 2px solid var(--color-burgundy);
+}
+.btn-secondary-burgundy:hover {
+  background: rgba(107, 15, 42, 0.08);
+  color: var(--color-burgundy);
+}
+
+.cinematic-pain {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto 48px;
+  text-align: left;
+}
+.cinematic-pain-list li {
+  list-style: none;
+  border-left: 3px solid var(--color-burgundy);
+  padding: 14px 20px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 16px;
+  transition: box-shadow 0.2s;
+}
+.cinematic-pain-list li:hover {
+  box-shadow: var(--shadow-card);
+}
+
+.cinematic-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.cinematic-pillar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.cinematic-pillar:nth-child(even) {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+.cinematic-pillar-icon {
+  font-size: 3rem;
+  color: var(--color-burgundy);
+  flex-shrink: 0;
+}
+.cinematic-pillar-accent {
+  width: 48px;
+  height: 3px;
+  background: var(--color-burgundy);
+  margin: 12px 0;
+}
+.cinematic-pillar:nth-child(even) .cinematic-pillar-accent {
+  margin-left: auto;
+}
+
+.cinematic-catalyst-row {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+}
+.cinematic-catalyst-row .feature-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cinematic-catalyst-row .feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+@media (min-width: 720px) {
+  .cinematic-catalyst-row {
+    overflow-x: visible;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cinematic-catalyst-row .feature-card {
+    flex: 0 1 260px;
+  }
+}
+
+.cinematic-closing {
+  padding: 100px 0;
+}
+
+@media (max-width: 640px) {
+  .cinematic-pillar,
+  .cinematic-pillar:nth-child(even) {
+    flex-direction: column;
+    text-align: center;
+  }
+  .cinematic-pillar:nth-child(even) .cinematic-pillar-accent {
+    margin: 12px auto;
+  }
+  .cinematic-pain {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   PILLAR MODALS
+   Native <dialog> — Escape and the Close button work without any
+   JS at all. js/modals.js only handles closing on backdrop click.
+============================================================ */
+
+.link-button {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0;
+  font-family: inherit;
+}
+.link-button:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+.pillar-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 640px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+}
+.pillar-modal::backdrop {
+  background: rgba(0,0,0,0.5);
+}
+
+.pillar-modal-inner {
+  padding: 40px 36px 32px;
+}
+
+.pillar-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.pillar-modal-icon {
+  font-size: 2.2rem;
+  color: var(--color-burgundy);
+}
+.pillar-modal-title h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-bottom: 2px;
+}
+.pillar-modal-title span {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.pillar-modal-body p {
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.pillar-modal-body p:last-of-type {
+  margin-bottom: 0;
+}
+
+.pillar-modal-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+.pillar-modal-body ul li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 8px;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+.pillar-modal-body ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-burgundy);
+}
+.pillar-modal-body ul li:last-child {
+  margin-bottom: 0;
+}
+
+.pillar-modal-close-row {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pillar-modal-hint {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+.pillar-modal-close-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  font-family: inherit;
+}
+.pillar-modal-close-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+@media (max-width: 640px) {
+  .pillar-modal-inner {
+    padding: 28px 22px 24px;
+  }
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* ============================================================
+   REVIEW FLAGS — internal review markers only, not for public
+   launch. Bright, unmissable styling so an open question can't
+   be mistaken for finished copy while scanning the page.
+============================================================ */
+.review-flag {
+  color: #D93025;
+  font-weight: 700;
+}
+</style>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* HEADING LOOK (added 2026-11-05). Burgundy marks the named things: section headings,
+       card titles, and pop-up titles. Smaller topic headings inside a pop-up stay dark.
+       Can be moved into css/style.css once approved. */
+    .pain-heading { color: var(--color-burgundy); }
+    .cinematic-pillar h3 { color: var(--color-burgundy); }
+    .pillar-modal-title h3 { color: var(--color-burgundy); }
+    .pillar-modal-body h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--color-text); }
+    .pillar-modal-body strong { color: var(--color-text); }
+    .pillar-modal { max-height: 85vh; max-height: 85dvh; overscroll-behavior: contain; }
+    .pillar-modal:focus { outline: none; }
+    .pain-close { color: var(--color-burgundy); }
+    /* Phones and tablets have no Escape key, so hide that hint on touch screens. */
+    @media (hover: none) and (pointer: coarse) {
+      .pillar-modal-hint { display: none; }
+      .pillar-modal-close-row { justify-content: flex-end; }
+    }
+  </style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
 </head>
 
@@ -40,22 +982,27 @@
 
   <!-- ============================================================
        HERO
+       Tagline and descriptor approved 2026-11-03.
   ============================================================ -->
   <section class="hero cinematic-hero">
     <div class="container">
       <h1>
-        Your AI finally knows<br>your whole story.
+        The memory your AI can't keep.
         <span class="cinematic-underline"></span>
       </h1>
 
       <p class="hero-subtitle" style="max-width: 760px;">
-        A manuscript intelligence system built for authors who architect entire worlds.
+        Writer's Companion remembers your entire manuscript, including the nuances and interactions between every storyline and character, and builds that memory into every request to your AI application.
+      </p>
+
+      <p class="hero-subtitle" style="max-width: 760px; font-size: 0.95rem; font-style: italic; margin-top: -24px;">
+        Works alongside the AI application you already use.
       </p>
     </div>
   </section>
 
   <!-- ============================================================
-       PAIN BLOCK
+       PAIN BLOCK (kept as-is)
   ============================================================ -->
   <section class="hero" style="padding-top: 0;">
     <div class="container">
@@ -66,14 +1013,14 @@
         <div>
           <ul class="cinematic-pain-list">
             <li><span class="pain-quote">"I paste the same character notes into every AI session just to get a useful response."</span></li>
+            <li><span class="pain-quote">"I'm revising, but my AI still thinks I'm drafting."</span></li>
             <li><span class="pain-quote">"My AI gives brilliant advice for chapter 12 that contradicts chapter 3."</span></li>
             <li><span class="pain-quote">"I spend more time managing my AI tool than actually writing."</span></li>
-            <li><span class="pain-quote">"I'm revising, but my AI still thinks I'm drafting."</span></li>
             <li><span class="pain-quote">"I asked for a parallel storyline and got something from another universe."</span></li>
           </ul>
         </div>
       </div>
-      <p class="pain-close" style="text-align: center; max-width: 700px; margin: 0 auto;">It's not you. It's your AI. That's exactly why we built Writer's Companion.</p>
+      <p class="pain-close" style="text-align: center; max-width: 700px; margin: 0 auto;">It's not you. It's your AI. That's exactly why we built Writer's Companion (WRC).</p>
     </div>
   </section>
 
@@ -85,29 +1032,28 @@
       <h2>The Three Pillars</h2>
 
       <p class="features-philosophy">
-        Three modes. Three forms of creative power.
-        <strong>Deepen what exists. Branch into what might. See it all at once.</strong>
+        <strong>Know how every piece of your story fits together.</strong>
       </p>
 
       <div class="cinematic-pillars">
 
         <div class="cinematic-pillar reveal">
-          <div class="cinematic-pillar-icon">🧠</div>
+          <div class="cinematic-pillar-icon">🧱</div>
           <div>
-            <h3>Story Memory</h3>
+            <h3>The Foundation</h3>
             <span class="cinematic-pillar-accent"></span>
-            <p>Your manuscript remembers itself — characters, arcs, and every chapter that matters.</p>
-            <p><button type="button" class="link-button" onclick="document.getElementById('modal-relevance').showModal()">Learn More →</button></p>
+            <p>Every chapter is analyzed and recorded as blueprint entries that capture its story, characters, and continuity, powering Manuscript Intelligence.</p>
+            <p><button type="button" class="link-button" onclick="document.getElementById('modal-foundation').showModal()">Learn More →</button></p>
           </div>
         </div>
 
         <div class="cinematic-pillar reveal">
-          <div class="cinematic-pillar-icon">✦</div>
+          <div class="cinematic-pillar-icon">🧠</div>
           <div>
-            <h3>Blue Sky</h3>
+            <h3>Manuscript Intelligence</h3>
             <span class="cinematic-pillar-accent"></span>
-            <p>Four creative intelligences built to expand, parallel, trace, and analyze your narrative.</p>
-            <p><button type="button" class="link-button" onclick="document.getElementById('modal-catalyst').showModal()">Learn More →</button></p>
+            <p>Reveals what no single chapter can show: the connections, contradictions, and narrative threads that emerge only when the manuscript is viewed as a whole.</p>
+            <p><button type="button" class="link-button" onclick="document.getElementById('modal-intelligence').showModal()">Learn More →</button></p>
           </div>
         </div>
 
@@ -116,8 +1062,8 @@
           <div>
             <h3>Author Control</h3>
             <span class="cinematic-pillar-accent"></span>
-            <p>A deterministic workflow that keeps your voice and intent at the center.</p>
-            <p><button type="button" class="link-button" onclick="document.getElementById('modal-foundation').showModal()">Learn More →</button></p>
+            <p>You choose what to examine, what to explore, and what to keep.</p>
+            <p><button type="button" class="link-button" onclick="document.getElementById('modal-author-control').showModal()">Learn More →</button></p>
           </div>
         </div>
 
@@ -128,81 +1074,24 @@
            A tiny script (js/modals.js) only handles closing on
            backdrop click. -->
 
-      <dialog id="modal-relevance" class="pillar-modal">
-        <form method="dialog">
-          <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">🧠</span>
-              <div class="pillar-modal-title">
-                <h3>Relevance Engine</h3>
-                <span>Story Memory</span>
-              </div>
-            </div>
-            <div class="pillar-modal-body">
-              <p>Your manuscript's history, organized for your AI partner.</p>
-              <p>The Relevance Engine builds a precise context bridge between your manuscript and your AI — assembling the exact backstory, in structured form, so your AI has what it needs to stay grounded in your story.</p>
-              <ul>
-                <li><strong>Drift Support:</strong> Supplies the character history your AI needs to stay aligned with established motivations.</li>
-                <li><strong>Subplot Awareness:</strong> Surfaces dormant threads so your AI can recognize when a storyline has gone quiet.</li>
-                <li><strong>Canon Alignment:</strong> Delivers your world rules and constraints so your AI can keep new scenes consistent with established canon.</li>
-              </ul>
-              <p>The Relevance Engine doesn't write, and it doesn't check your work. It remembers — giving your AI partner the structured memory it needs to keep your arcs alive and your themes coherent.</p>
-              <p style="text-align:center; font-weight:bold;">This is the memory behind the story.</p>
-            </div>
-            <div class="pillar-modal-close-row">
-              <span class="pillar-modal-hint">Press Escape to exit</span>
-              <button type="submit" class="pillar-modal-close-btn">Close</button>
-            </div>
-          </div>
-        </form>
-      </dialog>
-
-      <dialog id="modal-catalyst" class="pillar-modal">
-        <form method="dialog">
-          <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">✦</span>
-              <div class="pillar-modal-title">
-                <h3>Blue Sky</h3>
-                <span>Creative Exploration</span>
-              </div>
-            </div>
-            <div class="pillar-modal-body">
-              <p>This is where your story expands.</p>
-              <p>Blue Sky is four creative intelligences working in harmony — each with a different purpose, each designed to deepen your manuscript without hijacking your voice.</p>
-              <p>One expands your ideas. One sharpens your logic. One strengthens emotional resonance. One traces the consequences of every narrative choice.</p>
-              <p>Blue Sky doesn't overwrite you. It amplifies you.</p>
-              <p>It gives you new angles, new insights, new ways to see your own work — all while preserving the tone, cadence, and intent that make your writing yours.</p>
-              <p style="text-align:center; font-weight:bold;">This is guided exploration.</p>
-
-            </div>
-            <div class="pillar-modal-close-row">
-              <span class="pillar-modal-hint">Press Escape to exit</span>
-              <button type="submit" class="pillar-modal-close-btn">Close</button>
-            </div>
-          </div>
-        </form>
-      </dialog>
-
       <dialog id="modal-foundation" class="pillar-modal">
         <form method="dialog">
           <div class="pillar-modal-inner">
             <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">⚙️</span>
+              <span class="pillar-modal-icon">🧱</span>
               <div class="pillar-modal-title">
-                <h3>Foundation</h3>
-                <span>Author Control</span>
+                <h3>The Foundation</h3>
+                <span>Blueprint Entries</span>
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p>This is the pillar that makes WRC different from every other writing tool.</p>
-              <p>The Foundation is a deterministic workflow — a system that ensures you remain the architect of your manuscript at every step. No AI drift. No tonal contamination. No accidental rewrites of your voice.</p>
-              <p>Every interaction is structured. Every suggestion is contextual. Every transformation is reversible.</p>
-              <p>The Foundation keeps your intent at the center of the creative process. It ensures that the manuscript evolves according to your rules, your canon, your emotional arc, and your long-term vision.</p>
-              <p>You are not handing your story to an AI. You are directing it.</p>
-              <p>WRC is built like an instrument — precise, deterministic, and built for authors who architect entire worlds.</p>
-              <p>Every AI change is tracked with full redline comparison against what you originally sent — see exactly what changed, line by line, and accept or reject each one. Nothing is applied to your manuscript without your review.</p>
-              <p style="text-align:center; font-weight:bold;">You ARE the architect.</p>
+              <p>Every chapter carries its own set of blueprint entries: a wealth of insights for your review, and the foundation that powers Manuscript Intelligence.</p>
+              <p>Blueprint entries capture:</p>
+              <ul>
+                <li><strong>Storyline:</strong> the living threads of your manuscript. They vanish and resurface, collide and converge, and build toward the climax.</li>
+                <li><strong>Characters:</strong> who appears, what drives them, how they change, and the thread that links every chapter they appear in.</li>
+                <li><strong>Continuity:</strong> the facts, timelines, open questions, and other threads that hold the story together, along with what works and what could be stronger.</li>
+              </ul>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
@@ -211,90 +1100,114 @@
           </div>
         </form>
       </dialog>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       CREATIVE CATALYST
-  ============================================================ -->
-  <section id="creative-catalyst" class="features" style="background: var(--color-bg);">
-    <div class="container">
-      <h2>Blue Sky</h2>
+      <!-- Manuscript Intelligence: single panel, three headed sections
+           (Relevance Engine, Blueprint, Backstory). The four former
+           sub-panels (relevance, character, continuity, story) were removed
+           on 2026-11-04. -->
+      <dialog id="modal-intelligence" class="pillar-modal" style="max-width: 760px;">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header" style="justify-content: center;">
+              <div class="pillar-modal-title" style="text-align: center;">
+                <h3>Manuscript Intelligence</h3>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
 
-      <p class="features-philosophy">
-        Each Blue Sky mode plays a different editorial role.
-        <strong>You're the director — every feature customizable to follow your lead.</strong>
-      </p>
+              <h4 style="margin: 0 0 8px;">Relevance Engine</h4>
+              <p>Every chapter has its own storylines and characters. When you work on one, the Relevance Engine follows those threads through your blueprint entries, weighs how closely each earlier chapter connects, and selects the most relevant ones.</p>
 
-      <div class="cinematic-pillars">
-      
-        <div class="cinematic-pillar reveal">
-          <div class="cinematic-pillar-icon">🪶</div>
-          <div>
-            <h3>Expand</h3>
-            <span class="cinematic-pillar-accent"></span>
-            <p>Deepens what already exists.</p>
-            <p><button type="button" class="link-button" onclick="document.getElementById('modal-expand').showModal()">Learn More →</button></p>
+              <h4 style="margin: 28px 0 8px;">Blueprint</h4>
+              <p>Every chapter carries a comprehensive set of blueprint entries, each providing a full editorial assessment. Each entry names what's there, weighs how well it works, and suggests one way to strengthen it. Entries also look for what you might have missed: the detail that foreshadows, the thread left loose, the emotion beneath a character's reaction. They summarize, evaluate, describe, and suggest. They never rewrite your story. Ignore what you like, or use them as creative stepping stones. It's your decision.</p>
+              <p style="text-align:center; font-weight:bold; margin: 20px 0;">Together, they show an intricate tapestry of your chapter.</p>
+
+              <h4 style="margin: 28px 0 8px;">Backstory</h4>
+              <p>Blueprint entries of the selected chapters become the backstory your analysis draws on, so it reflects the nuances of your whole manuscript, not just the chapter in front of you.</p>
+
+              <p style="text-align:center; font-style:italic; margin-top: 28px;">A wealth of insights for your review.</p>
+
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
           </div>
-        </div>
+        </form>
+      </dialog>
 
-        <div class="cinematic-pillar reveal">
-          <div class="cinematic-pillar-icon">🌀</div>
-          <div>
-            <h3>Parallel</h3>
-            <span class="cinematic-pillar-accent"></span>
-            <p>Branches without breaking your canon.</p>
-            <p><button type="button" class="link-button" onclick="document.getElementById('modal-parallel').showModal()">Learn More →</button></p>
+      <dialog id="modal-author-control" class="pillar-modal" style="max-width: 760px;">
+        <form method="dialog">
+          <div class="pillar-modal-inner">
+            <div class="pillar-modal-header" style="justify-content: center;">
+              <div class="pillar-modal-title" style="text-align: center;">
+                <h3>Author Control</h3>
+              </div>
+            </div>
+            <div class="pillar-modal-body">
+              <p style="text-align:center; font-weight:bold;">You are not handing your story to an AI. You are directing it.</p>
+              <p>Author Control ensures that you remain the architect of every decision. No AI drift. No tonal contamination. No unwanted rewrites of your voice.</p>
+              <div class="cinematic-pillars" style="gap: 36px; margin-top: 28px;">
+          <div class="cinematic-pillar">
+            <div class="cinematic-pillar-icon">📊</div>
+            <div>
+              <h3>Analysis</h3>
+              <span class="cinematic-pillar-accent"></span>
+              <p>Put a microscope on any character or storyline, and focus it on what matters most to you. Choose from a menu of focuses, or write your own.</p>
+              <p><button type="button" class="link-button" onclick="document.getElementById('modal-ac-analysis').showModal()">Learn More →</button></p>
+            </div>
           </div>
-        </div>
-
-        <div class="cinematic-pillar reveal">
-          <div class="cinematic-pillar-icon">🧭</div>
-          <div>
-            <h3>Trace</h3>
-            <span class="cinematic-pillar-accent"></span>
-            <p>Maps weighted narrative links across your manuscript.</p>
-            <p><button type="button" class="link-button" onclick="document.getElementById('modal-trace').showModal()">Learn More →</button></p>
+          <div class="cinematic-pillar">
+            <div class="cinematic-pillar-icon">🧭</div>
+            <div>
+              <h3>Trace</h3>
+              <span class="cinematic-pillar-accent"></span>
+              <p>Watch characters, storylines, and themes evolve across your manuscript chapter by chapter.</p>
+              <p><button type="button" class="link-button" onclick="document.getElementById('modal-ac-trace').showModal()">Learn More →</button></p>
+            </div>
           </div>
-        </div>
-
-        <div class="cinematic-pillar reveal">
-          <div class="cinematic-pillar-icon">📘</div>
-          <div>
-            <h3>Analysis</h3>
-            <span class="cinematic-pillar-accent"></span>
-            <p>Evaluates your manuscript as a connected whole.</p>
-            <p><button type="button" class="link-button" onclick="document.getElementById('modal-analysis').showModal()">Learn More →</button></p>
+          <div class="cinematic-pillar">
+            <div class="cinematic-pillar-icon">🔍</div>
+            <div>
+              <h3>Redline Review</h3>
+              <span class="cinematic-pillar-accent"></span>
+              <p>See exactly what changed, and accept or reject each change.</p>
+              <p><button type="button" class="link-button" onclick="document.getElementById('modal-ac-redline').showModal()">Learn More →</button></p>
+            </div>
           </div>
-        </div>
-
-      </div>
-      
-      <p class="features-philosophy" style="text-align: left; margin-bottom: 4px;"><strong style="display: inline;">Unparalleled flexibility.</strong> Each Blue Sky entry offers unique and powerful selection capabilities.</p>
-      <p class="features-philosophy" style="text-align: left;">For example, <strong style="display: inline;">Analysis:</strong> focus on any handful of characters or storylines that matter most — a protagonist and antagonist, a love triangle, a subplot and the characters tangled in it — and go deep on exactly how they intersect across every chapter.</p>
-      
-      <!-- Blue Sky mode modals — same native <dialog> pattern
-           as the Three Pillars modals. -->
-
-      <dialog id="modal-expand" class="pillar-modal">
+          <div class="cinematic-pillar">
+            <div class="cinematic-pillar-icon">💡</div>
+            <div>
+              <h3>Expand/Parallel</h3>
+              <span class="cinematic-pillar-accent"></span>
+              <p>Expand a chapter with new material, or imagine a parallel storyline that runs alongside it. You decide what, if anything, to keep.</p>
+              <p><button type="button" class="link-button" onclick="document.getElementById('modal-ac-expand').showModal()">Learn More →</button></p>
+            </div>
+          </div>
+              </div>
+            </div>
+            <div class="pillar-modal-close-row">
+              <span class="pillar-modal-hint">Press Escape to exit</span>
+              <button type="submit" class="pillar-modal-close-btn">Close</button>
+            </div>
+          </div>
+        </form>
+      </dialog>
+      <!-- Author Control detail panels (opened from the panel above) -->
+      <dialog id="modal-ac-expand" class="pillar-modal">
         <form method="dialog">
           <div class="pillar-modal-inner">
             <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">🪶</span>
+              <span class="pillar-modal-icon">💡</span>
               <div class="pillar-modal-title">
-                <h3>Blue Sky</h3>
-                <span>Expand</span>
+                <h3>Expand/Parallel</h3>
+                <span>New material for your chapter</span>
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p>Enrich your existing prose using current-chapter context.</p>
-              <p>Expand commands the Relevance Engine to zoom in on your active workspace. It takes a scene, a beat, or an emotional moment you have already written and uses localized scoring to grow it with precision.</p>
-              <ul style="color: var(--color-text-muted); line-height: 1.8; padding-left: 20px; margin-bottom: 16px;">
-                <li><strong>Localized Context</strong> — focuses the engine entirely on the immediate text, preventing it from pulling in distracting subplots from elsewhere in the manuscript.</li>
-                <li><strong>Sensory & Emotional Depth</strong> — amplifies environmental textures, unspoken character motivations, and thematic subtext.</li>
-                <li><strong>Zero Architectural Drift</strong> — it does not invent new plotlines or add conversational noise; it illuminates the richness already living in your shot.</li>
-              </ul>
-              <p>Expand doesn't drift. It doesn't add noise. It amplifies the truth of the moment.</p>
+              <p>Working on a chapter, choose <strong>Expand</strong> to weave new material through your existing characters and storylines, or <strong>Parallel</strong> to imagine an entirely new storyline, with its own cast, running alongside yours until the two meet.</p>
+              <p>Rank what matters most to you, from a menu of focuses or in your own words. WRC supplies the relevant backstory with the request, so what comes back belongs to your world.</p>
+              <p>Everything happens in a sandbox, apart from your manuscript. Don't like any alternatives, or want more choices? Run again with different focuses. Pick and choose whatever you want.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
@@ -303,26 +1216,21 @@
           </div>
         </form>
       </dialog>
-
-      <dialog id="modal-parallel" class="pillar-modal">
+      <dialog id="modal-ac-analysis" class="pillar-modal">
         <form method="dialog">
           <div class="pillar-modal-inner">
             <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">🌀</span>
+              <span class="pillar-modal-icon">📊</span>
               <div class="pillar-modal-title">
-                <h3>Blue Sky</h3>
-                <span>Parallel</span>
+                <h3>Analysis</h3>
+                <span>Focused on what matters to you</span>
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p>Branch your narrative into alternate realities using isolated context.</p>
-              <p>Parallel commands the Relevance Engine to run its scoring against a sandboxed branch of your story — letting you test structural "what if" questions without risking your main manuscript.</p>
-              <ul style="color: var(--color-text-muted); line-height: 1.8; padding-left: 20px; margin-bottom: 16px;">
-                <li><strong>Isolated Divergence</strong> — test alternate character decisions, structural variations, or dialogue choices completely apart from your main file.</li>
-                <li><strong>Canon Preservation</strong> — the engine evaluates your changes against your background lore, so an experiment doesn't accidentally break world rules.</li>
-                <li><strong>Total Reversibility</strong> — every branch is sandboxed. Migrate the best result into a real chapter when you're ready, or generate as many alternate attempts as you like — nothing is committed until you choose it.</li>
-              </ul>
-              <p>Parallel is not chaos. It is controlled divergence.</p>
+              <p>Choose the storylines and characters you care about: a protagonist and antagonist, a love triangle, a subplot and the characters tangled in it. Then tell WRC what matters most. Pick from a menu of focuses like Hopeful Resolution, Dark Psychological, or Cliffhangers, or write your own.</p>
+              <p>WRC searches every chapter's blueprint entries and gives your AI relevant backstory for the ones that matter most to what you've chosen. What comes back is an analysis of how a storyline progresses, or how your characters' conflicts intertwine, across the whole manuscript.</p>
+              <p>Want to see your manuscript through an entirely different lens? Rerun it with a different combination of focuses, characters, and/or storylines. Replace or delete any analysis, or save and use whatever you want, independently.</p>
+              <p style="text-align:center; font-weight:bold;">Insights that don't judge. They reveal.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
@@ -331,26 +1239,19 @@
           </div>
         </form>
       </dialog>
-
-      <dialog id="modal-trace" class="pillar-modal">
+      <dialog id="modal-ac-trace" class="pillar-modal">
         <form method="dialog">
           <div class="pillar-modal-inner">
             <div class="pillar-modal-header">
               <span class="pillar-modal-icon">🧭</span>
               <div class="pillar-modal-title">
                 <h3>Trace</h3>
-                <span>Cross-Reference Mapping</span>
+                <span>Blueprint Mapping</span>
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p>See every thread, from the first page to the last.</p>
-              <ul style="color: var(--color-text-muted); line-height: 1.8; padding-left: 20px; margin-bottom: 16px;">
-                <li><strong>Instant Mapping</strong> — right-click any blueprint entry — a character trait, a storyline, a continuity flag — and see every chapter where it appears, across your entire book.</li>
-                <li><strong>Relevance Scoring</strong> — your current chapter sets the 100% baseline; every other chapter is scored by how many of the same storylines and characters it shares, giving you a clear percentage, not just a yes-or-no match.</li>
-                <li><strong>Adjustable Threshold</strong> — filter down to only the strongest connections, or drop the threshold to see that element's complete history from beginning to end.</li>
-                <li><strong>Direct Access</strong> — jump straight into any chapter it surfaces, or export the full list for offline review.</li>
-              </ul>
-              <p>This doesn't tell you what your story means. It shows you where a single thread actually lives — and gives you the real information to judge that for yourself.</p>
+              <p>Right-click any blueprint entry in the chapter you're working in. WRC shows you that same analysis from every chapter, in chapter order, each with a percentage showing how closely it relates to yours — you can watch it develop across your manuscript. Chapters with no connection stay out of the way.</p>
+              <p>Use the slider to narrow or widen what you see, or type an exact percentage.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
@@ -359,26 +1260,18 @@
           </div>
         </form>
       </dialog>
-
-      <dialog id="modal-analysis" class="pillar-modal">
+      <dialog id="modal-ac-redline" class="pillar-modal">
         <form method="dialog">
           <div class="pillar-modal-inner">
             <div class="pillar-modal-header">
-              <span class="pillar-modal-icon">📘</span>
+              <span class="pillar-modal-icon">🔍</span>
               <div class="pillar-modal-title">
-                <h3>Blue Sky</h3>
-                <span>Analysis</span>
+                <h3>Redline Review</h3>
+                <span>Nothing changes without your say</span>
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p>Evaluate your manuscript as a single, fully scored ecosystem.</p>
-              <p>Analysis is a deliberate, whole-manuscript invocation of the Relevance Engine. Instead of focusing on a single scene, it scores every chapter and entity simultaneously to audit the structural health of your entire book.</p>
-              <ul style="color: var(--color-text-muted); line-height: 1.8; padding-left: 20px; margin-bottom: 16px;">
-                <li><strong>Macro Diagnostics</strong> — identifies structural weak points, pacing bottlenecks, and narrative gaps.</li>
-                <li><strong>Cohesion Auditing</strong> — uses your global story metrics to verify that your world-building rules and character voices remain consistent.</li>
-                <li><strong>Objective Insights</strong> — acts as a tireless sounding board, pointing out precisely where clarity fades or themes converge.</li>
-              </ul>
-              <p>Analysis doesn't judge. It reveals.</p>
+              <p>Every AI change is tracked with a full redline comparison against what you originally sent — see exactly what changed, line by line, and accept or reject each. Nothing is applied to your manuscript without your review.</p>
             </div>
             <div class="pillar-modal-close-row">
               <span class="pillar-modal-hint">Press Escape to exit</span>
@@ -391,115 +1284,20 @@
   </section>
 
   <!-- ============================================================
-       BLUEPRINT ARCHITECTURE
-  ============================================================ -->
-  <section id="foundation" class="about">
-    <div class="container">
-      <h2>Blueprint Architecture</h2>
-
-      <p class="features-philosophy">
-        Every chapter carries its own factual ledger.
-        <strong>Nothing is inferred. Nothing is assumed.</strong>
-      </p>
-
-      <div class="about-content reveal" style="max-width: 900px; text-align: left; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
-
-        <div style="border-left: 4px solid var(--color-burgundy); background: var(--color-highlight); border-radius: 0 var(--radius) var(--radius) 0; padding: 28px 32px; cursor: pointer;" onclick="document.getElementById('modal-blueprint-format').showModal()">
-          <h3 style="font-family: var(--font-display); margin-bottom: 16px;">Structured Analysis Format</h3>
-          <p style="color: var(--color-text-muted); line-height: 1.7;">
-            Every chapter carries its own blueprint — a structured, explicit record of what the story
-            has established, what it's building toward, and what still needs to be resolved.
-          </p>
-        </div>
-
-        <div style="border-left: 4px solid var(--color-burgundy); padding: 28px 32px; cursor: pointer;" onclick="document.getElementById('modal-blueprint-living').showModal()">
-          <p style="font-family: var(--font-display); color: var(--color-text-muted); line-height: 1.8; font-size: 1.1rem;">
-            The blueprint is your chapter's map — not a summary written after the fact, but a living
-            record your AI partner consults before it ever writes a word. It informs what the AI writes next — it never rewrites what you've already written.
-          </p>
-        </div>
-
-      </div>
-
-      <p class="features-philosophy" style="text-align: left;">
-        The blueprint is what every Blue Sky mode reads before it touches your story — the record that makes precise, targeted analysis possible in the first place.
-      </p>
-
-      <!-- Blueprint Architecture modals — same native <dialog> pattern
-           as the Three Pillars and Blue Sky modals. -->
-
-      <dialog id="modal-blueprint-format" class="pillar-modal">
-        <form method="dialog">
-          <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <div class="pillar-modal-title">
-                <h3>Structured Analysis Format</h3>
-              </div>
-            </div>
-            <div class="pillar-modal-body">
-              <p>The blueprint is the chapter's analytical backbone — a structured, explicit record of what the story has established, what it is building toward, and what remains unresolved. It is not a summary. It is not an interpretation. It is a factual ledger of narrative commitments.</p>
-              <p>Every blueprint entry is written in a controlled format so the AI can evaluate continuity, character logic, emotional trajectory, and unresolved obligations without guessing. Nothing is inferred. Nothing is assumed. Every detail must be stated directly.</p>
-              <p>A chapter's blueprint contains:</p>
-              <ul style="color: var(--color-text-muted); line-height: 1.8; padding-left: 20px; margin-bottom: 16px;">
-                <li><strong>Established Facts</strong> — concrete story elements introduced in the chapter</li>
-                <li><strong>Active Trajectories</strong> — arcs, tensions, or setups that must continue</li>
-                <li><strong>Unresolved Obligations</strong> — promises the chapter makes that future chapters must honor</li>
-                <li><strong>Constraints</strong> — rules, limitations, or conditions the story must not violate</li>
-              </ul>
-              <p>The blueprint is updated only through explicit additions or revisions. No entry is ever overwritten. No entry is ever silently replaced.</p>
-            </div>
-            <div class="pillar-modal-close-row">
-              <span class="pillar-modal-hint">Press Escape to exit</span>
-              <button type="submit" class="pillar-modal-close-btn">Close</button>
-            </div>
-          </div>
-        </form>
-      </dialog>
-
-      <dialog id="modal-blueprint-living" class="pillar-modal">
-        <form method="dialog">
-          <div class="pillar-modal-inner">
-            <div class="pillar-modal-header">
-              <div class="pillar-modal-title">
-                <h3>Blueprint as Living Record</h3>
-              </div>
-            </div>
-            <div class="pillar-modal-body">
-              <p>The blueprint is not written after the chapter — it is the record the AI consults before it writes a single word.</p>
-              <p>Every addition to the blueprint is stored as its own entry — informing what the AI writes next, never quietly altering what came before.</p>
-              <p>This allows the AI to:</p>
-              <ul style="color: var(--color-text-muted); line-height: 1.8; padding-left: 20px; margin-bottom: 16px;">
-                <li>Maintain continuity across chapters</li>
-                <li>Track character development without drift</li>
-                <li>Honor unresolved obligations</li>
-                <li>Prevent contradictions</li>
-                <li>Understand the story's internal logic before generating text</li>
-              </ul>
-              <p>Your original chapter text is always preserved. Blueprint entries never mutate the manuscript — they only inform it.</p>
-            </div>
-            <div class="pillar-modal-close-row">
-              <span class="pillar-modal-hint">Press Escape to exit</span>
-              <button type="submit" class="pillar-modal-close-btn">Close</button>
-            </div>
-          </div>
-        </form>
-      </dialog>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       ARCHITECTURE DEEP DIVE
+       WHY WRC WORKS
   ============================================================ -->
   <section id="relevance-engine" class="contact">
     <div class="container">
       <h2>Why WRC Works</h2>
+      <p>WRC doesn't ask your AI to remember your manuscript. It does the remembering, and hands your AI exactly what it needs.</p>
       <p>At the center of it all is the WRC Relevance Engine™, the system that:</p>
       <ul class="relevance-list">
-        <li>reads every chapter you've written</li>
+        <li>maintains comprehensive and insightful blueprint entries for every chapter you've written</li>
         <li>determines which chapters genuinely matter to the one you're working on now</li>
-        <li>recognizes recurring characters and storylines the way an attentive reader would — not by keyword matching</li>
+        <li>recognizes recurring characters and storylines wherever they appear in your manuscript</li>
         <li>grounds every AI response in the correct parts of your story, automatically</li>
       </ul>
+      <p style="text-align:center; font-weight:bold; margin-top: 24px;">Every request starts with the right backstory.</p>
     </div>
   </section>
 
@@ -566,7 +1364,7 @@
               <span class="pillar-modal-icon">🖋️</span>
               <div class="pillar-modal-title">
                 <h3>Who WRC Is For</h3>
-                <span>Serious About Your Craft</span>
+                <span>Serious about your craft</span>
               </div>
             </div>
             <div class="pillar-modal-body">
@@ -596,7 +1394,7 @@
             <div class="pillar-modal-body">
               <p>Writer's Companion is entirely self-contained — your manuscript lives in a standard SQL database, not on someone else's servers, not inside a cloud AI service. Your data belongs to you. WRC makes no claim to it.</p>
               <ul>
-                <li>Every request WRC sends to an AI application is independent — a fresh conversation, every time, with no memory carried between interactions. WRC does the remembering for it: it hands your AI the specific backstory that actually matters for that moment — nothing more, nothing less. No AI application trains on your manuscript, and none retains anything after the request completes. WRC is the memory the AI itself is incapable of keeping.</li>
+                <li>Begin a fresh AI conversation for every request. WRC supplies exactly the backstory each one needs — the AI interaction performs best without leftovers from earlier exchanges.</li>
                 <li>Bring your work with you. Already deep into a manuscript? Import an existing work-in-progress — no special formatting or chapter headers required — and pick up right where you left off.</li>
                 <li>Take it with you when you leave. Export your entire project back out to a Word document, ready for the next stage of your process.</li>
               </ul>
@@ -616,11 +1414,11 @@
               <span class="pillar-modal-icon">📅</span>
               <div class="pillar-modal-title">
                 <h3>Your Subscription & Trial</h3>
-                <span>Two Weeks, Every Feature, No Cost</span>
+                <span>Two weeks, every feature, no cost</span>
               </div>
             </div>
             <div class="pillar-modal-body">
-              <p>Your free trial includes full access to Story Memory, Blue Sky, and Author Control for two weeks — no cost to explore.</p>
+              <p>Your free trial includes full access to every feature for two weeks — no cost to explore.</p>
               <p>After the trial, a tiered subscription applies — not every feature is available below our Professional tier (pricing and tier structure still being finalized).</p>
               <p>If your subscription lapses, nothing is lost. You can still open WRC, view everything you've already written, and export your full manuscript at any time — the AI tools simply pause until your subscription resumes.</p>
             </div>
@@ -664,31 +1462,31 @@
                   <div style="display:flex; flex-direction:column; gap:12px;">
                     <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
                       <input type="checkbox" name="feat_story_memory" value="yes" autocomplete="off" style="margin-top:4px;">
-                      <span><strong>Story Memory</strong> — Your manuscript remembers itself. The Relevance Engine keeps your AI grounded in established characters, world rules, and storylines — no more re-explaining your book every session.</span>
+                      <span><strong>Manuscript Intelligence</strong> — The Relevance Engine finds the chapters that matter to the one you're working on and delivers their backstory, so there's no more re-explaining your book every session.</span>
                     </label>
                     <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
                       <input type="checkbox" name="feat_expand" value="yes" autocomplete="off" style="margin-top:4px;">
-                      <span><strong>Blue Sky: Expand</strong> — Deepens a scene you've already written — sensory detail, emotional texture, unspoken motivation — without inventing new plot or drifting off course.</span>
+                      <span><strong>Expand</strong> — Weave new material through your existing characters and storylines, in a sandbox apart from your manuscript. You choose what to keep.</span>
                     </label>
                     <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
                       <input type="checkbox" name="feat_parallel" value="yes" autocomplete="off" style="margin-top:4px;">
-                      <span><strong>Blue Sky: Parallel</strong> — Branch into an alternate version of a scene in a sandbox, completely separate from your real manuscript. Nothing commits until you choose it.</span>
+                      <span><strong>Parallel</strong> — Imagine an entirely new storyline, with its own cast, running alongside yours until the two meet. It all happens in a sandbox, apart from your manuscript.</span>
                     </label>
                     <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
                       <input type="checkbox" name="feat_trace" value="yes" autocomplete="off" style="margin-top:4px;">
-                      <span><strong>Blue Sky: Trace</strong> — Right-click any character, storyline, or continuity flag and instantly see every chapter it touches — with a relevance percentage, not just a yes-or-no match.</span>
+                      <span><strong>Trace</strong> — Right-click any blueprint entry and watch it develop chapter by chapter, each with a percentage showing how closely it relates to yours.</span>
                     </label>
                     <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
                       <input type="checkbox" name="feat_analysis" value="yes" autocomplete="off" style="margin-top:4px;">
-                      <span><strong>Blue Sky: Analysis</strong> — A full structural and thematic review of your manuscript, or a targeted deep-dive into how characters and/or storylines intersect across every chapter.</span>
+                      <span><strong>Analysis</strong> — Choose the storylines and characters you care about and what matters most, then see how they progress and intertwine across your whole manuscript.</span>
                     </label>
                     <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
                       <input type="checkbox" name="feat_blueprint" value="yes" autocomplete="off" style="margin-top:4px;">
-                      <span><strong>Blueprint Architecture</strong> — A factual, structured ledger for every chapter — what's been established, what's still open — that your AI reads before it ever writes a word.</span>
+                      <span><strong>Blueprint Entries</strong> — A wealth of insights for every chapter: what's there, what works, and what could be stronger.</span>
                     </label>
                     <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
                       <input type="checkbox" name="feat_author_control" value="yes" autocomplete="off" style="margin-top:4px;">
-                      <span><strong>Author Control &amp; Redline</strong> — Every AI change is tracked line-by-line against what you sent. You see exactly what changed and accept or reject each one individually.</span>
+                      <span><strong>Redline Review</strong> — Every AI change is tracked line by line against what you sent. See exactly what changed, and accept or reject each one.</span>
                     </label>
                     <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
                       <input type="checkbox" name="feat_your_data" value="yes" autocomplete="off" style="margin-top:4px;">
@@ -729,7 +1527,7 @@
   </section>
 
   <!-- ============================================================
-       CLOSING LINE
+       CLOSING LINE (kept as-is)
   ============================================================ -->
   <section class="about cinematic-closing">
     <div class="container">
@@ -756,6 +1554,29 @@
   <script src="js/main.js"></script>
   <script src="js/modals.js"></script>
   <script src="js/cinematic.js"></script>
+  <script>
+    // Every Learn More pop-up opens showing its very top.
+    // showModal() normally focuses the first button, which is often Close at the bottom, and that
+    // scrolls the pop-up down. So focus the pop-up itself without scrolling, then reset to the top.
+    (function () {
+      var original = HTMLDialogElement.prototype.showModal;
+      HTMLDialogElement.prototype.showModal = function () {
+        var dlg = this;
+        original.call(dlg);
+        dlg.setAttribute('tabindex', '-1');
+        try { dlg.focus({ preventScroll: true }); } catch (e) {}
+        function toTop() {
+          dlg.scrollTop = 0;
+          var inner = dlg.querySelectorAll('.pillar-modal-inner, .pillar-modal-body');
+          for (var i = 0; i < inner.length; i++) inner[i].scrollTop = 0;
+        }
+        toTop();
+        requestAnimationFrame(toTop);
+        setTimeout(toTop, 60);
+        setTimeout(toTop, 250);
+      };
+    })();
+  </script>
   <script>
     // "Keep Me Posted": send in the background, thank the visitor, close the pop-up,
     // and leave them right where they were on this page (no trip to Formspree's site).
@@ -825,3 +1646,4 @@
   </script>
 </body>
 </html>
+<!-- #### EOF #### -->
