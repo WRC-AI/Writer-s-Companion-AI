@@ -947,6 +947,8 @@ body:has(dialog[open]) {
     .pillar-modal-title h3 { color: var(--color-burgundy); }
     .pillar-modal-body h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--color-text); }
     .pillar-modal-body strong { color: var(--color-text); }
+    .pillar-modal { max-height: 85vh; max-height: 85dvh; overscroll-behavior: contain; }
+    .pillar-modal:focus { outline: none; }
   </style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
 </head>
@@ -1550,14 +1552,16 @@ body:has(dialog[open]) {
   <script src="js/modals.js"></script>
   <script src="js/cinematic.js"></script>
   <script>
-    // Every Learn More pop-up opens scrolled to the very top. showModal() focuses the
-    // first focusable control (often the Close button at the bottom), which can scroll
-    // the pop-up down, so reset the scroll position after opening.
+    // Every Learn More pop-up opens showing its very top.
+    // showModal() normally focuses the first button, which is often Close at the bottom, and that
+    // scrolls the pop-up down. So focus the pop-up itself without scrolling, then reset to the top.
     (function () {
       var original = HTMLDialogElement.prototype.showModal;
       HTMLDialogElement.prototype.showModal = function () {
-        original.call(this);
         var dlg = this;
+        original.call(dlg);
+        dlg.setAttribute('tabindex', '-1');
+        try { dlg.focus({ preventScroll: true }); } catch (e) {}
         function toTop() {
           dlg.scrollTop = 0;
           var inner = dlg.querySelectorAll('.pillar-modal-inner, .pillar-modal-body');
@@ -1566,6 +1570,7 @@ body:has(dialog[open]) {
         toTop();
         requestAnimationFrame(toTop);
         setTimeout(toTop, 60);
+        setTimeout(toTop, 250);
       };
     })();
   </script>
