@@ -1,1 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply for Beta Testing — Writer's Companion</title>
+  <meta name="description" content="Apply to beta test Writer's Companion (WRC).">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
+  <style>
+    .field-wrap { scroll-margin-top: 120px; }
+    .field-error { color: #b00020; font-size: 0.95rem; font-weight: 600; margin: 6px 0 0; }
+    .field-error:empty { display: none; }
+    .has-error input[type="text"],
+    .has-error input[type="email"],
+    .has-error input[type="number"] { border: 2px solid #b00020 !important; background: #fff5f5; }
+    .has-error .radio-group { outline: 2px solid #b00020; outline-offset: 6px; border-radius: 6px; }
+    .req { color: #b00020; }
+    .form-note { color: var(--color-text-muted); margin-bottom: 20px; }
+  </style>
+</head>
 
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="Writer's Companion home">
+        <span class="logo-icon">✒️</span>
+        <span class="logo-text">Writer's Companion</span>
+      </a>
+      <a href="index.html" style="font-size: 0.95rem; color: var(--color-text-muted);">← Back to Home</a>
+    </div>
+  </header>
+
+  <section id="page-hero" class="hero" style="padding: 60px 0 40px;">
+    <div class="container">
+      <h1 style="font-size: clamp(1.6rem, 4vw, 2.4rem);">Apply for Beta Testing</h1>
+      <p class="hero-subtitle" style="max-width: 640px;">
+        A few questions to help us put WRC in front of the right early testers. Takes about five minutes.
+      </p>
+    </div>
+  </section>
+
+  <section class="features" style="padding: 20px 0 80px;">
+    <div class="container" style="max-width: 680px;">
+
+      <!-- ============================================================
+           THANK-YOU PANEL (hidden until the application is sent)
+      ============================================================ -->
+      <div id="thanks" tabindex="-1" style="display:none; text-align:center; padding: 60px 0 20px; outline:none;">
+        <h2 style="font-family: var(--font-display); color: var(--color-burgundy); margin-bottom: 14px;">Thank you<span id="thanks-name"></span>!</h2>
+        <p style="max-width: 520px; margin: 0 auto 12px;">Your application has been received. We'll be in touch by email.</p>
+        <p style="max-width: 520px; margin: 0 auto 24px; color: var(--color-text-muted);">You'll be returned to the Writer's Companion home page in <span id="countdown">10</span> seconds.</p>
+        <a href="index.html" class="btn btn-primary">Return to Writer's Companion now</a>
+      </div>
+
+      <!-- ============================================================
+           PART 1: NAME / SKOKIE / EMAIL
+           These three live in their own small form on purpose. Password managers fill
+           one form at a time, so this keeps them away from every other question.
+           Both parts are sent together as ONE application when Submit is pressed.
+      ============================================================ -->
+      <form id="who-form" action="#" method="POST">
+
+        <p class="form-note">Only your name, Skokie answer, and email (marked <span class="req">*</span>) are required. Skip any other question that doesn't apply to you or that you have no comment on.</p>
+
+        <div class="field-wrap" data-field="applicant_name" style="margin-bottom: 12px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Your name <span class="req">*</span></label>
+          <input type="text" name="applicant_name" required autocomplete="name" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <p class="field-error" role="alert"></p>
+        </div>
+
+        <div class="field-wrap" data-field="skokie_member" style="margin-bottom: 16px;">
+          <p style="font-weight:600; margin-bottom:8px;">Are you an OCWW Member or former member of the Skokie Writers Group? <span class="req">*</span></p>
+          <div class="radio-group" role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="skokie_member" value="yes" required autocomplete="off"> <span>Yes</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="skokie_member" value="no" autocomplete="off"> <span>No</span>
+            </label>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </div>
+
+        <div class="field-wrap" data-field="email" style="margin-bottom: 12px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Your email address <span class="req">*</span></label>
+          <input type="email" name="email" required autocomplete="email" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <p class="field-error" role="alert"></p>
+        </div>
+
+      </form>
+
+      <!-- ============================================================
+           PART 2: EVERYTHING ELSE (all optional)
+      ============================================================ -->
+      <form id="beta-form" action="https://formspree.io/f/xvkoazvp" method="POST">
+
+        <input type="hidden" name="_subject" value="WRC Beta Application">
+
+        <!-- ============================================================
+             TECHNICAL READINESS
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Technical Readiness</h3>
+
+        <div class="field-wrap" data-field="multiwindow_comfort" style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">On a scale of 1–10, how comfortable are you working across multiple windows at once — copying and pasting between them?</label>
+          <input type="number" name="multiwindow_comfort" min="1" max="10" autocomplete="nope" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <p class="field-error" role="alert"></p>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">What is your monitor resolution and setup — single screen, or dual monitor?</label>
+          <input type="text" name="monitor_setup" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How often do you typically work with two windows open side by side, actively switching between them?</label>
+          <input type="text" name="multiwindow_frequency" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <!-- ============================================================
+             WRITING PRACTICE
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Writing Practice</h3>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">What are you currently working on (genre/format)?</label>
+          <input type="text" name="project_genre" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How much time do you typically devote to writing per week?</label>
+          <input type="text" name="writing_time_weekly" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Approximate word count or chapter count of your current manuscript?</label>
+          <input type="text" name="manuscript_size" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Do you have a complete or near-complete manuscript (50%+), or are you early in drafting?</label>
+          <input type="text" name="manuscript_completeness" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Have you self-published or traditionally published any previous work?</label>
+          <input type="text" name="publishing_history" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Are you currently using any other tools to assist your writing?</label>
+          <input type="text" name="writing_tools" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Experience using AI as a writing assistant? If yes, which tools?</label>
+          <input type="text" name="ai_experience" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How would you describe your process — a careful outliner/plotter, or casting wide for ideas to see what you catch, or a combination?</label>
+          <textarea name="writing_process" rows="3" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+        </div>
+
+        <!-- ============================================================
+             AVAILABILITY & WORKING STYLE
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Availability &amp; Working Style</h3>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How much time per week could you realistically be able to spend testing WRC?</label>
+          <input type="text" name="testing_time_weekly" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <p style="font-weight:600; margin-bottom:8px;">Early rollout (rougher, first outside exposure) or later rollout (more polished, benefits from earlier feedback)? This is a preference we'll factor in, not a guarantee.</p>
+          <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="rollout_preference" value="early" autocomplete="off"> <span>Early rollout</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="rollout_preference" value="later" autocomplete="off"> <span>Later rollout</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="rollout_preference" value="either" autocomplete="off"> <span>Either is fine</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <p style="font-weight:600; margin-bottom:8px;">Are you comfortable working through a 1–3 hour guided tutorial before diving in on your own? You'll be using your own manuscript throughout — real progress on your own work, not throwaway sample data.</p>
+          <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="tutorial_comfort" value="yes" autocomplete="off"> <span>Yes</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="tutorial_comfort" value="no" autocomplete="off"> <span>No</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <p style="font-weight:600; margin-bottom:8px;">Willing to fill out structured feedback forms/surveys during the beta, not just informal comments?</p>
+          <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="feedback_willingness" value="yes" autocomplete="off"> <span>Yes</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="feedback_willingness" value="no" autocomplete="off"> <span>No</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <p style="font-weight:600; margin-bottom:8px;">How do you typically react when software doesn't work as expected?</p>
+          <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="bug_reaction" value="frustrated" autocomplete="off"> <span>I get frustrated and close the app</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="bug_reaction" value="troubleshoot" autocomplete="off"> <span>I try to troubleshoot it myself</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="bug_reaction" value="document" autocomplete="off"> <span>I document the steps to report it to the developer</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field-wrap" data-field="patience_scale" style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Rate your patience for rough edges/bugs in early-stage software (1–10)</label>
+          <input type="number" name="patience_scale" min="1" max="10" autocomplete="nope" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+          <p class="field-error" role="alert"></p>
+        </div>
+
+        <!-- ============================================================
+             WHAT EXCITES YOU
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">What Excites You</h3>
+
+        <div style="margin-bottom: 24px;">
+          <p style="font-weight:600; margin-bottom:12px;">Which of these interests you the most? Pick 1–3.</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_story_memory" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Story Memory</strong> — Your manuscript remembers itself. The Relevance Engine keeps your AI grounded in established characters, world rules, and storylines — no more re-explaining your book every session.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_expand" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blue Sky: Expand</strong> — Deepens a scene you've already written — sensory detail, emotional texture, unspoken motivation — without inventing new plot or drifting off course.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_parallel" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blue Sky: Parallel</strong> — Branch into an alternate version of a scene in a sandbox, completely separate from your real manuscript. Nothing commits until you choose it.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_trace" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blue Sky: Trace</strong> — Right-click any character, storyline, or continuity flag and instantly see every chapter it touches — with a relevance percentage, not just a yes-or-no match.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_analysis" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blue Sky: Analysis</strong> — A full structural and thematic review of your manuscript, or a targeted deep-dive into how up to three characters or storylines intersect across every chapter.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_blueprint" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Blueprint Architecture</strong> — A factual, structured ledger for every chapter — what's been established, what's still open — that your AI reads before it ever writes a word.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_author_control" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Author Control &amp; Redline</strong> — Every AI change is tracked line-by-line against what you sent. You see exactly what changed and accept or reject each one individually.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
+              <input type="checkbox" name="feat_your_data" value="yes" autocomplete="off" style="margin-top:4px;">
+              <span><strong>Your Data</strong> — Import an existing work-in-progress — a plain document, or a Word manuscript where WRC auto-splits headers into chapters. Export your whole project back to Word whenever you want.</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ============================================================
+             THE CLOSER
+        ============================================================ -->
+        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Last thing</h3>
+        <div style="margin-bottom: 24px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Tell us why you're interested in beta testing WRC.</label>
+          <textarea name="interest_reason" rows="4" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+        </div>
+
+        <p id="form-summary" class="field-error" role="alert" style="margin: 0 0 12px;"></p>
+
+        <button id="submit-btn" type="submit" class="btn btn-primary" style="width:100%;">Submit Application</button>
+
+      </form>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="copyright">&copy; 2026 Writer's Companion. All rights reserved.</p>
+      <p class="tagline">Story intelligence built for authors.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var whoForm = document.getElementById('who-form');
+      var form = document.getElementById('beta-form');
+      if (!whoForm || !form) return;
+
+      // We handle validation and sending ourselves, so errors appear beside each field
+      // and the visitor never leaves this page for a Formspree screen.
+      whoForm.setAttribute('novalidate', '');
+      form.setAttribute('novalidate', '');
+
+      var summary = document.getElementById('form-summary');
+      var button = document.getElementById('submit-btn');
+      var hero = document.getElementById('page-hero');
+      var thanks = document.getElementById('thanks');
+      var HOME_URL = 'index.html';
+
+      function now() { return Date.now(); }
+      function trusted(event) { return event.isTrusted; }
+      function allFields() {
+        return Array.prototype.slice.call(whoForm.elements).concat(Array.prototype.slice.call(form.elements));
+      }
+      function fieldNamed(name) { return whoForm.elements[name] || form.elements[name]; }
+      function resetBoth() { whoForm.reset(); form.reset(); }
+
+      // Ask password managers and autofill helpers to leave the optional boxes alone.
+      allFields().forEach(function (el) {
+        if (el.type === 'hidden' || el.type === 'submit') return;
+        el.setAttribute('data-lpignore', 'true');
+        el.setAttribute('data-1p-ignore', 'true');
+        el.setAttribute('data-bwignore', 'true');
+        el.setAttribute('data-form-type', 'other');
+      });
+
+      // -------------------------------------------------------------------------------------
+      // GUARD 1: the optional boxes keep only what the visitor really typed, dictated, or pasted.
+      // A real entry is an input event the browser itself generated (a "trusted" event) while the
+      // cursor is in that very box. A fill by an extension fails that test, so the box is put back
+      // to what the visitor entered (empty, if nothing). The same check runs just before sending.
+      // -------------------------------------------------------------------------------------
+      var enteredByVisitor = {};
+
+      function isGuarded(el) {
+        if (!el.name || el.form !== form) return false;
+        return el.type === 'text' || el.type === 'number' || el.type === 'textarea';
+      }
+
+      function isAutofilled(el) {
+        var selectors = [':-webkit-autofill', ':autofill'];
+        for (var i = 0; i < selectors.length; i++) {
+          try { if (el.matches(selectors[i])) return true; } catch (e) { /* not supported by this browser */ }
+        }
+        return false;
+      }
+
+      form.addEventListener('input', function (event) {
+        var el = event.target;
+        if (!isGuarded(el)) return;
+        if (trusted(event) && document.activeElement === el && !isAutofilled(el)) {
+          enteredByVisitor[el.name] = el.value;
+        }
+      });
+
+      function restoreGuarded() {
+        Array.prototype.forEach.call(form.elements, function (el) {
+          if (!isGuarded(el)) return;
+          var want = Object.prototype.hasOwnProperty.call(enteredByVisitor, el.name) ? enteredByVisitor[el.name] : '';
+          if (el.value !== want) el.value = want;
+        });
+      }
+
+      // -------------------------------------------------------------------------------------
+      // GUARD 2: keep the screen and the cursor where the visitor put them.
+      // When a password manager fills the form it can move the cursor to the last box it filled
+      // and scroll the page down to it. If that happens without the visitor doing anything, put
+      // the cursor and the scroll position back where they were.
+      // -------------------------------------------------------------------------------------
+      var NAV_KEYS = ['Tab', 'PageUp', 'PageDown', 'Home', 'End', 'ArrowUp', 'ArrowDown', ' '];
+      var lastGestureAt = 0;   // last time the visitor clicked, touched, scrolled, or tabbed
+      var fillUntil = 0;       // while now() < fillUntil, a fill of name/email is in progress
+      var holdUntil = 0;       // while now() < holdUntil, sudden scroll jumps are undone
+      var ownFocus = false;    // true while this page moves the cursor itself
+      var typed = { applicant_name: '', email: '' };
+      var anchor = { x: window.pageXOffset || 0, y: window.pageYOffset || 0, el: null };
+
+      ['pointerdown', 'mousedown', 'touchstart', 'wheel'].forEach(function (type) {
+        document.addEventListener(type, function (event) {
+          if (trusted(event)) lastGestureAt = now();
+        }, { capture: true, passive: true });
+      });
+      document.addEventListener('keydown', function (event) {
+        if (trusted(event) && NAV_KEYS.indexOf(event.key) !== -1) lastGestureAt = now();
+      }, true);
+
+      function visitorActedRecently() { return now() - lastGestureAt < 700; }
+
+      // Has the name or email box changed by anything other than the visitor typing in it?
+      function noteFill() {
+        var changed = false;
+        Object.keys(typed).forEach(function (name) {
+          var el = whoForm.elements[name];
+          if (el && el.value !== typed[name]) { typed[name] = el.value; changed = true; }
+        });
+        if (changed) fillUntil = now() + 2500;
+      }
+
+      whoForm.addEventListener('input', function (event) {
+        var el = event.target;
+        if (Object.prototype.hasOwnProperty.call(typed, el.name) && trusted(event) && document.activeElement === el) {
+          typed[el.name] = el.value;
+        }
+        noteFill();
+      });
+      whoForm.addEventListener('change', noteFill);
+
+      function jumpBack() {
+        var root = document.documentElement;
+        var previous = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';   // no sliding, even if the site CSS asks for smooth scrolling
+        window.scrollTo(anchor.x, anchor.y);
+        root.style.scrollBehavior = previous;
+      }
+
+      function stopStrayFocus(el) {
+        holdUntil = now() + 1500;
+        ownFocus = true;
+        try {
+          if (anchor.el && anchor.el !== el && document.contains(anchor.el)) {
+            anchor.el.focus({ preventScroll: true });
+          } else {
+            el.blur();
+          }
+        } finally {
+          ownFocus = false;
+        }
+        jumpBack();
+        [0, 30, 100, 300, 800].forEach(function (ms) { setTimeout(jumpBack, ms); });
+      }
+
+      function onFocusIn(event) {
+        if (ownFocus) return;
+        var el = event.target;
+        noteFill();
+        if (isGuarded(el) && !visitorActedRecently() && now() < fillUntil) {
+          stopStrayFocus(el);
+          return;
+        }
+        anchor.el = el;
+      }
+      whoForm.addEventListener('focusin', onFocusIn);
+      form.addEventListener('focusin', onFocusIn);
+
+      window.addEventListener('scroll', function () {
+        var t = now();
+        var visitorDriven = visitorActedRecently();
+        if (!visitorDriven && (t < holdUntil || t < fillUntil)) {
+          jumpBack();
+          return;
+        }
+        anchor.x = window.pageXOffset;
+        anchor.y = window.pageYOffset;
+        if (visitorDriven) holdUntil = 0;
+      }, { passive: true });
+
+      // Check after any activity on the forms, and keep watching quietly in the background.
+      [whoForm, form].forEach(function (f) {
+        ['input', 'change', 'focusin', 'focusout'].forEach(function (type) {
+          f.addEventListener(type, function () {
+            setTimeout(restoreGuarded, 0);
+            setTimeout(restoreGuarded, 150);
+            setTimeout(restoreGuarded, 600);
+          });
+        });
+      });
+      setInterval(function () { restoreGuarded(); noteFill(); }, 400);
+
+      // Start empty every time the page is shown. If the visitor comes back with the Back
+      // button, load a fresh copy so nothing from an earlier visit is left behind.
+      // (If someone has already started typing on a slow connection, their work is left alone.)
+      var visitorStarted = false;
+      function markStarted() { visitorStarted = true; }
+      whoForm.addEventListener('focusin', markStarted);
+      form.addEventListener('focusin', markStarted);
+
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted) { window.location.reload(); return; }
+        if (!visitorStarted) {
+          resetBoth();
+          enteredByVisitor = {};
+          typed = { applicant_name: '', email: '' };
+        }
+      });
+
+      // -------------------------------------------------------------------------------------
+      // Validation: order here is the order of the page, so the first problem found is the highest.
+      // -------------------------------------------------------------------------------------
+      var rules = [
+        { name: 'applicant_name',      kind: 'text',   required: true,  msg: 'Please enter your name.' },
+        { name: 'skokie_member',       kind: 'radio',  required: true,  msg: 'Please choose Yes or No.' },
+        { name: 'email',               kind: 'email',  required: true,  msg: 'Please enter a valid email address, such as name@example.com.' },
+        { name: 'multiwindow_comfort', kind: 'number', required: false, msg: 'Please enter a whole number from 1 to 10, or leave this blank.' },
+        { name: 'patience_scale',      kind: 'number', required: false, msg: 'Please enter a whole number from 1 to 10, or leave this blank.' }
+      ];
+
+      function wrapperFor(name) {
+        return document.querySelector('[data-field="' + name + '"]');
+      }
+
+      function isValid(rule) {
+        var field = fieldNamed(rule.name);
+        var value = String(field.value || '').trim();
+        if (rule.kind === 'radio') return value !== '';
+        if (value === '') return !rule.required;
+        if (rule.kind === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        if (rule.kind === 'number') {
+          var n = Number(value);
+          return Number.isInteger(n) && n >= 1 && n <= 10;
+        }
+        return true;
+      }
+
+      function showError(rule, on) {
+        var wrap = wrapperFor(rule.name);
+        wrap.classList.toggle('has-error', on);
+        wrap.querySelector('.field-error').textContent = on ? rule.msg : '';
+      }
+
+      function refreshSummary() {
+        if (!document.querySelector('.has-error')) summary.textContent = '';
+      }
+
+      // -------------------------------------------------------------------------------------
+      // Sending
+      // -------------------------------------------------------------------------------------
+      function showThanks(fullName) {
+        resetBoth();
+        enteredByVisitor = {};
+        typed = { applicant_name: '', email: '' };
+        whoForm.style.display = 'none';
+        form.style.display = 'none';
+        if (hero) hero.style.display = 'none';
+
+        var first = String(fullName || '').trim().split(/\s+/)[0];
+        document.getElementById('thanks-name').textContent = first ? ', ' + first : '';
+        thanks.style.display = 'block';
+        window.scrollTo(0, 0);
+        thanks.focus({ preventScroll: true });
+
+        var left = 10;
+        var counter = document.getElementById('countdown');
+        var timer = setInterval(function () {
+          left -= 1;
+          counter.textContent = String(left);
+          if (left <= 0) {
+            clearInterval(timer);
+            window.location.href = HOME_URL;
+          }
+        }, 1000);
+      }
+
+      var sending = false;
+
+      function send() {
+        if (sending) return;
+        sending = true;
+        button.disabled = true;
+        button.textContent = 'Sending…';
+        var applicantName = whoForm.elements.applicant_name.value;
+
+        // Both parts go together as one application.
+        var data = new FormData(whoForm);
+        new FormData(form).forEach(function (value, key) { data.append(key, value); });
+
+        fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(function (response) {
+            if (!response.ok) throw new Error('Send failed: ' + response.status);
+            showThanks(applicantName);
+          })
+          .catch(function () {
+            sending = false;
+            button.disabled = false;
+            button.textContent = 'Submit Application';
+            summary.textContent = "We couldn't send your application just now. Please check your connection and try again in a moment.";
+          });
+      }
+
+      function handleSubmit() {
+        restoreGuarded();
+        fillUntil = 0;
+        holdUntil = 0;
+
+        var firstBad = null;
+        rules.forEach(function (rule) {
+          var ok = isValid(rule);
+          showError(rule, !ok);
+          if (!ok && !firstBad) firstBad = rule;
+        });
+
+        if (firstBad) {
+          summary.textContent = 'Please fix the highlighted question(s) above, then submit again.';
+          wrapperFor(firstBad.name).scrollIntoView({ behavior: 'smooth', block: 'center' });
+          var target = document.querySelector('[name="' + firstBad.name + '"]');
+          ownFocus = true;
+          try { target.focus({ preventScroll: true }); } finally { ownFocus = false; }
+          anchor.el = target;
+          return;
+        }
+
+        summary.textContent = '';
+        send();
+      }
+
+      form.addEventListener('submit', function (event) { event.preventDefault(); handleSubmit(); });
+      whoForm.addEventListener('submit', function (event) { event.preventDefault(); });
+
+      // Clear a field's highlight as soon as it is corrected; leave it highlighted until then.
+      rules.forEach(function (rule) {
+        var wrap = wrapperFor(rule.name);
+        function recheck() {
+          if (wrap.classList.contains('has-error') && isValid(rule)) {
+            showError(rule, false);
+            refreshSummary();
+          }
+        }
+        wrap.addEventListener('input', recheck);
+        wrap.addEventListener('change', recheck);
+      });
+    })();
+  </script>
+
+</body>
+</html>
