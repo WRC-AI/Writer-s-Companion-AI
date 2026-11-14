@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apply for Beta Testing — Writer's Companion</title>
-  <meta name="description" content="Apply to beta test Writer's Companion (WRC).">
+  <title>Keep Me Posted — Writer's Companion</title>
+  <meta name="description" content="Stay informed about Writer's Companion (WRC), or ask to be considered for pre-beta.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✒️</text></svg>">
   <style>
@@ -34,9 +34,9 @@
 
   <section id="page-hero" class="hero" style="padding: 60px 0 40px;">
     <div class="container">
-      <h1 style="font-size: clamp(1.6rem, 4vw, 2.4rem);">Apply for Beta Testing</h1>
+      <h1 style="font-size: clamp(1.6rem, 4vw, 2.4rem);">Keep Me Posted</h1>
       <p class="hero-subtitle" style="max-width: 640px;">
-        A few questions to help us put WRC in front of the right early testers. Takes about five minutes.
+        We're currently looking for a few writers to help shape the pre-beta of Writer's Companion. Whether you'd like to hear when we launch or be considered for pre-beta, let us know below.
       </p>
     </div>
   </section>
@@ -45,41 +45,54 @@
     <div class="container" style="max-width: 680px;">
 
       <!-- ============================================================
-           THANK-YOU PANEL (hidden until the application is sent)
+           THANK-YOU PANEL (hidden until the form is sent)
       ============================================================ -->
       <div id="thanks" tabindex="-1" style="display:none; text-align:center; padding: 60px 0 20px; outline:none;">
         <h2 style="font-family: var(--font-display); color: var(--color-burgundy); margin-bottom: 14px;">Thank you<span id="thanks-name"></span>!</h2>
-        <p style="max-width: 520px; margin: 0 auto 12px;">Your application has been received. We'll be in touch by email.</p>
+        <p id="thanks-msg" style="max-width: 520px; margin: 0 auto 12px;"></p>
         <p style="max-width: 520px; margin: 0 auto 24px; color: var(--color-text-muted);">You'll be returned to the Writer's Companion home page in <span id="countdown">10</span> seconds.</p>
         <a href="index.html" class="btn btn-primary">Return to Writer's Companion now</a>
       </div>
 
       <!-- ============================================================
-           PART 1: NAME / SKOKIE / EMAIL
-           These three live in their own small form on purpose. Password managers fill
+           PART 1: INTEREST CHOICE / NAME / EMAIL
+           These live in their own small form on purpose. Password managers fill
            one form at a time, so this keeps them away from every other question.
-           Both parts are sent together as ONE application when Submit is pressed.
+           Both parts are sent together as ONE submission when Submit is pressed.
       ============================================================ -->
       <form id="who-form" action="#" method="POST">
 
-        <p class="form-note">Only your name, Skokie answer, and email (marked <span class="req">*</span>) are required. Skip any other question that doesn't apply to you or that you have no comment on.</p>
+        <p class="form-note">Only the first question, your name, and your email (marked <span class="req">*</span>) are required. Skip any other question that doesn't apply to you or that you have no comment on.</p>
+
+        <div class="field-wrap" data-field="signup_type" style="margin-bottom: 20px;">
+          <p style="font-weight:600; margin-bottom:8px;">How interested are you? <span class="req">*</span></p>
+          <div class="radio-group" role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="signup_type" value="wrc_page_keep_me_posted" required autocomplete="off"> <span>Just keep me informed about future developments.</span>
+            </label>
+            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
+              <input type="radio" name="signup_type" value="wrc_page_pre_beta" autocomplete="off"> <span>I'd like to be considered for pre-beta participation.</span>
+            </label>
+          </div>
+          <p class="field-error" role="alert"></p>
+        </div>
+
+        <div id="prebeta-info" style="display:none; margin: 0 0 24px; padding: 20px 24px; background: var(--color-highlight); border-left: 4px solid var(--color-accent); border-radius: 0 var(--radius) var(--radius) 0;">
+          <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 0 0 8px;">How Pre-Beta Works</h3>
+          <p style="margin-bottom: 12px;">I'm looking for a small number of writers to try WRC on their own manuscripts. Tell me a little about yourself below. I'll review every response and may invite a few people to the next step.</p>
+          <p style="margin-bottom: 12px;">The next step is a sample evaluation. If I invite you, I'll ask for two chapters, three at the most, from a work in progress or a completed manuscript. I'll run them through WRC and send you the analysis, so you can see whether WRC is useful for your writing. <strong>Please don't send any chapters now.</strong> I'll send instructions if I invite you.</p>
+          <p style="margin-bottom: 20px;">This works both ways. You decide whether WRC is worth your time, and I decide whether the program is a good fit.</p>
+
+          <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 0 0 8px;">A Note About Timing</h3>
+          <p style="margin-bottom: 20px;">My wife is currently battling Stage 4 cancer, and her care and well-being will always be my highest priority. WRC is a passion project that I work on when time allows. Please don't expect quick replies. Some may take days or even weeks. I would rather say so now than set expectations I can't meet. If you're comfortable with that pace, I'd be glad to hear from you.</p>
+
+          <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 0 0 8px;">Your Manuscript</h3>
+          <p style="margin: 0;">Any chapters you share remain entirely yours. They will be processed through an AI service as part of the analysis. I will not share them, publish them, or use them for any other purpose.</p>
+        </div>
 
         <div class="field-wrap" data-field="applicant_name" style="margin-bottom: 12px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Your name <span class="req">*</span></label>
           <input type="text" name="applicant_name" required autocomplete="name" style="width:100%; padding:12px 14px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
-          <p class="field-error" role="alert"></p>
-        </div>
-
-        <div class="field-wrap" data-field="skokie_member" style="margin-bottom: 16px;">
-          <p style="font-weight:600; margin-bottom:8px;">Are you an OCWW Member or former member of the Skokie Writers Group? <span class="req">*</span></p>
-          <div class="radio-group" role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="skokie_member" value="yes" required autocomplete="off"> <span>Yes</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="skokie_member" value="no" autocomplete="off"> <span>No</span>
-            </label>
-          </div>
           <p class="field-error" role="alert"></p>
         </div>
 
@@ -94,13 +107,26 @@
       <!-- ============================================================
            PART 2: EVERYTHING ELSE (all optional)
       ============================================================ -->
-      <form id="beta-form" action="https://formspree.io/f/xvkoazvp" method="POST">
+      <form id="beta-form" action="https://formspree.io/f/mykblbrn" method="POST">
 
-        <input type="hidden" name="_subject" value="WRC Beta Application">
+        <input type="hidden" id="subject-field" name="_subject" value="WRC Page — Keep Me Posted">
 
         <!-- ============================================================
              TECHNICAL READINESS
         ============================================================ -->
+        <div id="prebeta-top" style="display:none;">
+
+        <div style="margin: 24px 0 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">What is currently your biggest challenge when managing your manuscript?</label>
+          <p style="color: var(--color-text-muted); font-size:0.95rem; margin-bottom:6px;">For example: character continuity, storyline continuity, timeline consistency, revision management, research organization, or remembering where details were established.</p>
+          <textarea name="biggest_challenge" rows="3" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How did you hear about WRC?</label>
+          <input type="text" name="heard_about" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
+        </div>
+
         <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Technical Readiness</h3>
 
         <div class="field-wrap" data-field="multiwindow_comfort" style="margin-bottom: 16px;">
@@ -142,11 +168,6 @@
         <div style="margin-bottom: 16px;">
           <label style="display:block; font-weight:600; margin-bottom:4px;">Do you have a complete or near-complete manuscript (50%+), or are you early in drafting?</label>
           <input type="text" name="manuscript_completeness" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">Have you self-published or traditionally published any previous work?</label>
-          <input type="text" name="publishing_history" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
@@ -237,6 +258,8 @@
         <!-- ============================================================
              WHAT EXCITES YOU
         ============================================================ -->
+        </div>
+
         <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">What Excites You</h3>
 
         <div style="margin-bottom: 24px;">
@@ -244,31 +267,31 @@
           <div style="display:flex; flex-direction:column; gap:14px;">
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
               <input type="checkbox" name="feat_story_memory" value="yes" autocomplete="off" style="margin-top:4px;">
-              <span><strong>Story Memory</strong> — Your manuscript remembers itself. The Relevance Engine keeps your AI grounded in established characters, world rules, and storylines — no more re-explaining your book every session.</span>
+              <span><strong>Manuscript Intelligence</strong> — The Relevance Engine finds the chapters that matter to the one you're working on and delivers their backstory, so there's no more re-explaining your book every session.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
               <input type="checkbox" name="feat_expand" value="yes" autocomplete="off" style="margin-top:4px;">
-              <span><strong>Blue Sky: Expand</strong> — Deepens a scene you've already written — sensory detail, emotional texture, unspoken motivation — without inventing new plot or drifting off course.</span>
+              <span><strong>Expand</strong> — Weave new material through your existing characters and storylines, in a sandbox apart from your manuscript. You choose what to keep.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
               <input type="checkbox" name="feat_parallel" value="yes" autocomplete="off" style="margin-top:4px;">
-              <span><strong>Blue Sky: Parallel</strong> — Branch into an alternate version of a scene in a sandbox, completely separate from your real manuscript. Nothing commits until you choose it.</span>
+              <span><strong>Parallel</strong> — Imagine an entirely new storyline, with its own cast, running alongside yours until the two meet. It all happens in a sandbox, apart from your manuscript.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
               <input type="checkbox" name="feat_trace" value="yes" autocomplete="off" style="margin-top:4px;">
-              <span><strong>Blue Sky: Trace</strong> — Right-click any character, storyline, or continuity flag and instantly see every chapter it touches — with a relevance percentage, not just a yes-or-no match.</span>
+              <span><strong>Trace</strong> — Right-click any blueprint entry and watch it develop chapter by chapter, each with a percentage showing how closely it relates to yours.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
               <input type="checkbox" name="feat_analysis" value="yes" autocomplete="off" style="margin-top:4px;">
-              <span><strong>Blue Sky: Analysis</strong> — A full structural and thematic review of your manuscript, or a targeted deep-dive into how up to three characters or storylines intersect across every chapter.</span>
+              <span><strong>Analysis</strong> — Choose the storylines and characters you care about and what matters most, then see how they progress and intertwine across your whole manuscript.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
               <input type="checkbox" name="feat_blueprint" value="yes" autocomplete="off" style="margin-top:4px;">
-              <span><strong>Blueprint Architecture</strong> — A factual, structured ledger for every chapter — what's been established, what's still open — that your AI reads before it ever writes a word.</span>
+              <span><strong>Blueprint Entries</strong> — A wealth of insights for every chapter: what's there, what works, and what could be stronger.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
               <input type="checkbox" name="feat_author_control" value="yes" autocomplete="off" style="margin-top:4px;">
-              <span><strong>Author Control &amp; Redline</strong> — Every AI change is tracked line-by-line against what you sent. You see exactly what changed and accept or reject each one individually.</span>
+              <span><strong>Redline Review</strong> — Every AI change is tracked line by line against what you sent. See exactly what changed, and accept or reject each one.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:flex-start; cursor:pointer;">
               <input type="checkbox" name="feat_your_data" value="yes" autocomplete="off" style="margin-top:4px;">
@@ -280,15 +303,19 @@
         <!-- ============================================================
              THE CLOSER
         ============================================================ -->
+        <div id="prebeta-closer" style="display:none;">
+
         <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Last thing</h3>
         <div style="margin-bottom: 24px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">Tell us why you're interested in beta testing WRC.</label>
+          <label style="display:block; font-weight:600; margin-bottom:4px;">What made you interested enough to complete this form?</label>
           <textarea name="interest_reason" rows="4" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+        </div>
+
         </div>
 
         <p id="form-summary" class="field-error" role="alert" style="margin: 0 0 12px;"></p>
 
-        <button id="submit-btn" type="submit" class="btn btn-primary" style="width:100%;">Submit Application</button>
+        <button id="submit-btn" type="submit" class="btn btn-primary" style="width:100%;">Submit</button>
 
       </form>
 
@@ -319,13 +346,39 @@
       var thanks = document.getElementById('thanks');
       var HOME_URL = 'index.html';
 
+      // Pre-beta questions show only when the visitor chooses pre-beta. Hidden questions are
+      // disabled so nothing from them is sent, and the e-mail subject names the choice.
+      var CHOICE_KEEP = 'wrc_page_keep_me_posted';
+      var CHOICE_PREBETA = 'wrc_page_pre_beta';
+      var SUBJECTS = {};
+      SUBJECTS[CHOICE_KEEP] = 'WRC Page — Keep Me Posted';
+      SUBJECTS[CHOICE_PREBETA] = 'WRC Page — Pre-Beta Interest';
+      var PREBETA_PARTS = ['prebeta-info', 'prebeta-top', 'prebeta-closer'];
+
+      function applyChoice() {
+        var choice = whoForm.elements.signup_type.value;
+        var showPre = (choice === CHOICE_PREBETA);
+        PREBETA_PARTS.forEach(function (id) {
+          var part = document.getElementById(id);
+          part.style.display = showPre ? '' : 'none';
+          Array.prototype.forEach.call(part.querySelectorAll('input, textarea, select'), function (el) {
+            el.disabled = !showPre;
+          });
+        });
+        document.getElementById('subject-field').value = SUBJECTS[choice] || SUBJECTS[CHOICE_KEEP];
+      }
+      whoForm.addEventListener('change', function (event) {
+        if (event.target && event.target.name === 'signup_type') applyChoice();
+      });
+      applyChoice();
+
       function now() { return Date.now(); }
       function trusted(event) { return event.isTrusted; }
       function allFields() {
         return Array.prototype.slice.call(whoForm.elements).concat(Array.prototype.slice.call(form.elements));
       }
       function fieldNamed(name) { return whoForm.elements[name] || form.elements[name]; }
-      function resetBoth() { whoForm.reset(); form.reset(); }
+      function resetBoth() { whoForm.reset(); form.reset(); applyChoice(); }
 
       // Ask password managers and autofill helpers to leave the optional boxes alone.
       allFields().forEach(function (el) {
@@ -499,8 +552,8 @@
       // Validation: order here is the order of the page, so the first problem found is the highest.
       // -------------------------------------------------------------------------------------
       var rules = [
+        { name: 'signup_type',         kind: 'radio',  required: true,  msg: 'Please choose one of the two options.' },
         { name: 'applicant_name',      kind: 'text',   required: true,  msg: 'Please enter your name.' },
-        { name: 'skokie_member',       kind: 'radio',  required: true,  msg: 'Please choose Yes or No.' },
         { name: 'email',               kind: 'email',  required: true,  msg: 'Please enter a valid email address, such as name@example.com.' },
         { name: 'multiwindow_comfort', kind: 'number', required: false, msg: 'Please enter a whole number from 1 to 10, or leave this blank.' },
         { name: 'patience_scale',      kind: 'number', required: false, msg: 'Please enter a whole number from 1 to 10, or leave this blank.' }
@@ -512,6 +565,7 @@
 
       function isValid(rule) {
         var field = fieldNamed(rule.name);
+        if (field.disabled) return true;
         var value = String(field.value || '').trim();
         if (rule.kind === 'radio') return value !== '';
         if (value === '') return !rule.required;
@@ -536,7 +590,7 @@
       // -------------------------------------------------------------------------------------
       // Sending
       // -------------------------------------------------------------------------------------
-      function showThanks(fullName) {
+      function showThanks(fullName, choice) {
         resetBoth();
         enteredByVisitor = {};
         typed = { applicant_name: '', email: '' };
@@ -546,6 +600,9 @@
 
         var first = String(fullName || '').trim().split(/\s+/)[0];
         document.getElementById('thanks-name').textContent = first ? ', ' + first : '';
+        document.getElementById('thanks-msg').textContent = (choice === CHOICE_PREBETA)
+          ? 'Thank you for your interest in pre-beta. Your information has been received. Because this is a manually managed process, responses may take some time. I appreciate your patience.'
+          : "You're on the list. We'll let you know as soon as WRC is ready.";
         thanks.style.display = 'block';
         window.scrollTo(0, 0);
         thanks.focus({ preventScroll: true });
@@ -570,6 +627,7 @@
         button.disabled = true;
         button.textContent = 'Sending…';
         var applicantName = whoForm.elements.applicant_name.value;
+        var choice = whoForm.elements.signup_type.value;
 
         // Both parts go together as one application.
         var data = new FormData(whoForm);
@@ -582,13 +640,13 @@
         })
           .then(function (response) {
             if (!response.ok) throw new Error('Send failed: ' + response.status);
-            showThanks(applicantName);
+            showThanks(applicantName, choice);
           })
           .catch(function () {
             sending = false;
             button.disabled = false;
-            button.textContent = 'Submit Application';
-            summary.textContent = "We couldn't send your application just now. Please check your connection and try again in a moment.";
+            button.textContent = 'Submit';
+            summary.textContent = "We couldn't send that just now. Please check your connection and try again in a moment.";
           });
       }
 
@@ -638,3 +696,4 @@
 
 </body>
 </html>
+<!-- #### EOF #### -->
