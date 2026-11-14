@@ -17,6 +17,16 @@
     .has-error .radio-group { outline: 2px solid #b00020; outline-offset: 6px; border-radius: 6px; }
     .req { color: #b00020; }
     .form-note { color: var(--color-text-muted); margin-bottom: 20px; }
+    /* Answer boxes: visible border and tint before they are clicked. !important is needed because each box carries its own inline style. */
+    #who-form input[type="text"],
+    #who-form input[type="email"],
+    #beta-form input[type="text"],
+    #beta-form input[type="number"],
+    #beta-form textarea { border: 1px solid #868C96 !important; background: var(--color-bg) !important; }
+    /* Keep the red error look on a box with a problem. */
+    #who-form .has-error input[type="text"],
+    #who-form .has-error input[type="email"],
+    #beta-form .has-error input[type="number"] { border: 2px solid #b00020 !important; background: #fff5f5 !important; }
   </style>
 </head>
 
