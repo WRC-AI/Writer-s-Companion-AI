@@ -36,7 +36,7 @@
     <div class="container">
       <h1 style="font-size: clamp(1.6rem, 4vw, 2.4rem);">Keep Me Posted</h1>
       <p class="hero-subtitle" style="max-width: 640px;">
-        We're currently looking for a few writers to help shape the pre-beta of Writer's Companion. Whether you'd like to hear when we launch or be considered for pre-beta, let us know below.
+        We're currently looking for a few writers to help shape the pre-beta of Writer's Companion.<br>Whether you'd like to hear when we launch or be considered for pre-beta, let us know below.
       </p>
     </div>
   </section>
@@ -71,7 +71,7 @@
               <input type="radio" name="signup_type" value="wrc_page_keep_me_posted" required autocomplete="off"> <span>Just keep me informed about future developments.</span>
             </label>
             <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="signup_type" value="wrc_page_pre_beta" autocomplete="off"> <span>I'd like to be considered for pre-beta participation.</span>
+              <input type="radio" name="signup_type" value="wrc_page_pre_beta" autocomplete="off"> <span>I'd like to be considered for pre-beta participation. There is no cost to take part.</span>
             </label>
           </div>
           <p class="field-error" role="alert"></p>
@@ -79,15 +79,16 @@
 
         <div id="prebeta-info" style="display:none; margin: 0 0 24px; padding: 20px 24px; background: var(--color-highlight); border-left: 4px solid var(--color-accent); border-radius: 0 var(--radius) var(--radius) 0;">
           <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 0 0 8px;">How Pre-Beta Works</h3>
-          <p style="margin-bottom: 12px;">I'm looking for a small number of writers to try WRC on their own manuscripts. Tell me a little about yourself below. I'll review every response and may invite a few people to the next step.</p>
-          <p style="margin-bottom: 12px;">The next step is a sample evaluation. If I invite you, I'll ask for two chapters, three at the most, from a work in progress or a completed manuscript. I'll run them through WRC and send you the analysis, so you can see whether WRC is useful for your writing. <strong>Please don't send any chapters now.</strong> I'll send instructions if I invite you.</p>
-          <p style="margin-bottom: 20px;">This works both ways. You decide whether WRC is worth your time, and I decide whether the program is a good fit.</p>
+          <p style="margin-bottom: 12px;"><strong>There is no cost to take part.</strong></p>
+          <p style="margin-bottom: 12px;">We're looking for a small number of writers to try WRC on their own manuscripts. Tell us a little about yourself below. We'll review every response and invite a few people to the next step.</p>
+          <p style="margin-bottom: 12px;">The next step is a sample evaluation. If we invite you, we'll ask for a couple of chapters from a work in progress or a completed manuscript. I'll run them through WRC and send you the analysis, so you can see whether WRC is useful for your writing. If you like what you see, I'll tell you more about the WRC beta and what it involves. <strong>Please don't send any chapters now.</strong> You'll get instructions if we invite you.</p>
+          <p style="margin-bottom: 20px;">This works both ways. You decide whether WRC is worth your time, and we look for writers with a range of backgrounds and writing processes who might be a good fit.</p>
 
           <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 0 0 8px;">A Note About Timing</h3>
-          <p style="margin-bottom: 20px;">My wife is currently battling Stage 4 cancer, and her care and well-being will always be my highest priority. WRC is a passion project that I work on when time allows. Please don't expect quick replies. Some may take days or even weeks. I would rather say so now than set expectations I can't meet. If you're comfortable with that pace, I'd be glad to hear from you.</p>
+          <p style="margin-bottom: 20px;">My wife is currently battling Stage 4 cancer, and her care and well-being will always be my highest priority. When she's able, she'll help me choose who we invite. WRC is a passion project that we work on when time and conditions allow, so please don't expect quick replies. Some may take days or even weeks. I would rather say so now than set expectations I can't meet. If you're comfortable with that pace, we'd be glad to hear from you.</p>
 
           <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 0 0 8px;">Your Manuscript</h3>
-          <p style="margin: 0;">Any chapters you share remain entirely yours. They will be processed through an AI service as part of the analysis. I will not share them, publish them, or use them for any other purpose.</p>
+          <p style="margin: 0;">Any chapters you share remain entirely yours. They will be processed through an AI service as part of the analysis. We will not share them, publish them, or use them for any other purpose.</p>
         </div>
 
         <div class="field-wrap" data-field="applicant_name" style="margin-bottom: 12px;">
@@ -112,20 +113,22 @@
         <input type="hidden" id="subject-field" name="_subject" value="WRC Page — Keep Me Posted">
 
         <!-- ============================================================
-             TECHNICAL READINESS
+             BIGGEST CHALLENGE (shown to everyone), THEN THE PRE-BETA-ONLY QUESTIONS
+             (hidden and disabled unless the visitor chooses pre-beta)
         ============================================================ -->
-        <div id="prebeta-top" style="display:none;">
-
         <div style="margin: 24px 0 16px;">
+
           <label style="display:block; font-weight:600; margin-bottom:4px;">What is currently your biggest challenge when managing your manuscript?</label>
+
           <p style="color: var(--color-text-muted); font-size:0.95rem; margin-bottom:6px;">For example: character continuity, storyline continuity, timeline consistency, revision management, research organization, or remembering where details were established.</p>
+
           <textarea name="biggest_challenge" rows="3" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+
         </div>
 
-        <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">How did you hear about WRC?</label>
-          <input type="text" name="heard_about" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
-        </div>
+
+
+        <div id="prebeta-top" style="display:none;">
 
         <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Technical Readiness</h3>
 
@@ -136,13 +139,8 @@
         </div>
 
         <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">What is your monitor resolution and setup — single screen, or dual monitor?</label>
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Do you work on a single screen or on two monitors?</label>
           <input type="text" name="monitor_setup" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">How often do you typically work with two windows open side by side, actively switching between them?</label>
-          <input type="text" name="multiwindow_frequency" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <!-- ============================================================
@@ -156,103 +154,18 @@
         </div>
 
         <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">How much time do you typically devote to writing per week?</label>
+          <label style="display:block; font-weight:600; margin-bottom:4px;">How much time per week do you realistically spend on your writing project (not WRC), and could you see using WRC for that effort?</label>
           <input type="text" name="writing_time_weekly" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">Approximate word count or chapter count of your current manuscript?</label>
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Approximate word count or chapter count of your current manuscript, and how far along is it?</label>
           <input type="text" name="manuscript_size" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
         </div>
 
         <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">Do you have a complete or near-complete manuscript (50%+), or are you early in drafting?</label>
-          <input type="text" name="manuscript_completeness" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">Are you currently using any other tools to assist your writing?</label>
-          <input type="text" name="writing_tools" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">Experience using AI as a writing assistant? If yes, which tools?</label>
+          <label style="display:block; font-weight:600; margin-bottom:4px;">Which AI tools or other writing software do you use for your writing, if any?</label>
           <input type="text" name="ai_experience" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">How would you describe your process — a careful outliner/plotter, or casting wide for ideas to see what you catch, or a combination?</label>
-          <textarea name="writing_process" rows="3" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
-        </div>
-
-        <!-- ============================================================
-             AVAILABILITY & WORKING STYLE
-        ============================================================ -->
-        <h3 style="font-family: var(--font-display); color: var(--color-burgundy); margin: 32px 0 16px;">Availability &amp; Working Style</h3>
-
-        <div style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">How much time per week could you realistically be able to spend testing WRC?</label>
-          <input type="text" name="testing_time_weekly" autocomplete="nope" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <p style="font-weight:600; margin-bottom:8px;">Early rollout (rougher, first outside exposure) or later rollout (more polished, benefits from earlier feedback)? This is a preference we'll factor in, not a guarantee.</p>
-          <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="early" autocomplete="off"> <span>Early rollout</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="later" autocomplete="off"> <span>Later rollout</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="rollout_preference" value="either" autocomplete="off"> <span>Either is fine</span>
-            </label>
-          </div>
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <p style="font-weight:600; margin-bottom:8px;">Are you comfortable working through a 1–3 hour guided tutorial before diving in on your own? You'll be using your own manuscript throughout — real progress on your own work, not throwaway sample data.</p>
-          <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="tutorial_comfort" value="yes" autocomplete="off"> <span>Yes</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="tutorial_comfort" value="no" autocomplete="off"> <span>No</span>
-            </label>
-          </div>
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <p style="font-weight:600; margin-bottom:8px;">Willing to fill out structured feedback forms/surveys during the beta, not just informal comments?</p>
-          <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="feedback_willingness" value="yes" autocomplete="off"> <span>Yes</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="feedback_willingness" value="no" autocomplete="off"> <span>No</span>
-            </label>
-          </div>
-        </div>
-
-        <div style="margin-bottom: 16px;">
-          <p style="font-weight:600; margin-bottom:8px;">How do you typically react when software doesn't work as expected?</p>
-          <div role="radiogroup" style="display:flex; flex-direction:column; gap:8px;">
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="frustrated" autocomplete="off"> <span>I get frustrated and close the app</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="troubleshoot" autocomplete="off"> <span>I try to troubleshoot it myself</span>
-            </label>
-            <label style="display:flex; gap:10px; align-items:center; cursor:pointer;">
-              <input type="radio" name="bug_reaction" value="document" autocomplete="off"> <span>I document the steps to report it to the developer</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="field-wrap" data-field="patience_scale" style="margin-bottom: 16px;">
-          <label style="display:block; font-weight:600; margin-bottom:4px;">Rate your patience for rough edges/bugs in early-stage software (1–10)</label>
-          <input type="number" name="patience_scale" min="1" max="10" autocomplete="nope" style="width:80px; padding:10px; border:1px solid var(--color-border); border-radius:var(--radius); font-family:inherit; font-size:1rem;">
-          <p class="field-error" role="alert"></p>
         </div>
 
         <!-- ============================================================
@@ -555,8 +468,7 @@
         { name: 'signup_type',         kind: 'radio',  required: true,  msg: 'Please choose one of the two options.' },
         { name: 'applicant_name',      kind: 'text',   required: true,  msg: 'Please enter your name.' },
         { name: 'email',               kind: 'email',  required: true,  msg: 'Please enter a valid email address, such as name@example.com.' },
-        { name: 'multiwindow_comfort', kind: 'number', required: false, msg: 'Please enter a whole number from 1 to 10, or leave this blank.' },
-        { name: 'patience_scale',      kind: 'number', required: false, msg: 'Please enter a whole number from 1 to 10, or leave this blank.' }
+        { name: 'multiwindow_comfort', kind: 'number', required: false, msg: 'Please enter a whole number from 1 to 10, or leave this blank.' }
       ];
 
       function wrapperFor(name) {
@@ -601,7 +513,7 @@
         var first = String(fullName || '').trim().split(/\s+/)[0];
         document.getElementById('thanks-name').textContent = first ? ', ' + first : '';
         document.getElementById('thanks-msg').textContent = (choice === CHOICE_PREBETA)
-          ? 'Thank you for your interest in pre-beta. Your information has been received. Because this is a manually managed process, responses may take some time. I appreciate your patience.'
+          ? 'Thank you for your interest in pre-beta. Your information has been received. Because this is a manually managed process, responses may take some time. We appreciate your patience.'
           : "You're on the list. We'll let you know as soon as WRC is ready.";
         thanks.style.display = 'block';
         window.scrollTo(0, 0);
